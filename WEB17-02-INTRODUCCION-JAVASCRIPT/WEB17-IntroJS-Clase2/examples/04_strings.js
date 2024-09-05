@@ -17,3 +17,17 @@ console.log(`Is ${sanitizedUsername} authenticated: ${authenticated}`)
 document.querySelector('body').innerHTML = `
 <h1 style='text-align: center';>Is ${sanitizedUsername} authenticated: ${authenticated}</h1>
 `
+
+const email = '  test@test.com  '
+
+const moddedEmail = email.toLowerCase().trim()
+
+const moddedEmail1 = moddedEmail.includes('@test.com')
+
+const moddedEmail2 = moddedEmail.replace('test', '****')
+
+const moddedEmail3 = moddedEmail.replaceAll('test', '****')
+
+console.log(moddedEmail1)
+console.log(moddedEmail2)
+console.log(moddedEmail3)
