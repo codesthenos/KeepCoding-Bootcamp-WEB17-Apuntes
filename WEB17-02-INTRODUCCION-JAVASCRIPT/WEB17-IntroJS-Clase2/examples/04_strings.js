@@ -18,7 +18,9 @@ document.querySelector('body').innerHTML = `
 <h1 style='text-align: center';>Is ${sanitizedUsername} authenticated: ${authenticated}</h1>
 `
 
-const email = '  test@test.com  '
+const email = prompt('Introduce tu correo')
+
+if (!email) throw new Error('Error el correo es null o undefined')
 
 const moddedEmail = email.toLowerCase().trim()
 
