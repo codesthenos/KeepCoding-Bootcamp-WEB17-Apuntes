@@ -41,8 +41,9 @@ message3 = firstProductName === secondProductName && 'Son el mismo producto'
 
 console.log(message3)
 
-const day = 'Monday'
 // switch case (poco uso)
+const day = prompt('Dime un dia') // Solo funciona en navegador
+
 switch (day) {
   case 'Monday':
     console.log(`Es ${day}, hay clase`)
