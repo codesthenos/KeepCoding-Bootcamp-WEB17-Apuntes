@@ -13,3 +13,7 @@ if (sanitizedUsername === 'Guille' && password.trim() === '1234') {
 }
 
 console.log(`Is ${sanitizedUsername} authenticated: ${authenticated}`)
+
+document.querySelector('body').innerHTML = `
+<h1 style='text-align: center';>Is ${sanitizedUsername} authenticated: ${authenticated}</h1>
+`
