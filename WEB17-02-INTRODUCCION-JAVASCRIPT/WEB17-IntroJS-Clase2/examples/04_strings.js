@@ -37,3 +37,10 @@ console.log(moddedEmail3)
 if (!moddedEmail.includes('@keepcoding')) {
   throw new Error('El correo no es de @keepcoding')
 }
+
+// formas de cambiar un string a un Number
+const promptPrice = '23'
+
+console.log(parseInt(promptPrice))
+console.log(+promptPrice)
+console.log(Number(promptPrice))
