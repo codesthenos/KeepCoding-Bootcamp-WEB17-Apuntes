@@ -31,3 +31,7 @@ const moddedEmail3 = moddedEmail.replaceAll('test', '****')
 console.log(moddedEmail1)
 console.log(moddedEmail2)
 console.log(moddedEmail3)
+
+if (!moddedEmail.includes('@keepcoding')) {
+  throw new Error('El correo no es de @keepcoding')
+}
