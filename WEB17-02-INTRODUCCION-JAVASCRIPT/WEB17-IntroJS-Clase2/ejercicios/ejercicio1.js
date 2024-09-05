@@ -28,7 +28,7 @@ let consoleLog = ''
 
 if (sumaTotal < 50) {
   consoleLog = 'Puedes agregar mas productos'
-} else if (sumaTotal >= 50 && sumaTotal <= 100) {
+} else if (sumaTotal <= 100) { // como si es menor que 50 entra en el if de ariba, no hace falta marcarlo aqui
   consoleLog = 'Estas cerca de tu limite de compra'
 } else {
   consoleLog = 'Has alcanzado el limite de tu compra'
