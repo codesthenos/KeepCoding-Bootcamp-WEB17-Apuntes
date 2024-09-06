@@ -1,6 +1,19 @@
 document.querySelector('body').innerHTML = `
 <h1 style='text-align: center';>05_functions_intro.js</h1>
 `
+
+const productAName = "T-shirt";
+const productAPrice = 20;
+const productAQuantity = 2;
+
+const productBName = "Cap";
+const productBPrice = 35;
+const productBQuantity = 1;
+
+const productCName = "Socks";
+const productCPrice = 10;
+const productCQuantity = 3;
+
 // function declaration examples
 function showMessage () {
   const discount = '50%'
@@ -16,6 +29,14 @@ function sumCapTshirtPrice () {
 }
 // function call example
 showMessage()
-showMessage()
-showMessage()
 sumCapTshirtPrice()
+
+// funcion con parametros
+function prodcutTotalPrice (price, quantity) {
+  const total = price * quantity
+  return total
+}
+// llamada funcion con parametros
+const productASubtotal = prodcutTotalPrice(productAPrice, productAQuantity)
+const productBSubtotal = prodcutTotalPrice(productBPrice, productBQuantity)
+const productCSubtotal = prodcutTotalPrice(productCPrice, productCQuantity)
