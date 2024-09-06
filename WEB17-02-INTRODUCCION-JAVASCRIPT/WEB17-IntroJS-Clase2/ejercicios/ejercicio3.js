@@ -1,7 +1,7 @@
 document.querySelector('body').innerHTML = `
 <h1 style='text-align: center';>ejercicio3.js</h1>
 `
-
+// Creo funcion para incluir la propiedad 'subtotal' a todos los productos(objetos) de una lista de productos(objetos)
 function addSubtotalToProductList (productsList) {
   return productsList.map(product => {
     return {
@@ -10,13 +10,13 @@ function addSubtotalToProductList (productsList) {
     }
   })
 }
-
+// Creo una funcion que suma todas las propiedas 'subtotal' de una lista de productos(objetos)
 function getTotalFromProductList (productsList) {
   return productsList.reduce((accumulator, product) => {
     return accumulator + product.subtotal
   }, 0)
 }
-
+// Creo una funcion para obtener un mensaje dependiendo de cuanto sume el total
 function getMessage (total) {
   let message = total < 50 ? 'Puedes agregar mas productos' : 'Estas cerca de tu limite de compra'
 
