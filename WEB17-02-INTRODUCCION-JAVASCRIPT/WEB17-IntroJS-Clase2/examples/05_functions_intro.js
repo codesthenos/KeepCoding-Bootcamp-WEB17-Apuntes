@@ -40,3 +40,11 @@ function prodcutTotalPrice (price, quantity) {
 const productASubtotal = prodcutTotalPrice(productAPrice, productAQuantity)
 const productBSubtotal = prodcutTotalPrice(productBPrice, productBQuantity)
 const productCSubtotal = prodcutTotalPrice(productCPrice, productCQuantity)
+
+// Arrow functions
+const productTotalPriceArrow = (price, quantity) => {
+  const total = price * quantity
+  return total
+}
+// Arrow function en una linea se omiten {} y return que van implicitos
+const pTPArrowOneLine = (price, quantity) => price * quantity
