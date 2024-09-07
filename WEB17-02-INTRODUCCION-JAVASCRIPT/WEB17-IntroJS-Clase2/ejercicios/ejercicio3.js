@@ -35,7 +35,7 @@ const getTotalFromProductListArrow = (productsList) => {
 function getMessage (total) {
   let message = total < 50 ? 'Puedes agregar mas productos' : 'Estas cerca de tu limite de compra'
 
-  message = total > 100 ? 'Has alcanzado el limite de tu compra' : 'Estas cerca de tu limite de compra'
+  message = total > 100 ? 'Has alcanzado el limite de tu compra' : message
 
   return message
 }
@@ -43,7 +43,7 @@ function getMessage (total) {
 const getMessageArrow = (total) => {
   let message = total < 50 ? 'Puedes agregar mas productos' : 'Estas cerca de tu limite de compra'
 
-  message = total > 100 ? 'Has alcanzado el limite de tu compra' : 'Estas cerca de tu limite de compra'
+  message = total > 100 ? 'Has alcanzado el limite de tu compra' : message
 
   return message
 }
