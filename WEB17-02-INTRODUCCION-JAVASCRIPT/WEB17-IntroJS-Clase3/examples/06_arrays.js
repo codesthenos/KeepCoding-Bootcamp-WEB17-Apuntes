@@ -15,7 +15,7 @@ console.log(elementoFinal)
 
 // Añadir elementos
 // Añade elemento al final de la lista
-myProducts.push('nuevo elemento')
+myProducts.push('nuevo elemento') // puedo meter mas de un elemento a la vez
 console.log(myProducts)
 console.log(myProducts.length)
 // Añade elemento al principio de la lista
