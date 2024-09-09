@@ -56,5 +56,16 @@ console.log('myProducstCopy3', myProducstCopy3)
 // Usando structuredclone, que hace una copia hasta las raices
 const myProducstCopy4 = structuredClone(myProducts)
 
+
+// Funcion (ejemplo) para incluir una elemento a una lista
+const addProduct = (list, element) => {
+  const updatedList = [...list]
+  updatedList.push(element)
+  return updatedList
+}
+const listUsingFunction = addProduct(myProducts, 'element added from function')
+console.log('listUsingFunction', listUsingFunction)
+
+
 // arrays de arrays
 // convertir lista a otro tipo (string, number, ...)
