@@ -25,7 +25,7 @@ console.log('---Usando for---')
 for (let index = 0; index < products.length; index++) {
   // usamos la lista de hiddenProducts para esconder los productos que no queremos mostrar
   if (hiddenProducts.includes(products[index])) {
-    console.log(productMessage('****'))
+    console.log('Hidden product', index, ': ****')
   } else {
     console.log(productMessage(products[index]))
   }
