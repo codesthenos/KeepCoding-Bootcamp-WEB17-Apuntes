@@ -66,6 +66,28 @@ const addProduct = (list, element) => {
 const listUsingFunction = addProduct(myProducts, 'element added from function')
 console.log('listUsingFunction', listUsingFunction)
 
+// Validaciones, ver si existe un elemento y metodos parecidos
+// Ver en el indice esta un elemento, si el numero es -1, es que no esta
+const indexOfCap = myProducts.indexOf('Cap')
+console.log('indexOfCap', indexOfCap)
+// Ver si un elemento esta dentro de la lista
+const estaElementoEnLista = myProducts.includes('Tv')
+console.log('Esta "Cap" en myProducts:', estaElementoEnLista)
 
-// arrays de arrays
-// convertir lista a otro tipo (string, number, ...)
+// map, filter, find, reduce, some, every, reverse (toReversed), sort (toSorted)
+
+// Convertir lista a tipo string
+const csvProducts = 'T-shirt,pants,shoes,cap'
+console.log(csvProducts)
+// APARTE, no es de arrays, pero me parece interesante este metodo de strings
+const upadtedCsvProducts = csvProducts.replace(',shoes', '')
+console.log(upadtedCsvProducts)
+// Ahora si, usando listas
+// Convierto el string en una lista, con split
+const listCsvProducts = csvProducts.split(',')
+console.log(listCsvProducts)
+// Encuentro el index del elemento que quiero borrar
+const indexShoes = listCsvProducts.indexOf('shoes')
+// Con splice, me quedo con los elementos de la lista que quiero
+listCsvProducts.splice(indexShoes, 1) // indexShoes (indice en el que empiezo a eliminar), 1 (cantidad de elementos que elimino)
+console.log(listCsvProducts)
