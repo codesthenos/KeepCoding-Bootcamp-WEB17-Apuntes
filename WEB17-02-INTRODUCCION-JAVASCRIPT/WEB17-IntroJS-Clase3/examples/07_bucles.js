@@ -20,16 +20,15 @@ for (let index = 1; index < 5; index++) {
 // usando un for para products
 console.log('---Usando for---')
 for (let index = 0; index < products.length; index++) {
-  console.log( 'Product: ', products[index])
+  console.log(productMessage(products[index]))
 }
-
 
 // Extra usando map
 // La funcion, coge una lista de productos, e itrera por los productos, de cada producto, hace un console.log de la template string
 console.log('---Usando map---')
 const productMessageList = (productlist) =>
   productlist.map(product =>
-    console.log(`Product: ${product}`)
+    console.log(productMessage(product))
   )
 
 productMessageList(products)
