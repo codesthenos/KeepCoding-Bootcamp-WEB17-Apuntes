@@ -17,11 +17,10 @@ const seedEvenAndOdd = (numberList) => {
       oddNumbers.push(numberList[index])
     }
   }
-  return [evenNumbers, oddNumbers] // lo sacaria con un objeto pero como no lo hemos visto lo he hecho asi
+  return { evenNumbers, oddNumbers } // lo sacaria con un objeto pero como no lo hemos visto lo he hecho asi
 }
 
-const evenNumbers = seedEvenAndOdd(numbers)[0]
-const oddNumbers = seedEvenAndOdd(numbers)[1]
+const { evenNumbers, oddNumbers } = seedEvenAndOdd(numbers)
 
 console.log('evenNumber: ', evenNumbers)
 console.log('oddNumbers: ', oddNumbers)
