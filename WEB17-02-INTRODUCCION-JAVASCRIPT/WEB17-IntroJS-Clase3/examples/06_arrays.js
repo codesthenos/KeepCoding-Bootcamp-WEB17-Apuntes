@@ -91,3 +91,6 @@ const indexShoes = listCsvProducts.indexOf('shoes')
 // Con splice, me quedo con los elementos de la lista que quiero
 listCsvProducts.splice(indexShoes, 1) // indexShoes (indice en el que empiezo a eliminar), 1 (cantidad de elementos que elimino)
 console.log(listCsvProducts)
+// Convierto la lista en string
+const upadtedCsvProductsFromList = listCsvProducts.join(',')
+console.log(upadtedCsvProductsFromList)
