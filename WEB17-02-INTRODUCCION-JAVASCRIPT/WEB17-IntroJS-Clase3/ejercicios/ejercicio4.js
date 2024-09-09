@@ -32,3 +32,11 @@ console.log(numeros)
 
 // Paso 10, imprime la longitud del array
 console.log(numeros.length)
+
+// Extra, uso del splice (by Manu)
+  // puedo acceder a un indice del array con el primer parametro
+  // indico cuantos elementos elimino con el segundo parametro
+  // indico que elementos meto con el tercer parametro
+
+numeros.splice(2, 2, 'test', 'test2')
+console.log(numeros)
