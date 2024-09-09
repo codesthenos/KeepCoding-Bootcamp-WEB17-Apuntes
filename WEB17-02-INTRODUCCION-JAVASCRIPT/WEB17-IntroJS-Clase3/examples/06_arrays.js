@@ -94,3 +94,29 @@ console.log(listCsvProducts)
 // Convierto la lista en string
 const upadtedCsvProductsFromList = listCsvProducts.join(',')
 console.log(upadtedCsvProductsFromList)
+
+// Arrays de arrays
+const usersProducts = [
+  ['Tv', 'Pc'], // User 1
+  ['Cap', 'T-shirt'], // User 2
+  ['Pants', 'Jeans'] // User 3
+]
+
+// Acceder a valores
+const user3Products = usersProducts[2]
+const user3Product1 = user3Products[0]
+const user3Product2 = user3Products[1]
+console.log('user3Porducts: ', user3Product1, 'and', user3Product2)
+
+const user2Product1 = usersProducts[1][0]
+const user2Product2 = usersProducts[1][1]
+console.log('user2Porducts: ', user2Product1, 'and', user2Product2)
+
+// Acceder con bucle
+console.log('---Acceder a elementos de array de arrays con bucle for---')
+for (let index = 0; index < usersProducts.length; index++) {
+  const productsUser = usersProducts[index]
+  for (let productIndex = 0; productIndex < productsUser.length; productIndex++) {
+    console.log(`User: ${index} || Product ${productIndex}: ${productsUser[productIndex]}`)
+  }
+}
