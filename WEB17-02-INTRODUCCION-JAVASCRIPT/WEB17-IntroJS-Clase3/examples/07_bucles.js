@@ -12,7 +12,9 @@ console.log(productMessage(products[0]))
 
 // while, do-while, for
 for (let index = 0; index < 10; index++) {
-  console.log('Dentro del loop, index = ', index)
+  index % 2 === 0
+    ? console.log('Dentro del loop, index es par, index = ', index)
+    : console.log('Dentro del loop, index es impar, index = ', index)  
 }
 
 
