@@ -42,20 +42,20 @@ const secondProduct = {
 
 // si la propiedad esta asignada a una variable, tambien accedo por corchetes
 let key = 'quantity'
-console.log('quantity', firstProdcut[key])
+console.log('quantity: ', firstProdcut[key])
 key = 'price'
-console.log('price', firstProdcut[key])
+console.log('price: ', firstProdcut[key])
 
-console.log(firstProdcut)
-console.log(secondProduct)
+console.log('firstProduct: ', firstProdcut)
+console.log('secondProduct: ', secondProduct)
 
 // ejemplo de uso practico de la propiedad como variable
 const getProductAttribute = (product, key) => {
   return product[key]
 }
 
-console.log('first product country-store', getProductAttribute(firstProdcut, 'country-store'))
-console.log('second product price', getProductAttribute(secondProduct, 'price'))
+console.log('first product country-store: ', getProductAttribute(firstProdcut, 'country-store'))
+console.log('second product price: ', getProductAttribute(secondProduct, 'price'))
 
 // metemos un objeto dentro de un objeto
 secondProduct.attributes = {
@@ -63,4 +63,5 @@ secondProduct.attributes = {
   material: 'cotton',
 }
 
-console.log('secondProduct.attributes', secondProduct.attributes)
+console.log('secondProduct.attributes: ', secondProduct.attributes)
+console.log('secondProduct.attributes.material: ', secondProduct.attributes.material)
