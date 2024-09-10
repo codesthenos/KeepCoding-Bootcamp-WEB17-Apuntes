@@ -19,11 +19,11 @@ const books = [
   { title: 'The Hunger Games', author: 'Suzanne Collins', year: 2008 }
 ]
 
-const getTitles = (books, year) => {
+const getTitles = (books, yearParam) => {
   const titlesList = []
-  for (let book of books) {
-    if (book.year > year) {
-      titlesList.push(book.title)
+  for (let { title, year } of books) {
+    if (year > yearParam) {
+      titlesList.push(title)
     }
   }
   return titlesList
