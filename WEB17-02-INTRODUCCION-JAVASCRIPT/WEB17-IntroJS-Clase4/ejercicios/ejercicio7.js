@@ -35,10 +35,8 @@ console.log(bookTitles)
 
 const bookTitles2 = getTitles(books, 2000)
 const list = `
-<ul>
-  <li>${bookTitles2[0]}</li>
-  <li>${bookTitles2[1]}</li>
-  <li>${bookTitles2[2]}</li>
+<ul style="list-style: none; width: 90vw; text-align: center">
+  ${bookTitles2.map(title => `<li>${title}</li>`).join('')}
 </ul>
 `
 document.write(list)
