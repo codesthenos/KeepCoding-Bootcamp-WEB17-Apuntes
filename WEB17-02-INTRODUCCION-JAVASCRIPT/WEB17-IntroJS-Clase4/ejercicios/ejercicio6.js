@@ -3,16 +3,28 @@ document.querySelector('body').innerHTML = `
 `
 
 const bidimensionalArray = [
-  ['-', '-', '-', '-', '-'],
-  ['_', '*', '*', '_'],
-  ['*']
+  ['-', '-', '*', '-', '-'],
+  ['-', '*', '*', '*', '-'],
+  ['*', '*', '*', '*', '*']
 ]
 console.log(bidimensionalArray)
 
-const showInConsole = (arrayOfArrays) => {
+const arrayOfArraysToArrayOfStrings = (arrayOfArrays) => {
+  const arrayOfStrings = []
   for (let rowIndex = 0; rowIndex < arrayOfArrays.length; rowIndex++) {
-    const row = arrayOfArrays[rowIndex]
-    console.log(row.join(''))
+    const row = arrayOfArrays[rowIndex].join('')
+    arrayOfStrings.push(row)
   }
+  return arrayOfStrings
 }
-showInConsole(bidimensionalArray)
+const unidimensionalArray = arrayOfArraysToArrayOfStrings(bidimensionalArray)
+
+const templateStringFromArray = (array) => {
+  let templateString = ''
+  for (let i = 0; i < array.length; i++) {
+    templateString = `${templateString}${array[i]}\n`
+  }
+  return templateString
+}
+
+console.log(templateStringFromArray(unidimensionalArray))
