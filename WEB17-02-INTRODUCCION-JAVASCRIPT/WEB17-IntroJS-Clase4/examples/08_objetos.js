@@ -100,3 +100,7 @@ const shows = [
 const firstShow = shows[0]
 const nameFirstShow = firstShow.name
 console.log(nameFirstShow)
+
+for (let show of shows) {
+  console.log('name:', show.name, '\ngenre:', show.genres[0])
+}
