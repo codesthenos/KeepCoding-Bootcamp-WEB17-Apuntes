@@ -157,6 +157,7 @@ user3.role = 'root'
 user3.address.street = 'Codesthenos'
 user3.address.number = 44
 console.log('user3:', user3)
+
 // forma 2 de copiarlo bien {...} destructured // COPIA SOLO EL PRIMER NIVEL, EL RESTO, MUTAN EL ORIGINAL
 const user4 = { ...user2 }
 user4.email = 'test4@test.com'
@@ -165,8 +166,11 @@ user4.role = 'employee'
 user4.address.street = 'Kepcoding'
 user4.address.number = 23
 console.log('user4:', user4)
+
 // forma 3 de copiarlo bien JSON.parse(JSON.stringify) (legacy)
 const user5 = JSON.parse(JSON.stringify(user2))
 user5.email = 'test5@test.com'
 user5.role = 'legacy'
 console.log('user5:', user5)
+
+// struturedClone() NO COPIA FUNCIONES, si una propiedad es una funcion da error
