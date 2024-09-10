@@ -1,5 +1,5 @@
 document.querySelector('body').innerHTML = `
-<h1 style='text-align: center';> ejercicio clase 3/4 WEB17-IntroJS-Clase3/eexamples/08_objetos.js</h1>
+<h1 style='text-align: center';> ejercicio clase 3/4 WEB17-IntroJS-Clase3/examples/08_objetos.js</h1>
 `
 
 // objetos
@@ -102,5 +102,10 @@ const nameFirstShow = firstShow.name
 console.log(nameFirstShow)
 
 for (let show of shows) {
-  console.log('name:', show.name, '\ngenre:', show.genres[0])
+  console.log('name:',
+    show.name,
+    '\ngenre:',
+    show.genres[0],
+    `${show?.season?.title  ? 'season: ' + show?.season?.title : ''}`
+  )
 }
