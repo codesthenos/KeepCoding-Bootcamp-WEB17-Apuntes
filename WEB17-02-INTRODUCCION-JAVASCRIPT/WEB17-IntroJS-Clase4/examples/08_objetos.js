@@ -106,6 +106,45 @@ for (let show of shows) {
     show.name,
     '\ngenre:',
     show.genres[0],
-    `${show?.season?.title  ? 'season: ' + show?.season?.title : ''}`
+    `${show?.season?.title  ? '\nseason: ' + show?.season?.title : ''}`
   )
 }
+
+// borrado de propiedades
+delete secondProduct.attributes
+console.log(secondProduct)
+// esto no borra, pero lo asignas a undefined
+secondProduct.aviable = undefined // null lo asigna a null
+console.log(secondProduct)
+
+// creamos un template string con el bucle (lo que yo habia hecho ya justo arriba)
+let info = ''
+for (let show of shows) {
+  info = info + `
+  <h2>Show: ${show.name}</h2>
+  <p>Genres: ${show.genres.join(' | ')}</p>
+  `
+}
+console.log(info)
+// metodo para escribir en la web (no recomendado, y he tenido que quitar el type="module" del html)
+document.write(info)
+
+// metodos Object
+console.log('first product keys\n', Object.keys(firstProdcut)) // array de keys
+console.log('first product values\n', Object.values(firstProdcut)) // array de values
+console.log('first product keys & values\n', Object.entries(firstProdcut)) // array de [key, value], [hey, value] ...
+
+// copia de objetos para no mutarlos como los arrays
+// mal hecho, mutamos tanto user como user2
+const user = {
+  email: 'test@test.com'
+}
+const user2 = user
+user2.email = 'test2@test.com'
+user2.role = 'admin'
+console.log('user', user)
+console.log('user2', user2)
+
+// forma 1 de copiarlo bien structuredClone()
+// forma 2 de copiarlo bien {...} destructured
+// forma 3 de copiarlo bien JSON.parse(JSON.stringify) (legacy)
