@@ -65,3 +65,38 @@ secondProduct.attributes = {
 
 console.log('secondProduct.attributes: ', secondProduct.attributes)
 console.log('secondProduct.attributes.material: ', secondProduct.attributes.material)
+
+// Object.keys(), para sacar lista de las propiedades de primer nivel de un objeto, solo propiedades, no el valor
+const listOfAttributes = Object.keys(secondProduct)
+console.log(listOfAttributes)
+console.log(Object.keys(secondProduct.attributes))
+
+const products = [
+  firstProdcut,
+  {
+    name: 'shoes',
+    price: 12
+  }
+]
+
+console.log(products[1])
+
+const shows = [
+  {
+    id: 1,
+    name: 'Under the dome',
+    genres: ['Drama', 'Science-Fiction', 'Thriller']
+  },
+  {
+    id: 2,
+    name: 'Game of thrones',
+    genres: ['Drama', 'Thriller'],
+    season: {
+      title: 'season 1'
+    }
+  }
+]
+
+const firstShow = shows[0]
+const nameFirstShow = firstShow.name
+console.log(nameFirstShow)
