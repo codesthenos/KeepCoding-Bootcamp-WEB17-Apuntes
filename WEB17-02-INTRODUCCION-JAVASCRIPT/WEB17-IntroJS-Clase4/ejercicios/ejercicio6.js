@@ -28,3 +28,20 @@ const templateStringFromArray = (array) => {
 }
 
 console.log(templateStringFromArray(unidimensionalArray))
+
+const arrayOfArraysToTemplateString = (arrayOfArrays) => {
+  let templateString = ''
+  for (let rowIndex = 0; rowIndex < arrayOfArrays.length; rowIndex++) {
+    const row = arrayOfArrays[rowIndex].join('')
+    if (rowIndex === arrayOfArrays.length - 1) {
+      templateString = `${templateString}${row}`
+    } else {
+      templateString = `${templateString}${row}\n`
+    }
+  }
+  return templateString
+}
+
+const result = arrayOfArraysToTemplateString(bidimensionalArray)
+
+console.log(result)
