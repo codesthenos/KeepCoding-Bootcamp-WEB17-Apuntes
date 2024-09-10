@@ -36,12 +36,13 @@ const book1 = books[0]
 console.log(book1)
 
 // destructuring
-const [firstBook, secondBook, thirdBook, fourthBook, fifthBook, sixthBook] = [
+const [firstBook, { test }, thirdBook, fourthBook, fifthBook, sixthBook] = [
   { title: '1984', author: 'George Orwell', year: 1949 },
   {
     title: 'One Hundred Years of Solitude',
     author: 'Gabriel García Márquez',
-    year: 1967
+    year: 1967,
+    test: 'test'
   },
   {
     title: "Harry Potter and the Philosopher's Stone",
@@ -55,8 +56,8 @@ const [firstBook, secondBook, thirdBook, fourthBook, fifthBook, sixthBook] = [
 console.log(
   'firstBook:',
   fifthBook,
-  '\nsecondBook:',
-  secondBook,
+  '\n{ test }:',
+  test,
   '\nthirdBook:',
   thirdBook,
   '\nfourthBook:',
