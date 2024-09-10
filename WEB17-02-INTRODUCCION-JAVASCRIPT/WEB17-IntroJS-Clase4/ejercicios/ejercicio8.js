@@ -10,9 +10,9 @@ const processCSV = (csv) => {
   for (let line of lines) {
     const [name, price, store] = line.split(',')
     procducts.push({
-      name: name,
+      name,
       price: parseInt(price),
-      store: store
+      store
     })
   }
 
@@ -27,3 +27,21 @@ console.log('product2:', product2)
 console.log('product3:', product3)
 console.log('product4:', product4)
 console.log('product5:', product5)
+
+// spread operator
+const infoGeneral = {
+  bootcamp: 'Keepcoding'
+}
+console.log('infoGeneral:', infoGeneral)
+let module1 = {
+  name: 'JS'
+}
+console.log('module1:', module1)
+// con el spread operator, a module1 le uno las propiedades de infoGeneral
+module1 = { ...module1, ...infoGeneral}
+console.log('{ ...module1, ...infoGeneral }:', module1)
+let module2 = {
+  name: 'HTML',
+  ...infoGeneral
+}
+console.log('module2:', module2)
