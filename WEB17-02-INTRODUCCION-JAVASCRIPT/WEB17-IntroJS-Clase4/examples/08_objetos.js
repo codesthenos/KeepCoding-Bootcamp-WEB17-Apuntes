@@ -137,7 +137,11 @@ console.log('first product keys & values\n', Object.entries(firstProdcut)) // ar
 // copia de objetos para no mutarlos como los arrays
 // mal hecho, mutamos tanto user como user2
 const user = {
-  email: 'test@test.com'
+  email: 'test@test.com',
+  address: {
+    street: 'test',
+    number: 12
+  }
 }
 const user2 = user
 user2.email = 'test2@test.com'
@@ -145,6 +149,24 @@ user2.role = 'admin'
 console.log('user', user)
 console.log('user2', user2)
 
-// forma 1 de copiarlo bien structuredClone()
-// forma 2 de copiarlo bien {...} destructured
+// forma 1 de copiarlo bien structuredClone() // COPIA TODOS LOS NIVELES SIN MUTAR EL ORIGINAL
+const user3 = structuredClone(user2)
+user3.email = 'test3@test.com'
+user3.role = 'root'
+// como la copia es profunda, solo cambio user3, no muto el resto
+user3.address.street = 'Codesthenos'
+user3.address.number = 44
+console.log('user3:', user3)
+// forma 2 de copiarlo bien {...} destructured // COPIA SOLO EL PRIMER NIVEL, EL RESTO, MUTAN EL ORIGINAL
+const user4 = { ...user2 }
+user4.email = 'test4@test.com'
+user4.role = 'employee'
+// muto todos los users, ya que el segundo nivel no esta copiado bien, esta referenciado
+user4.address.street = 'Kepcoding'
+user4.address.number = 23
+console.log('user4:', user4)
 // forma 3 de copiarlo bien JSON.parse(JSON.stringify) (legacy)
+const user5 = JSON.parse(JSON.stringify(user2))
+user5.email = 'test5@test.com'
+user5.role = 'legacy'
+console.log('user5:', user5)
