@@ -58,3 +58,19 @@ const productMessageList = (productlist) =>
   )
 
 productMessageList(products)
+
+// for of
+const tree = [
+  ['-', '-', '*', '-', '-'],
+  ['-', '*', '*', '*', '-'],
+  ['*', '*', '*', '*', '*']
+]
+
+let message = ''
+for (let row of tree) {
+  for (let column of row) {
+    message = message + column
+  }
+  message = message + '\n'
+}
+console.log(message)

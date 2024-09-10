@@ -69,3 +69,13 @@ for (let rowIndex = 0; rowIndex < tree.length; rowIndex++) {
   message = message + '\n'
 }
 console.log(message)
+
+// for of
+let message2 = ''
+for (let row of tree) {
+  for (let column of row) {
+    message2 = message2 + column
+  }
+  message2 = message2 + '\n'
+}
+console.log(message2)
