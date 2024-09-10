@@ -45,3 +45,27 @@ const arrayOfArraysToTemplateString = (arrayOfArrays) => {
 const result = arrayOfArraysToTemplateString(bidimensionalArray)
 
 console.log(result)
+
+// Solucion de Kevin
+const tree = [
+  ['-', '-', '*', '-', '-'],
+  ['-', '*', '*', '*', '-'],
+  ['*', '*', '*', '*', '*']
+]
+// Solucion 1 mostramos 3 console.log, 1 por cada row
+for (let rowIndex = 0; rowIndex < tree.length; rowIndex++) {
+  const row = tree[rowIndex]
+  const rowString = row.join('')
+  console.log(rowString)
+}
+// Solucion 2 mostramos un solo console.log con los 3 rows
+let message = ''
+for (let rowIndex = 0; rowIndex < tree.length; rowIndex++) {
+  const row = tree[rowIndex]
+  for (let columnIndex = 0; columnIndex < row.length; columnIndex++) {
+    const column = row[columnIndex]
+    message = message + column
+  }
+  message = message + '\n'
+}
+console.log(message)
