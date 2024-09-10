@@ -2,7 +2,7 @@ document.querySelector('body').innerHTML = `
 <h1 style='text-align: center';>WEB17-IntroJS-Clase3/ejercicios/ejercicio5.js</h1>
 `
 
-const numbers = [1, 2, 33, 41, 5, 60, 74, 87, 90, 101, null, '', false, NaN, '12']
+const numbers = [1, 2, 33, 41, 5, 60, 74, 87, 90, 101, null, '', false, NaN, '12', 0]
 
 const seedEvenAndOdd = (numberList) => {
   const evenNumbers = []
@@ -26,3 +26,28 @@ const { evenNumbers, oddNumbers } = seedEvenAndOdd(numbers)
 
 console.log('evenNumber: ', evenNumbers)
 console.log('oddNumbers: ', oddNumbers)
+
+const seedEvenAndOddUpdated = (numberList) => {
+  const updatedEvenNumbers = []
+  const updatedOddNumbers = []
+
+  for (let index = 0; index < numberList.length; index++) {
+    const element = numberList[index]
+    const validatedElement = typeof element === 'number' && !isNaN(element)
+
+    if (validatedElement) {
+      if (element % 2 === 0) {
+        updatedEvenNumbers.push(element)
+      } else {
+        updatedOddNumbers.push(element)
+      }
+    }
+  }
+
+  return { updatedEvenNumbers, updatedOddNumbers }
+}
+
+const { updatedEvenNumbers, updatedOddNumbers } = seedEvenAndOddUpdated(numbers)
+
+console.log('updatedEvenNumbers: ', updatedEvenNumbers)
+console.log('updatedOddNumbers: ', updatedOddNumbers)
