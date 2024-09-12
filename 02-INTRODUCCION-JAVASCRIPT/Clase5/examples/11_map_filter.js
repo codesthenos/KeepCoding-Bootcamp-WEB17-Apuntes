@@ -4,6 +4,8 @@ document.querySelector('body').innerHTML = `
 
 const numbers = [1, 2, 3, 4, 5]
 
+// map: devuelve dado un listado otro listado
+
 // sacar lista de numbers x 2 sin map
 let numbersX2SIN = []
 for (number of numbers) numbersX2SIN.push(number * 2)
@@ -24,3 +26,21 @@ const multiplicarX2 = (element) => {
 
 const numberX2FuncionExterna = numbers.map(multiplicarX2)
 console.log('numberX2FuncionExterna:', numberX2FuncionExterna)
+
+// filter: dada una lista devuelve una lista pasada por un filtro
+
+// sacar impares con filter creando la funcion de filtro dentro del filter
+const evenNumbers = numbers.filter(number => number % 2 === 0)
+
+console.log('evenNumbers:', evenNumbers)
+
+// Igual que map, filter puede recibir, 'value', 'index', 'list'
+// sacar impares con filter creando la funcion fuera
+
+// creamos funcion que si un numero es par devuelve true y si no false
+const getEvenNumbers = number => number % 2 === 0
+
+// obtenemos la lista de pares usando el filter con la funcion creada
+const evenNumbersExtFn = numbers.filter(getEvenNumbers)
+
+console.log('evenNumbersExtFn:', evenNumbersExtFn)
