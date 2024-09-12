@@ -11,22 +11,22 @@ const products = [
 const cart = () => {
   let products = []
 
-  const addProdcuts = (productsList) => {
-    productsList.map(product => products.push(product))
+  const addProducts = (productsList) => {
+    productsList.map(({ name, price, quantity }) => products.push({ name, price, quantity }))
   }
 
   const getProducts = () => {
     return products
   }
 
-  return { addProdcuts, getProducts }
+  return { addProducts, getProducts }
 }
 
 const cart1 = cart()
 const cart2 = cart()
 
-cart1.addProdcuts(products)
-cart2.addProdcuts(products.filter(product => product.name !== 'Cap'))
+cart1.addProducts(products)
+cart2.addProducts(products.filter(product => product.name !== 'Cap'))
 
 const cart1Products = cart1.getProducts()
 const cart2Products = cart2.getProducts()
