@@ -23,7 +23,13 @@ const cart = () => {
 }
 
 const cart1 = cart()
+const cart2 = cart()
 
 cart1.addProdcuts(products)
+cart2.addProdcuts(products.filter(product => product.name !== 'Cap'))
 
-console.log(cart1.getProducts())
+const cart1Products = cart1.getProducts()
+const cart2Products = cart2.getProducts()
+
+console.log('cart 1:\n', cart1Products)
+console.log('cart 2:\n', cart2Products)
