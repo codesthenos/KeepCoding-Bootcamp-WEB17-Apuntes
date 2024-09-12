@@ -1,5 +1,5 @@
 document.querySelector('body').innerHTML = `
-<h1 style='text-align: center';> ejercicio clase 3/4 WEB17-IntroJS-Clase3/examples/08_objetos.js</h1>
+<h1 style='text-align: center';> ejercicio clase 3/4 WEB17-IntroJS-Clase3/examples/09_destructuring.js</h1>
 `
 // object
 // no destructuring
