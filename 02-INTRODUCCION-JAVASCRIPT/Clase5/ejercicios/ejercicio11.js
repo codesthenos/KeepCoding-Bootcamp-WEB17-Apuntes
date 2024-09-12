@@ -28,9 +28,9 @@ const booksYear2000 = books.filter(book => book.year > 2000)
 const titlesYear2000 = booksYear2000.map(book => book.title)
 
 // refactor, mas bien concatenacion de funciones
-const refactoredTitles = books.filter(({ year }) => year > 2000).map(book => book.title)
+const refactoredTitles = books.filter(({ year }) => year > 2000).map(book => book.title).join('\n')
 
 // muestro los titulos en consola
 console.log('filter y map en dos constantes distintas:\n', titlesYear2000.join('\n'))
 
-console.log('filter y map en la misma constante:\n', refactoredTitles.join('\n'))
+console.log('filter y map en la misma constante:\n', refactoredTitles)
