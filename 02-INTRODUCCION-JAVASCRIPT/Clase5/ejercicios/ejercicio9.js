@@ -11,6 +11,12 @@ const products = [
 const cart = () => {
   let products = []
 
+  const addProduct = ({ name, price, quantity }) => {
+    products = [...products, { name, price, quantity }]
+    // products = products.concat({ name, price, quantity })
+    // products.push({ name, price, quantity })
+  }
+
   const addProducts = (productsList) => {
     productsList.map(({ name, price, quantity }) => products.push({ name, price, quantity }))
   }
