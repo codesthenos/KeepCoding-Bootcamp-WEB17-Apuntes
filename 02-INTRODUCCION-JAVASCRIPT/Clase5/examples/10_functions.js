@@ -14,7 +14,7 @@ const counter = () => {
   let count = 0
 
   const increment = () => {
-    count = count + 1
+    count++
   }
 
   const getCount = () => {
@@ -26,11 +26,21 @@ const counter = () => {
     resultado: getCount
   }
 }
-
+// creo 'jugador1 y jugador2' que tienen funciones para incrementar un contador y para mostrar el resultado
 const jugador1 = counter()
 const jugador2 = counter()
-jugador1.increment()
-jugador1.increment()
-jugador1.increment()
-const result = jugador1.resultado()
-console.log(result)
+// con un bucle le pongo a jugador1 una puntuacion de 10
+for (let i = 0; i < 10; i++) jugador1.increment()
+// con un bucle le pongo a jugador 2 una puntuacion de 5
+for (let i = 0; i < 5; i++) jugador2.increment()
+
+// meto puntuaciones de ambos jugadores en variables
+const contadorJugador1 = jugador1.resultado()
+const contadorJugador2 = jugador2.resultado()
+
+// creo mensaje del resultado final
+const resultado = `PUNTUACION
+JUGADOR 1: ${contadorJugador1}
+JUGADOR 2: ${contadorJugador2}`
+// muestro el mensaje
+console.log(resultado)
