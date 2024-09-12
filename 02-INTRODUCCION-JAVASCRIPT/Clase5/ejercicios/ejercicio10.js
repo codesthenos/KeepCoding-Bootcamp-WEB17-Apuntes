@@ -34,8 +34,20 @@ const calculadora = () => {
   return { sumar, restar, multiplicar, dividir, total }
 }
 
+// Copiado de Javier mi compi de clase
+const calculadoraRapida = () => {
+  let resultado = 0
 
-const miCalculadora = calculadora();
+  return {
+    sumar: (input) => { resultado += input },
+    restar: (input) => { resultado -= input },
+    multiplicar: (input) => { resultado *= input },
+    dividir: (input) => { resultado /= input },
+    total: () => resultado
+  }
+}
+
+const miCalculadora = calculadoraRapida();
 
 console.log(miCalculadora.sumar(5)); // Debería imprimir undefined
 console.log(miCalculadora.restar(2)); // Debería imprimir undefined
