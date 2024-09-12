@@ -9,7 +9,7 @@ const sum = (valor1, valor2) => {
 const cinco = sum(2,3)
 console.log('sum(2,3) = ', cinco)
 
-// Funciones definidas dentro de funciones (Closures)
+// Funciones definidas dentro de funciones (Closures) (clases en version funcional, Counter es la clase, increment y getCount metodos)
 const counter = () => {
   let count = 0
 
@@ -28,6 +28,7 @@ const counter = () => {
 }
 // creo 'jugador1 y jugador2' que tienen funciones para incrementar un contador y para mostrar el resultado
 const jugador1 = counter()
+console.log(jugador1)
 const jugador2 = counter()
 // con un bucle le pongo a jugador1 una puntuacion de 10
 for (let i = 0; i < 10; i++) jugador1.increment()
