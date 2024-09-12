@@ -55,13 +55,16 @@ const operationsSIN = (num1, num2, operation) => {
 console.log('operationsSIN(1, 2, "resta":)', operationsSIN(1, 2, 'resta'))
 console.log('operationsSIN(1, 2, "suma":)', operationsSIN(1, 2, 'suma'))
 // con funciones como parametro y retorno de llamada de la funcion como parametro
+// creamos funcion que recibe una funcion como parametro (operationFn)
 const operations = (num1, num2, operationFn) => {
   return operationFn(num1, num2)
 }
 
+// creamos funciones suma y resta que son las funciones que operations va a recibir
 const suma = (num1, num2) => num1 + num2
 const resta = (num1, num2) => num1 - num2
 
+// creamos constantes suma12 y resta12 llamando a la funcion operations usando suma y resta respectivamente
 const suma12 = operations(1, 2, suma)
 const resta12 = operations(1, 2, resta)
 
