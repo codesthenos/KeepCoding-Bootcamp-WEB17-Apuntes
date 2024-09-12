@@ -45,3 +45,25 @@ JUGADOR 1: ${contadorJugador1}
 JUGADOR 2: ${contadorJugador2}`
 // muestro el mensaje
 console.log(resultado)
+
+// Funciones como parametro de otras funciones (Callback)
+// sin usar funciones como parametro
+const operationsSIN = (num1, num2, operation) => {
+  if (operation === 'resta') return num1 - num2
+  if (operation === 'suma') return num1 + num2
+}
+console.log('operationsSIN(1, 2, "resta":)', operationsSIN(1, 2, 'resta'))
+console.log('operationsSIN(1, 2, "suma":)', operationsSIN(1, 2, 'suma'))
+// con funciones como parametro y retorno de llamada de la funcion como parametro
+const operations = (num1, num2, operationFn) => {
+  return operationFn(num1, num2)
+}
+
+const suma = (num1, num2) => num1 + num2
+const resta = (num1, num2) => num1 - num2
+
+const suma12 = operations(1, 2, suma)
+const resta12 = operations(1, 2, resta)
+
+console.log('operations(1, 2, suma): ', suma12)
+console.log('operations(1, 2, resta): ', resta12)

@@ -39,10 +39,10 @@ const calculadoraRapida = () => {
   let resultado = 0
 
   return {
-    sumar: (input) => { resultado += input },
-    restar: (input) => { resultado -= input },
-    multiplicar: (input) => { resultado *= input },
-    dividir: (input) => { resultado /= input },
+    sumar: input => { resultado += input },
+    restar: input => { resultado -= input },
+    multiplicar: input => { resultado *= input },
+    dividir: input => { resultado /= input },
     total: () => resultado
   }
 }
