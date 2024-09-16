@@ -50,7 +50,9 @@ const cart = () => {
    * Get the total price of the products in the cart.
    * @returns {number} The total price of the products in the cart.
    */
-  const getTotal = () => {};
+  const getTotal = () => {
+    return products.reduce((accumulator, product) => accumulator + product.price * product.quantity, 0)
+  };
 
   /**
    * Applies a discount to a product in the cart.
