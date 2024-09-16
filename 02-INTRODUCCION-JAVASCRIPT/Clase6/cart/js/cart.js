@@ -142,8 +142,21 @@ const cart = () => {
   };
 // Forma Kevin removeDiscount
   const removeDiscountKevin = (productName) => {
+    // buscamos el descuento a borrar
+    const removedDiscount = discounts.find(discount => discount.product.name === productName)
+    // borramos el descuento
     discounts = discounts.filter(discount => discount.product.name !== productName)
-    
+    // cambiar producto que tenia descuento
+    products = products.map(product => {
+      if (removedDiscount.product.name === product.name) {
+        return {
+          ...product,
+          price: removedDiscount.product.price
+        }
+      }
+      return product
+    })
+
   }
 
   return { addToCart, getCart, applyDiscount, getDiscounts, removeDiscount, removeProduct, getTotal };
