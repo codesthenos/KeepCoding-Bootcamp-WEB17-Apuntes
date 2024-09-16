@@ -51,7 +51,7 @@ const cart = () => {
    * @returns {number} The total price of the products in the cart.
    */
   const getTotal = () => products.reduce((accumulator, product) =>
-    accumulator + product.price * product.quantity
+    accumulator + +product.price * +product.quantity
   , 0);
 
   /**
@@ -60,7 +60,18 @@ const cart = () => {
    * @param {string} discount - The discount percentage to apply.
    * @throws {Error} If the product is not found in the cart.
    */
-  const applyDiscount = (productName, discount) => {};
+  const applyDiscount = (productName, discount) => {
+    const productToDiscount = products.find(product => product.name === productName)
+
+    if (!productToDiscount) throw new Error('No match on product')
+    discounts = [
+      ...discounts,
+      { 
+        product: productToDiscount,
+        discount
+      }
+    ]
+  };
 
   /**
    * Removes a product from the cart and any discounts associated with it.
