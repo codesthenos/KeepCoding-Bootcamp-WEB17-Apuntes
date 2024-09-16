@@ -29,3 +29,7 @@ export default calculadora
 
 // forma 2 (sin default)
 export const defaultValue = 12
+
+export const message = 'hello world'
+
+export const suma10 = a => a + 10
