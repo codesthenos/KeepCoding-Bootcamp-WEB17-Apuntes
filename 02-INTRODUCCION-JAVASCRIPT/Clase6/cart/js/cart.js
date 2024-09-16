@@ -2,6 +2,10 @@
  * @typedef {Object} Discount
  * @property {Product} product - The product the discount is applied to.
  * @property {number} discount - The discount percentage applied to the product.
+ * @typedef {Object} Product
+ * @property {string} name
+ * @property {number} price
+ * @property {number} quantity
  */
 const cart = () => {
   // products = [{ name: 'T-shirt', price: 20, quantity: 2 }, { name: 'Cap', price: 5, quantity: 3 }];
@@ -21,19 +25,26 @@ const cart = () => {
    * Adds a product to the cart.
    * @param {Product} product - The product to add to the cart.
    */
-  const addToCart = (product) => {};
+  const addToCart = (product) => {
+    // products.push(product)
+    products = [...products, product]
+  };
 
   /**
    * Gets the list of products in the cart.
    * @returns {Product[]} The list of products in the cart.
    */
-  const getCart = () => {};
+  const getCart = () => {
+    return products
+  };
 
   /**
    * Gets the list of discounts applied to the cart.
    * @returns {Discount[]} The list of discounts applied to the cart.
    */
-  const getDiscounts = () => {};
+  const getDiscounts = () => {
+    return discounts
+  };
 
   /**
    * Get the total price of the products in the cart.
@@ -53,7 +64,9 @@ const cart = () => {
    * Removes a product from the cart and any discounts associated with it.
    * @param {string} productName - The name of the product to remove.
    */
-  const removeProduct = (productName) => {};
+  const removeProduct = (productName) => {
+    products = products.filter(product => productName !== product.name)
+  };
 
   /**
    * Removes a discount applied to a product in the cart.
