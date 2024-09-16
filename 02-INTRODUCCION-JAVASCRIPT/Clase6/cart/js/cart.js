@@ -74,9 +74,13 @@ const cart = () => {
       }
     ]
     // actualizamos la lista de productos con el descuento
+    // creamos el producto con el descuento
     const discountedProduct = { ...productToDiscount, price: productToDiscount.price * discount / 100 }
+    // actualizamos la lista de products borrando el producto a aplicar descuento, e incluyendo el producto con el decuento
     products = [
+      // elimino el producto que tiene descuento sin actualizar
       ...products.filter(product => product.name !== productName),
+      // incluyo el producto con el descuento aplicado
       discountedProduct
     ]
   };
