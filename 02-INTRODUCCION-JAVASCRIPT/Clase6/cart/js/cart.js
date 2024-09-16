@@ -70,7 +70,7 @@ const cart = () => {
       ...discounts,
       { 
         product: productToDiscount,
-        discount
+        discount: parseInt(discount)
       }
     ]
     // actualizamos la lista de productos con el descuento
@@ -97,7 +97,21 @@ const cart = () => {
    * Removes a discount applied to a product in the cart.
    * @param {string} productName - The name of the product to remove the discount from.
    */
-  const removeDiscount = (productName) => {};
+  const removeDiscount = (productName) => {
+    // encontramos el producto al que quitar el descuento
+    const productToUpdate = products.find(product => product.name === productName)
+    // encontramos el descuento aplicado al producto
+    const discount = discounts.find(discount => discount.product.name === productName).discount
+    // creamos producto con precio actualizado
+    const updatedProduct = { ...productToUpdate, price: productToUpdate.price * 100 / discount }
+    // actualizamos la lista de productos quitando el descuento al producto indicado
+    products = [
+      ...products.filter(product => product.name !== productName),
+      updatedProduct
+    ]
+    // eliminamos el discount de la lista de discounts
+    discounts = discounts.filter(discount => discount.product.name !== productName)
+  };
 
   return { addToCart, getCart, applyDiscount, getDiscounts, removeDiscount, removeProduct, getTotal };
 };
