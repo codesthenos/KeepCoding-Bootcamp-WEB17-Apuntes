@@ -118,6 +118,7 @@ const cart = () => {
    */
   const removeProduct = (productName) => {
     products = products.filter(product => productName !== product.name)
+    discounts = discounts.filter(discount => discount.product.name !== productName)
   };
 
   /**
@@ -139,6 +140,11 @@ const cart = () => {
     // eliminamos el discount de la lista de discounts
     discounts = discounts.filter(discount => discount.product.name !== productName)
   };
+// Forma Kevin removeDiscount
+  const removeDiscountKevin = (productName) => {
+    discounts = discounts.filter(discount => discount.product.name !== productName)
+    
+  }
 
   return { addToCart, getCart, applyDiscount, getDiscounts, removeDiscount, removeProduct, getTotal };
 };
