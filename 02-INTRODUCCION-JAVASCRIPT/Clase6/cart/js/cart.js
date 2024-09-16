@@ -61,15 +61,23 @@ const cart = () => {
    * @throws {Error} If the product is not found in the cart.
    */
   const applyDiscount = (productName, discount) => {
+    // buscamos si hay producto que haga match
     const productToDiscount = products.find(product => product.name === productName)
-
+    // si no hay match, lanzamos error
     if (!productToDiscount) throw new Error('No match on product')
+    // incluimos el descuento en la lista de descuentos
     discounts = [
       ...discounts,
       { 
         product: productToDiscount,
         discount
       }
+    ]
+    // actualizamos la lista de productos con el descuento
+    const discountedProduct = { ...productToDiscount, price: productToDiscount.price * discount / 100 }
+    products = [
+      ...products.filter(product => product.name !== productName),
+      discountedProduct
     ]
   };
 
