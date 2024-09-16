@@ -84,6 +84,33 @@ const cart = () => {
       discountedProduct
     ]
   };
+// Forma de Kevin
+  const applyDiscountKevin = (productName, discount) => {
+    const product = products.find(product => product.name === productName)
+
+    if (!product) throw new Error('No product match')
+    
+    discounts = [
+      ...discounts,
+      {
+        discount: parseInt(discount),
+        product
+      }
+    ]
+
+    products = products.map(productItem => {
+      if (product.name === productName) {
+        const discountNumber = parseInt(discount)
+        const priceDiscount = productItem.price * (discountNumber / 100)
+        const price = productItem.price - priceDiscount
+        return {
+          ...productItem,
+          price
+        }
+      }
+      return productItem
+    })
+  }
 
   /**
    * Removes a product from the cart and any discounts associated with it.
