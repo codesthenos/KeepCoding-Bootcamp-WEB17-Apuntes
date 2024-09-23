@@ -5,6 +5,9 @@ body {
   flex-direction: column;
   text-align: center;
 }
+p {
+  margin: 0;
+}
 
 hr {
   display: none;
@@ -15,6 +18,9 @@ hr {
 }
 
 .footer {
+  background-color: #000;
+  border: 2px solid red;
+  padding: 20px;
   position: sticky;
   bottom: 0;
 }
