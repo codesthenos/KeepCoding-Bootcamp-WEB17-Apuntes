@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+  height: 100dvh;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+}
+
+hr {
+  display: none;
+}
+
+.main-bg {
+  background-color: rgb(27, 27, 27);
+}
