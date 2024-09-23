@@ -1,0 +1,26 @@
+h1 {
+  color:rgb(59, 206, 83);
+  background-color: rgb(121, 52, 106);
+}
+
+h2 {
+  color: rgb(15, 197, 197);
+  color: rgb(252, 220, 182);
+}
+
+p {
+  /*!important muy mala practica, pero sobreescribe TODO, tiene maxima prioridad*/
+  color:rgb(59, 206, 83) !important;
+}
+/*Class*/
+.heading {
+  text-align: end;
+  color: rgb(98, 209, 172);
+  font-weight: 530;
+}
+/*Id*/
+#heading-6 {
+  font-size: xx-large;
+  margin: 10px;
+  color: chocolate;
+}
