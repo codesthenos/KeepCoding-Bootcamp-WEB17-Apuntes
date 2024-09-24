@@ -1,0 +1,10 @@
+.banner {
+  height: 75vh;
+  height: 75dvh;
+  align-content: center;
+  background-image: url('../../assets/app/catalog.jpg');
+
+  .bold {
+    font-weight: 700;
+  }
+}
