@@ -1,0 +1,30 @@
+.info {
+  text-align: start;
+  width: 80%;
+  margin: 0 auto;
+  max-width: 768px;
+  .assets {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 16em;
+      z-index: 2;
+    }
+    video {
+      position: absolute;
+      top: 30px;
+      width: 10em;
+      z-index: 1;
+    }
+  }
+}
+
+@media (width > 768px) {
+  .info {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 2.5em;
+  }
+}
