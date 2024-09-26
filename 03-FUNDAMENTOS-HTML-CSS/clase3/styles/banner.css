@@ -6,6 +6,11 @@
 
   .image {
     background-image: url('../../assets/app/catalog.jpg');
+    /*
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    */
     opacity: .3;
     position: absolute;
     top: 0;
