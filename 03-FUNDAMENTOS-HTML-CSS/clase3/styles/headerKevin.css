@@ -28,3 +28,9 @@
 .hidden {
   display: none;
 }
+
+@media (width > 768px) {
+  .hidden {
+    display: block;
+  }
+}

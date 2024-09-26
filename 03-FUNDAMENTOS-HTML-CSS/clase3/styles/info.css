@@ -19,3 +19,12 @@
     }
   }
 }
+
+@media (width > 768px) {
+  .info {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 2.5em;
+  }
+}
