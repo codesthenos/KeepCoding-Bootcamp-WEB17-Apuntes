@@ -17,6 +17,9 @@
           name="email"
           placeholder="name@host.ext"
           autocomplete="off"
+          required
+          readonly
+          value="user@test.com"
         />
       </div>
 
@@ -27,6 +30,7 @@
           id="password"
           name="password"
           placeholder="123abcABC"
+          required
         />
       </div>
 
@@ -38,6 +42,9 @@
           name="phone"
           placeholder="627245132"
           autocomplete="off"
+          required
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          title="example: 123-456-7891"
         />
       </div>
 
@@ -48,6 +55,7 @@
           id="profile-image"
           name="profile-image"
           accept="image/png"
+          required
         />
       </div>
 
@@ -55,18 +63,37 @@
         <legend>Fav genre</legend>
         <div>
           <label for="shows">Shows</label>
-          <input type="radio" name="fav-genre" value="shows" id="shows" />
+          <input
+            type="radio"
+            name="fav-genre"
+            value="shows"
+            id="shows"
+            required
+          />
         </div>
 
         <div>
-          <input type="radio" name="fav-genre" value="docus" id="docus" />
+          <input
+            type="radio"
+            name="fav-genre"
+            value="docus"
+            id="docus"
+            required
+          />
           <label for="docus">Docus</label>
         </div>
       </fieldset>
 
       <div>
         <label for="bio">User bio</label>
-        <textarea name="iserbio" id="bio" rows="10"></textarea>
+        <textarea
+          name="iserbio"
+          id="bio"
+          rows="6"
+          cols="40"
+          required
+          maxlength="250"
+        ></textarea>
       </div>
 
       <div>
@@ -76,7 +103,7 @@
 
       <div>
         <label for="country">Country</label>
-        <select name="country" id="country">
+        <select name="country" id="country" required>
           <option value="ES">Spain</option>
           <option value="CO" selected>Colombia</option>
           <option value="USA">United States</option>
@@ -98,6 +125,11 @@
           <option value="Strawberry"></option>
           <option value="Vanilla"></option>
         </datalist>
+      </div>
+      -->
+      <!--
+      <div>
+        <input type="number" required min="0" max="100" step="10" />
       </div>
       -->
 
