@@ -43,7 +43,30 @@
 
       <div>
         <label for="profile-image">Choose a profile picture</label>
-        <input type="file" id="profile-image" name="profile-image" />
+        <input
+          type="file"
+          id="profile-image"
+          name="profile-image"
+          accept="image/png"
+        />
+      </div>
+
+      <fieldset>
+        <legend>Fav genre</legend>
+        <div>
+          <label for="shows">Shows</label>
+          <input type="radio" name="fav-genre" value="shows" id="shows" />
+        </div>
+
+        <div>
+          <input type="radio" name="fav-genre" value="docus" id="docus" />
+          <label for="docus">Docus</label>
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="bio">User bio</label>
+        <textarea name="iserbio" id="bio" rows="10"></textarea>
       </div>
 
       <div>
