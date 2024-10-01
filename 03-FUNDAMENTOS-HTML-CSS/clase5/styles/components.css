@@ -6,7 +6,6 @@
   border: 1px solid var(--main-brand-color);
   padding: .7rem;
   display: inline-block;
-  cursor: pointer;
   &.secondary {
     background-color: transparent;
     border: 1px var(--main-text-color) solid;
@@ -33,5 +32,11 @@
 @media (hover: hover) {
   .pointer {
     cursor: pointer;
+  }
+  .btn {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--main-brand-color-light);
+    }
   }
 }
