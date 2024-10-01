@@ -27,6 +27,9 @@
     background-color: var(--input-bg-color);
     color: var(--main-text-color);
   }
+  [type="file"] {
+    display: none;
+  }
 }
 
 @media (hover: hover) {
