@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example grid</title>
+    <style>
+      body {
+        background-color: rgb(50, 50, 50);
+        display: grid;
+        grid-template-columns: 200px repeat(2, 1fr);
+        grid-template-rows: 7.5vh 33vh 50vh 7.5vh;
+        grid-template-areas:
+          'header header header'
+          'section section section'
+          'aside main main'
+          'footer footer footer';
+      }
+      header {
+        background-color: orange;
+        grid-area: header;
+      }
+      section {
+        background-color: aqua;
+        grid-area: section;
+      }
+      aside {
+        background-color: blueviolet;
+        grid-area: aside;
+      }
+      main {
+        background-color: yellow;
+        grid-area: main;
+      }
+      footer {
+        background-color: green;
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <section>section</section>
+    <aside>aside</aside>
+    <main>main</main>
+    <footer>footer</footer>
+  </body>
+</html>

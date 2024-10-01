@@ -1,0 +1,56 @@
+.btn {
+  color: var(--main-text-color);
+  background-color: var(--main-brand-color);
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid var(--main-brand-color);
+  padding: .7rem;
+  display: inline-block;
+  transition: all 0.5s linear;
+  &.secondary, &.file-button {
+    background-color: transparent;
+    border: 1px var(--main-text-color) solid;
+  }
+}
+
+
+.form__element {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  label {
+    margin-bottom: 0.6rem;
+  }
+  .input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--input-bg-color);
+    color: var(--main-text-color);
+  }
+  [type="file"] {
+    display: none;
+  }
+}
+
+@media (hover: hover) {
+  .pointer {
+    cursor: pointer;
+  }
+  .btn {
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(174, 230, 90);
+      border-color: var(--main-text-color);
+      color: var(--input-bg-color);
+    }
+    &.secondary:hover {
+      background-color: var(--main-brand-color-light);
+      color: var(--input-bg-color);
+      border-color: var(--input-bg-color);
+    }
+    &.file-button:hover {
+      border-color: var(--input-bg-color);
+    }
+  }
+}

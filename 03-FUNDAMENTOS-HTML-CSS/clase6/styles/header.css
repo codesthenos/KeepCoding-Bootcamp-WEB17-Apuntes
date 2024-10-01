@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 1rem;
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  img {
+    max-height: 3rem;
+  }
+}

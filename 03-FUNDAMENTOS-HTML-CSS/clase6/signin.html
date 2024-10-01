@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codeflix Sign In</title>
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/indexKevin.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/signin.css" />
+  </head>
+  <body class="main-bg container">
+    <main class="card">
+      <h1>Sign in</h1>
+
+      <form method="post" action="" novalidate>
+        <div class="form__element">
+          <label for="email">Email</label>
+          <input
+            class="input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="name@host.ext"
+            autocomplete="off"
+            required
+            readonly
+            value="user@test.com"
+          />
+        </div>
+
+        <div class="form__element">
+          <label for="password">Password</label>
+          <input
+            class="input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="123abcABC"
+            required
+          />
+        </div>
+
+        <div class="form__element">
+          <label for="phone">Enter your phone number</label>
+          <input
+            class="input"
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="627245132"
+            autocomplete="off"
+            required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            title="example: 123-456-7891"
+          />
+        </div>
+
+        <div class="form__element">
+          <label class="btn file-button" for="profile-image"
+            >Choose a profile picture</label
+          >
+          <input
+            type="file"
+            id="profile-image"
+            name="profile-image"
+            accept="image/png"
+            required
+          />
+        </div>
+
+        <fieldset class="form__element">
+          <legend>Fav genre</legend>
+          <div>
+            <label class="pointer" for="shows">Shows</label>
+            <input
+              type="radio"
+              name="fav-genre"
+              value="shows"
+              id="shows"
+              required
+              checked
+            />
+
+            <label class="pointer" for="docus">Docus</label>
+            <input
+              type="radio"
+              name="fav-genre"
+              value="docus"
+              id="docus"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <div class="form__element">
+          <label for="bio">User bio</label>
+          <textarea
+            class="input"
+            name="iserbio"
+            id="bio"
+            rows="6"
+            cols="40"
+            required
+            maxlength="250"
+          ></textarea>
+        </div>
+
+        <div class="form__element">
+          <div>
+            <input type="checkbox" name="remember" id="remember" />
+            <label class="pointer" for="remember">Remember me</label>
+          </div>
+        </div>
+        <!--
+          <div class="form__element">
+            <button type="button" class="btn">More info</button>
+          </div>
+        -->
+
+        <div class="form__element">
+          <label for="country">Country</label>
+          <select class="input" name="country" id="country" required>
+            <option value="ES">Spain</option>
+            <option value="CO" selected>Colombia</option>
+            <option value="USA">United States</option>
+          </select>
+        </div>
+
+        <!--(select que permite buscar) No en todos los navegadores
+        <div>
+          <label for="ice-cream-choice">Choose a flavor:</label>
+          <input
+            list="ice-cream-flavors"
+            id="ice-cream-choice"
+            name="ice-cream-choice"
+          />
+          <datalist id="ice-cream-flavors">
+            <option value="Chocolate">cocoa</option>
+            <option value="Coconut"></option>
+            <option value="Mint"></option>
+            <option value="Strawberry"></option>
+            <option value="Vanilla"></option>
+          </datalist>
+        </div>
+        -->
+        <!--
+        <div>
+          <input type="number" required min="0" max="100" step="10" />
+        </div>
+        -->
+
+        <div class="form__actions">
+          <button class="btn secondary" type="reset">Reset</button>
+          <button class="btn" type="submit">Save</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
