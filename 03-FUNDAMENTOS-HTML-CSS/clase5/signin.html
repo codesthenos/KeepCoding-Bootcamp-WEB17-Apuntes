@@ -11,12 +11,13 @@
   </head>
   <body class="main-bg container">
     <main class="card">
-      <h1>Formulario</h1>
+      <h1>Sign in</h1>
 
       <form method="post" action="" novalidate>
-        <div class="form__input">
+        <div class="form__element">
           <label for="email">Email</label>
           <input
+            class="input"
             type="email"
             id="email"
             name="email"
@@ -28,9 +29,10 @@
           />
         </div>
 
-        <div class="form__input">
+        <div class="form__element">
           <label for="password">Password</label>
           <input
+            class="input"
             type="password"
             id="password"
             name="password"
@@ -39,9 +41,10 @@
           />
         </div>
 
-        <div class="form__input">
+        <div class="form__element">
           <label for="phone">Enter your phone number</label>
           <input
+            class="input"
             type="tel"
             id="phone"
             name="phone"
@@ -53,9 +56,12 @@
           />
         </div>
 
-        <div class="form__input">
-          <label for="profile-image">Choose a profile picture</label>
+        <div class="form__element">
+          <label class="pointer" for="profile-image"
+            >Choose a profile picture</label
+          >
           <input
+            class="pointer"
             type="file"
             id="profile-image"
             name="profile-image"
@@ -64,21 +70,20 @@
           />
         </div>
 
-        <fieldset class="form__input">
+        <fieldset class="form__element">
           <legend>Fav genre</legend>
-          <div class="form__input">
-            <label for="shows">Shows</label>
+          <div>
+            <label class="pointer" for="shows">Shows</label>
             <input
               type="radio"
               name="fav-genre"
               value="shows"
               id="shows"
               required
+              checked
             />
-          </div>
 
-          <div class="form__input">
-            <label for="docus">Docus</label>
+            <label class="pointer" for="docus">Docus</label>
             <input
               type="radio"
               name="fav-genre"
@@ -89,9 +94,10 @@
           </div>
         </fieldset>
 
-        <div class="form__input">
+        <div class="form__element">
           <label for="bio">User bio</label>
           <textarea
+            class="input"
             name="iserbio"
             id="bio"
             rows="6"
@@ -101,14 +107,21 @@
           ></textarea>
         </div>
 
-        <div class="form__input">
-          <label for="remember">Remember me</label>
-          <input type="checkbox" name="remember" id="remember" />
+        <div class="form__element">
+          <div>
+            <input type="checkbox" name="remember" id="remember" />
+            <label class="pointer" for="remember">Remember me</label>
+          </div>
         </div>
+        <!--
+          <div class="form__element">
+            <button type="button" class="btn">More info</button>
+          </div>
+        -->
 
-        <div class="form__input">
+        <div class="form__element">
           <label for="country">Country</label>
-          <select name="country" id="country" required>
+          <select class="input" name="country" id="country" required>
             <option value="ES">Spain</option>
             <option value="CO" selected>Colombia</option>
             <option value="USA">United States</option>
@@ -138,8 +151,8 @@
         </div>
         -->
 
-        <div>
-          <button class="btn" type="reset">Reset</button>
+        <div class="form__actions">
+          <button class="btn secondary" type="reset">Reset</button>
           <button class="btn" type="submit">Save</button>
         </div>
       </form>

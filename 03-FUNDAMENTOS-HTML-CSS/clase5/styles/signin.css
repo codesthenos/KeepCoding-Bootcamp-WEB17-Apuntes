@@ -13,19 +13,3 @@
   padding: 3rem 2rem;
   margin: 0 auto;
 }
-
-.form__input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  label {
-    margin-bottom: 0.6rem;
-  }
-  input {
-    padding: 1rem;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--input-bg-color);
-    color: var(--main-text-color);
-  }
-}
