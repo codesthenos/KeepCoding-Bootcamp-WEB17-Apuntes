@@ -6,7 +6,8 @@
   border: 1px solid var(--main-brand-color);
   padding: .7rem;
   display: inline-block;
-  &.secondary {
+  transition: all 0.5s linear;
+  &.secondary, &.file-button {
     background-color: transparent;
     border: 1px var(--main-text-color) solid;
   }
@@ -39,7 +40,17 @@
   .btn {
     cursor: pointer;
     &:hover {
+      background-color: rgb(174, 230, 90);
+      border-color: var(--main-text-color);
+      color: var(--input-bg-color);
+    }
+    &.secondary:hover {
       background-color: var(--main-brand-color-light);
+      color: var(--input-bg-color);
+      border-color: var(--input-bg-color);
+    }
+    &.file-button:hover {
+      border-color: var(--input-bg-color);
     }
   }
 }
