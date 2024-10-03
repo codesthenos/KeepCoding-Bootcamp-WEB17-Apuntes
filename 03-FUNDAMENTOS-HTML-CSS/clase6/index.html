@@ -18,9 +18,53 @@
       property="og:image"
       content="https://github.com/KeepCodingWeb17/html-css/blob/main/assets/app/catalog.jpg?raw=true"
     />
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .spinner {
+          height: 100px;
+          width: 100px;
+          border-left: 5px solid white;
+          border-radius: 50%;
+          margin-top: 100px;
+          margin-left: calc(50% - 50px);
+          animation: spin 10s linear forwards infinite;
+        }
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .progress {
+          width: 150px;
+          background-color: white;
+          position: fixed;
+          top: 0;
+          animation: progression 5s linear forwards;
+          z-index: 9999;
+        }
+        @supports (animation-timeline: scroll()) {
+          .progress {
+            animation-timeline: scroll();
+          }
+        }
+        @keyframes progression {
+          0% {
+            height: 0%;
+          }
+          100% {
+            height: 100%;
+          }
+        }
+      }
+    </style>
   </head>
 
   <body class="main-bg">
+    <div class="spinner"></div>
+    <div class="progress"></div>
     <header class="header">
       <img
         class="image"
