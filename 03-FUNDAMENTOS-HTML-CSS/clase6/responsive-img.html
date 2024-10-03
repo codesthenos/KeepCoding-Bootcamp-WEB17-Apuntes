@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive images</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: rgb(35, 35, 35);
+      }
+      img {
+        width: 100%;
+      }
+      .catalog {
+        display: none;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: top;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Image POSITION -->
+    <img class="catalog" src="../assets/app/catalog.jpg" alt="" />
+    <!-- <picture> (yo elijo que imagen muestro segun tamaño) -->
+    <picture>
+      <source
+        srcset="../assets/responsive-images/dog_large.jpg"
+        media="(width > 1200px)"
+      />
+      <source
+        srcset="../assets/responsive-images/dog_medium.jpg"
+        media="(width > 800px)"
+      />
+      <source
+        srcset="../assets/responsive-images/dog_small.jpg"
+        media="(width < 800px)"
+      />
+      <img src="../assets/responsive-images/dog_large.jpg" alt="" />
+    </picture>
+    <!-- srcset (navegador escoge que imagen es mejor usar) -->
+  </body>
+</html>
