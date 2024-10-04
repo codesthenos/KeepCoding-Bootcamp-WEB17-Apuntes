@@ -29,7 +29,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
 
   1. Cambiar el atributo 'src' del script que hay en la linea 9 del index.html
 
-  2. Si usas visual studio code, con alguna extension como live server puedes abrirlo
+  2. Si usas visual studio code, con alguna extension como live server puedes abrirlo haciendo click derecho en el archivo y seleccionando la opcion abrir con live server
 
 - Un par de ejemplos:
 
@@ -64,6 +64,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   2. **15/10/2024**
   3. **16/10/2024**
 
+- Fecha entrega de practica: **20/10/2024**
+
 ## 05-DESARROLLO-BACKEND-NODEJS
 
 - Clases impartidas por _Javier Miguel_ [**@jamg44**](https://github.com/jamg44)
@@ -78,6 +80,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   5. **29/10/2024**
   6. **31/10/2024**
 
+- Fecha entrega de practica: **10/11/2024**
+
 ## 06-DESARROLLO-FRONTEND-JAVASCRIPT
 
 - Clases impartidas por _Eduardo Aguilar_ **profe no encontrado en github**
@@ -91,6 +95,9 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   4. **18/11/2024**
   5. **19/11/2024**
   6. **21/11/2024**
+  7. ???**01/12/2024**???
+
+- Fecha entrega de practica: **01/12/2024**
 
 ## 07-FRONTEND-PRO
 
@@ -128,6 +135,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   5. **08/01/2025**
   6. **10/01/2025**
 
+- Fecha entrega de practica: **19/01/2025**
+
 ## 10-TDD-JAVASCRIPT
 
 - Clases impartidas por _Nauel Gómez_ [**@Nauel G**](https://github.com/NauelG)
@@ -153,6 +162,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   5. **04/02/2025**
   6. **06/02/2025**
 
+- Fecha entrega de practica: **16/02/2025**
+
 ## 12-REACT-AVANZADO
 
 - Clases impartidas por _David Jimenez_ **profe no encontrado en github**
@@ -167,6 +178,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   5. **25/02/2025**
   6. **27/02/2025**
 
+- Fecha entrega de practica: **09/03/2025**
+
 ## 13-CONFIGURACION-SERVIDORES-DESPLIEGUE-APLICACIONES
 
 - Clases impartidas por _Alberto Casero_ [**@kasappeal**](https://github.com/kasappeal)
@@ -180,3 +193,5 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   4. **17/03/2025**
   5. **18/03/2025**
   6. **20/03/2025**
+
+- Fecha entrega de practica: **30/03/2025**
