@@ -24,6 +24,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **16/09/2024**
 
 - Fecha entrega de practica: **22/09/2024**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-IntroJS-codesthenos)
 
 - _Instrucciones_ para visualizar los diferentes documentos.js:
 
@@ -52,6 +53,8 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **03/10/2024**
 
 - Fecha entrega de practica: **13/10/2024**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-HTML-CSS-codesthenos)
+- [Web de la practica](https://codesthenos.github.io/KC-WEB17-HTML-CSS-codesthenos/)
 
 ## 04-MODELADO-DE-DATOS-INTRODUCCION-SQL
 
