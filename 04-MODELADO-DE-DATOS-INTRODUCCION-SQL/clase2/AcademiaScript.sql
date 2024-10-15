@@ -37,7 +37,33 @@ create table if not exists miembro (
 alter table correspondencia
 add constraint miembro_correspondencia_fk
 foreign key (dni_miembro) references miembro(dni);
+
 alter table correspondencia
 add constraint poblacion_correspondencia_fk
 foreign key (id_poblacion) references poblacion(id);
 
+insert into provincia (provincia) values ('Alicante'), ('Albacete');
+
+select * from provincia;
+
+delete from provincia  where id = 2;
+
+select * from provincia;
+/*Para no mete duplicados obivando mayus y minus*/
+create unique index index_nombre_provincia on provincia (lower(provincia));
+
+/*insert into provincia (provincia) values ('ALICANTE'); Da error por el index creado*/
+/*alter table provincia add constraint check_provincia check(provincia != 'Murcia'); Otro tipo de condicion*/
+
+insert into poblacion (poblacion, id_provincia) values ('Alicante', 1), ('Elche', 1);
+
+select * from poblacion;
+
+select id_provincia, Count(poblacion) from poblacion group by id_provincia;
+
+select pro.provincia, pob.poblacion from provincia pro inner join poblacion pob
+on pro.id = pob.id_provincia;
+
+select pro.provincia, Count(pob.poblacion) from poblacion pob inner join provincia pro
+on pro.id = pob.id_provincia
+group by pro.provincia ;
