@@ -2,9 +2,9 @@ create schema if not exists gruiz;
 
 set schema 'gruiz';
 
+drop table correspondencia;
 drop table poblacion;
 drop table provincia;
-drop table correspondencia;
 drop table miembro;
 
 create table if not exists provincia (
@@ -34,5 +34,9 @@ create table if not exists miembro (
 	fecha_nacimiento date not null
 );
 
-alter table correspondencia add constraint miembro_correspondencia_fk foreign key (dni_miembro) references miembro(dni);
-alter table correspondencia add constraint poblacion_correspondencia_fk foreign key (id_poblacion) references poblacion(id);
+alter table correspondencia
+add constraint miembro_correspondencia_fk
+foreign key (dni_miembro) references miembro(dni);
+alter table correspondencia
+add constraint poblacion_correspondencia_fk
+foreign key (id_poblacion) references poblacion(id);
