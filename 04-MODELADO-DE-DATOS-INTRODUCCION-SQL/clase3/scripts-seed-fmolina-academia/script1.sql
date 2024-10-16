@@ -59,6 +59,29 @@ inner join profesor p on a.id = p.id_asignatura
 where ta.nota is not null
 group by m.id, ta.nota;
 
+-- consultas
+--miembros tanto alumnos como profesores
+--left join todos los valores de la tabla principal y los de la secundaria que coinciden
+select * from miembro m 
+left join profesor p on m.dni = p.dni
+left join matricula m2 on m.dni = m2.dni
+where p.id is not null and m2.id is not null
+order by m.dni;
+--lo mismo con inner
+select * from miembro m 
+inner join profesor p on m.dni = p.dni
+inner join matricula m2 on m.dni = m2.dni
+order by m.dni;
+
+--alumnos
+select * from miembro m 
+inner join matricula m2 on m.dni = m2.dni
+order by m.dni;
+
+--profesores
+select * from miembro m 
+inner join profesor p on m.dni = p.dni
+order by m.dni;
 /*
 update miembro
 set apellidos = concat(tmp_academia.apellido_1, ' ', tmp_academia.apellido_2)
