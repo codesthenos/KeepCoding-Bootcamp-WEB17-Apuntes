@@ -39,6 +39,28 @@ group by ta.curso;
 insert into asignatura (nombre, id_curso)
 select distinct ta.asignatura, c.id from tmp_academia ta
 inner join curso c on ta.curso = c.nombre;
--- poblamos tabla evaluacion
 -- poblamos tabla profesor
+insert into profesor (dni, id_asignatura)
+select distinct ta.dni, a.id from tmp_academia ta 
+inner join asignatura a on ta.asignatura = a.nombre
+where ta.fecha_matriculacion = '';
 -- poblamos tabla matricula
+-- la fecha esta en formato varchar, no me da tiempo a corregirlo durante la clase
+insert into matricula (dni, id_curso, fecha_matricula)
+select distinct ta.dni, c.id, ta.fecha_matriculacion from tmp_academia ta
+inner join curso c on ta.curso = c.nombre
+where ta.fecha_matriculacion != '';
+-- poblamos tabla evaluacion
+--CUIDADO insert into evaluacion (id_matricula, nota, id_profesor)
+select m.id, ta.nota, max(p.id) from tmp_academia ta
+inner join matricula m on ta.dni = m.dni
+inner join asignatura a on ta.asignatura = a.nombre
+inner join profesor p on a.id = p.id_asignatura
+where ta.nota is not null
+group by m.id, ta.nota;
+
+/*
+update miembro
+set apellidos = concat(tmp_academia.apellido_1, ' ', tmp_academia.apellido_2)
+from tmp_academia where miembro.dni = tmp_academia.dni;
+ */
