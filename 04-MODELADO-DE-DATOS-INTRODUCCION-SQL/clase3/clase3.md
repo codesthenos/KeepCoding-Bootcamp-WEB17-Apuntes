@@ -2,4 +2,4 @@
 
 ## SQL Structured Query Language
 
-## Vemos todo haciendo el script para crear la base de datos academia
+## Terminamos academia y hacemos pobaldo y consultas en academia_tmp
