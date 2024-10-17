@@ -68,6 +68,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   3. **16/10/2024**
 
 - Fecha entrega de practica: **20/10/2024**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-SQL-codesthenos)
 
 ## 05-DESARROLLO-BACKEND-NODEJS
 
