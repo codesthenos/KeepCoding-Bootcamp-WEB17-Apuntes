@@ -4,7 +4,9 @@
   "description": "primer-json-del-modulo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon index.js",
+    "dev": "node --watch index.js"
   },
   "author": "codesthenos - Guillermo Ruiz Arranz",
   "license": "ISC",
