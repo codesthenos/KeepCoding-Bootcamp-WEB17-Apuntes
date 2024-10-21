@@ -1,8 +1,8 @@
 // cargar libreria http
-const http = require('http')
+import { createServer } from 'node:http'
 
 // definir un servidor
-const server = http.createServer(function(request, response) {
+const server = createServer(function(request, response) {
   response.writeHead(200, { 'Content-type': 'text/html' })
 
   response.end('<p>Wake up, <b>Neo</b>...</p>')
