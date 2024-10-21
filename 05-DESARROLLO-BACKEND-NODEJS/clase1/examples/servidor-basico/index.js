@@ -7,7 +7,7 @@ const chance = new Chance()
 const server = createServer(function(request, response) {
   response.writeHead(200, { 'Content-type': 'text/html' })
 
-  response.end(`<p>Wake up, <b>${chance.name()}</b>...</p>`)
+  response.end(`<p>Wake up, <strong>${chance.name()}</strong>...</p>`)
 })
 
 // Piden permiso de administrador
