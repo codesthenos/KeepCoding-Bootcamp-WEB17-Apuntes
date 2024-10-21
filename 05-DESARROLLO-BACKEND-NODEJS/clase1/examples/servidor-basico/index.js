@@ -3,9 +3,9 @@ const http = require('http')
 
 // definir un servidor
 const server = http.createServer(function(request, response) {
-  response.writeHead(200, { 'Content-type': 'text/plain' })
+  response.writeHead(200, { 'Content-type': 'text/html' })
 
-  response.end('Wake up, Neo...')
+  response.end('<p>Wake up, <b>Neo</b>...</p>')
 })
 
 // Piden permiso de administrador
