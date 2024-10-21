@@ -1,11 +1,13 @@
 // cargar libreria http
 import { createServer } from 'node:http'
+import { Chance } from 'chance'
 
+const chance = new Chance()
 // definir un servidor
 const server = createServer(function(request, response) {
   response.writeHead(200, { 'Content-type': 'text/html' })
 
-  response.end('<p>Wake up, <b>Neo</b>...</p>')
+  response.end(`<p>Wake up, <b>${chance.name()}</b>...</p>`)
 })
 
 // Piden permiso de administrador
