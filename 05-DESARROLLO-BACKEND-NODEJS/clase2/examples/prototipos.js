@@ -46,5 +46,9 @@ function Superheroe () {
 // Quiero que los agentes hereden tanto de Persona como de Superheroe
 // Copio las propiedades de Superheroe a Agente
 Object.assign(Agente.prototype, new Superheroe)
-
+console.log(Agente.prototype)
 smith.corre()
+
+console.log('smith instanceof Persona?', smith instanceof Persona)
+console.log('smith instanceof Agente?', smith instanceof Agente)
+console.log('smith instanceof Superheroe?', smith instanceof Superheroe)
