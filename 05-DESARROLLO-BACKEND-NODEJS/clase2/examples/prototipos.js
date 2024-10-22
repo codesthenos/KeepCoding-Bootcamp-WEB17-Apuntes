@@ -29,7 +29,7 @@ function Agente (nombre) {
 // heredar las propiedades de Persona.prototype
 const smith = new Agente('Smith')
 
-// Agente.prototype = Persona.prototype NO SIRVE
+// Agente.prototype = Persona.prototype Crea referencia entre objetos y mutar uno mutaria el otro
 Object.setPrototypeOf(Agente.prototype, Persona.prototype)
 smith.saluda()
 
@@ -48,6 +48,15 @@ function Superheroe () {
 Object.assign(Agente.prototype, new Superheroe)
 console.log(Agente.prototype)
 smith.corre()
+
+// Aunque Agente herede saluda(), s elo voy a modificar, solo para Agente
+Agente.prototype.saluda = function () { console.log('Hola soy un Agente', this.nombre) }
+smith.saluda()
+juan.saluda()
+
+// Podria cambiar el metodo saluda() incluso solo en una instancia en concreto
+juan.saluda = function () { console.log('Hola soy Juan, mi nombre es', this.nombre) }
+juan.saluda()
 
 console.log('smith instanceof Persona?', smith instanceof Persona)
 console.log('smith instanceof Agente?', smith instanceof Agente)
