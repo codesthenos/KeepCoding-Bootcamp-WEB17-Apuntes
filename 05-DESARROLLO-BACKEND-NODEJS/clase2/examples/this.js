@@ -14,7 +14,9 @@ limon.descLog()
 // si dentro del contexto en el que es llamada la funcion que usa el this, no existe
 // necesitamos usar el metodo bind de las funciones, para indicar de quien es el this
 
-// .bind(OBJETO)
+// .bind(OBJETO que quiero que sea el "this")
+// .bind devuelve una copia de la funcion original,
+// con el "this" asignado al OBJETO
 
 const saludaLimon = limon.descLog.bind(limon)
 saludaLimon()
