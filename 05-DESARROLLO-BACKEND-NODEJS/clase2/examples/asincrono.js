@@ -1,4 +1,5 @@
 'use strict'
+/*
 // Sin callback
 function escribeTras2Segundos1 (texto, texto2) {
   setTimeout(function () {
@@ -22,13 +23,15 @@ escribeTras2Segundos1Callback('Texto1Callback', function () {
     console.log('fin')
   })
 })
-
+*/
 // Ejercicio final del loop con Callbacks
 function escribeTras2Segundos (text, callback) {
   setTimeout(function () {
+    console.log(text)
     callback(text)
   }, 2000)
 }
+/*
 const textos = ['Hola Sara', 'que tal?', 'TE AMO', 'MUCHISIIIMO']
 function escribeTras2SegundosLista (lista, index = 0) {
   if (index < lista.length) {
@@ -41,3 +44,18 @@ function escribeTras2SegundosLista (lista, index = 0) {
   }
 }
 escribeTras2SegundosLista(textos)
+*/
+// Javier explanation
+function asyncLoop (fn, callback, n = 5) {
+  if (n === 0) {
+    callback()
+    return
+  }
+  n--
+  fn('textoLoop' + n, function () {
+    asyncLoop(fn, callback, n)
+  })
+}
+asyncLoop(escribeTras2Segundos, function () {
+  console.log('END')
+})
