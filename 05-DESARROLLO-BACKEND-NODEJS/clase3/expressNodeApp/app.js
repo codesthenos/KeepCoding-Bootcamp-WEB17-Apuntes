@@ -1,4 +1,5 @@
 import express from 'express'
+import createHttpError from 'http-errors'
 
 // creamos app con express
 const app = express()
@@ -21,9 +22,7 @@ app.get('/user', (req, res, next) => {
 
 // middleware handler crea el 404 error y lo manda al siguiente middleware
 app.use((req, res, next) => {
-  const err = new Error('ERROR 404')
-  err.status = 404
-  next(err)
+  next(createHttpError(404, 'ERROR 404'))
 })
 
 // middleware handler de un error que no hemos pillado en algun middleware anterior
