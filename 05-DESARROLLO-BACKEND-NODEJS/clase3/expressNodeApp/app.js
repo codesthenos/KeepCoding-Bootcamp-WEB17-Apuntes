@@ -3,15 +3,32 @@ import express from 'express'
 // creamos app con express
 const app = express()
 
-// definimos ruta raiz
+// middleware handler de la ruta raiz
 app.get('/', (req, res, next) => {
-  throw new Error('Error FORZADO')
   res.send('<h1>Hola codesthenos</h1>')
 })
 
-// middleware para manejar el error 'errorHandler'
+// middleware para mostrar un log al ir a /user NO RESPONDO, uso 'next'
+app.get('/user', (req, res, next) => {
+  console.log('PETICION "/user" SATISFACTORIA')
+  next()
+})
+
+// middleware handler de la ruta /user
+app.get('/user', (req, res, next) => {
+  res.send('<h1>USER</h1>')
+})
+
+// middleware handler crea el 404 error y lo manda al siguiente middleware
+app.use((req, res, next) => {
+  const err = new Error('ERROR 404')
+  err.status = 404
+  next(err)
+})
+
+// middleware handler de un error que no hemos pillado en algun middleware anterior
 app.use((err, req, res, next) => {
-  res.status(err.status || 500).send(err.message)
+  res.status(err.status || 500).send(`<h1>${err.message}</h1>`)
   console.error(err.message)
 })
 
