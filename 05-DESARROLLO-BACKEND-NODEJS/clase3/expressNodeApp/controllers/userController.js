@@ -1,3 +1,5 @@
+// Esto no forma parte de la clase
 export function index (req, res, next) {
-  res.send('<h1>USER</h1>')
+  res.locals.appName = 'USERS'
+  res.render('home')
 }

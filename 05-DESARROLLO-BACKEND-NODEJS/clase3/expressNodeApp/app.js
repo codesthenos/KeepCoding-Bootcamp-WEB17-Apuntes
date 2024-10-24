@@ -12,10 +12,13 @@ import { index as user } from './controllers/userController.js'
 // creamos app con express
 const app = express()
 
+// definimos variables locales en las VISTAS
+app.locals.appName = 'Codesthenos - NodeApp'
+
 // decimos a express en que carpeta tenemos las VISTAS
 app.set('views', 'views')
 
-// decimos a express el  VIEW ENGINE
+// decimos a express el VIEW ENGINE que usamos para cargar las vistas
 app.set('view engine', 'ejs')
 
 // middleware de morgan para los logs
