@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env DEBUG=expressnodeapp:* PORT=3500 node --watch server.js"
   },
   "keywords": [
     "express",
@@ -14,6 +15,8 @@
   "author": "codesthenos - Guillermo Ruiz Arranz",
   "license": "ISC",
   "dependencies": {
+    "cross-env": "^7.0.3",
+    "debug": "^4.3.7",
     "express": "^4.21.1"
   }
 }
