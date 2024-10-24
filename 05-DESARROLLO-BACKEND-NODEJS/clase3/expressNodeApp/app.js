@@ -1,22 +1,34 @@
 import express from 'express'
 import createHttpError from 'http-errors'
 import morganLogger from 'morgan'
+// Controllers
+import { index  as home } from './controllers/homeController.js'
+import { index as user } from './controllers/userController.js'
+
+/**
+ *  Application ROUTES
+ */
 
 // creamos app con express
 const app = express()
 
+// decimos a express en que carpeta tenemos las VISTAS
+app.set('views', 'views')
+
+// decimos a express el  VIEW ENGINE
+app.set('view engine', 'ejs')
+
 // middleware de morgan para los logs
 app.use(morganLogger('dev'))
 
+// middleware para servir ficheros estaticos
+app.use(express.static('public'))
+
 // middleware handler de la ruta raiz
-app.get('/', (req, res, next) => {
-  res.send('<h1>Hola codesthenos</h1>')
-})
+app.get('/', home)
 
 // middleware handler de la ruta /user
-app.get('/user', (req, res, next) => {
-  res.send('<h1>USER</h1>')
-})
+app.get('/user', user)
 
 // middleware handler crea el 404 error y lo manda al siguiente middleware
 app.use((req, res, next) => {
