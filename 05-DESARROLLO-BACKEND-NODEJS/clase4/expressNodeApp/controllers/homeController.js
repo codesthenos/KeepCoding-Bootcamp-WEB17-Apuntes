@@ -55,13 +55,17 @@ export const valiateQueryExampleValidation = [
     .withMessage('min 4 characters'),
   query('param2')
     .isNumeric()
-    .withMessage('must be numeric')
+    .withMessage('must be numeric'),
+  query('param3')
+    // Crear un validador custom
+    .custom(value => +value === 42)
+    .withMessage('Must be 42')
 ]
 
 // Validacion '/validate-queryString-example?param1=Hola&param2=mundo'
 export function validateQueryStringExample (req, res, next) {
   validationResult(req).throw()
-  
+
   const param1 = req.query.param1
   const param2 = req.query.param2
 
