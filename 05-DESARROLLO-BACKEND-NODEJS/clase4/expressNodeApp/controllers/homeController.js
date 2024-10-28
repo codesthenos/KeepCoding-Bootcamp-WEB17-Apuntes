@@ -1,3 +1,5 @@
+import assert from 'node:assert'
+
 // GET '/'
 export function index (req, res, next) {
   const now = new Date
@@ -40,6 +42,8 @@ export function queryStringParamsExample (req, res, next) {
 // POST /create-example
 export function createExample (req, res, next) {
   const item = req.body.item
+
+  assert(item, 'item is required')
 
   res.send('Created item: '+ item)
 }

@@ -28,7 +28,7 @@ app.use(morganLogger('dev'))
 app.use(express.json())
 
 // middleware para parsear body que viene de un formulario (url encoded)
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: false }))
 
 // middleware para servir ficheros estaticos
 app.use(express.static('public'))
