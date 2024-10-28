@@ -2,7 +2,7 @@ import express from 'express'
 import createHttpError from 'http-errors'
 import morganLogger from 'morgan'
 // Controllers
-import { index  as home } from './controllers/homeController.js'
+import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
 
 /**
@@ -27,10 +27,20 @@ app.use(morganLogger('dev'))
 // middleware para servir ficheros estaticos
 app.use(express.static('public'))
 
-// middleware handler de la ruta raiz
+// rutas
+// raiz
 app.get('/', home)
+// '/param_in_route'
+app.get('/param_in_route/:num?', paramInRouteExample)
+// '/multiple_params_in_route' with regex validation (expresion regular)
+app.get('/multiple_params_in_route/:product/size/:size([0-9]+)/color/:color', multipleParamInRouteExample)
+// '/queryString'
+app.get('/param_in_query', queryStringParamsExample)
 
-// middleware handler de la ruta /user
+// post
+app.post('/create-example', createExample)
+
+// /user
 app.get('/user', user)
 
 // middleware handler crea el 404 error y lo manda al siguiente middleware
