@@ -41,5 +41,5 @@ export function queryStringParamsExample (req, res, next) {
 export function createExample (req, res, next) {
   const item = req.body.item
 
-  res.send('Created item:', item)
+  res.send('Created item: '+ item)
 }

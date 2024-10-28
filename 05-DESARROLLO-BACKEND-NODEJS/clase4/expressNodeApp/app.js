@@ -24,6 +24,12 @@ app.set('view engine', 'ejs')
 // middleware de morgan para los logs
 app.use(morganLogger('dev'))
 
+// middleware para parsear body que viene en json
+app.use(express.json())
+
+// middleware para parsear body que viene de un formulario (url encoded)
+app.use(express.urlencoded())
+
 // middleware para servir ficheros estaticos
 app.use(express.static('public'))
 
