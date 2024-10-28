@@ -1,4 +1,5 @@
 import assert from 'node:assert'
+import { query, validationResult } from 'express-validator'
 
 // GET '/'
 export function index (req, res, next) {
@@ -46,4 +47,23 @@ export function createExample (req, res, next) {
   assert(item, 'item is required')
 
   res.send('Created item: '+ item)
+}
+
+export const valiateQueryExampleValidation = [
+  query('param1')
+    .isLength({ min: 4 })
+    .withMessage('min 4 characters'),
+  query('param2')
+    .isNumeric()
+    .withMessage('must be numeric')
+]
+
+// Validacion '/validate-queryString-example?param1=Hola&param2=mundo'
+export function validateQueryStringExample (req, res, next) {
+  validationResult(req).throw()
+  
+  const param1 = req.query.param1
+  const param2 = req.query.param2
+
+  res.send(`Validated param1: ${param1} and param2: ${param2}`)
 }

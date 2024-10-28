@@ -2,7 +2,7 @@ import express from 'express'
 import createHttpError from 'http-errors'
 import morganLogger from 'morgan'
 // Controllers
-import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample } from './controllers/homeController.js'
+import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
 
 /**
@@ -42,6 +42,8 @@ app.get('/param_in_route/:num?', paramInRouteExample)
 app.get('/multiple_params_in_route/:product/size/:size([0-9]+)/color/:color', multipleParamInRouteExample)
 // '/queryString'
 app.get('/param_in_query', queryStringParamsExample)
+// validation
+app.get('/validate-queryString-example', valiateQueryExampleValidation, validateQueryStringExample)
 
 // post
 app.post('/create-example', createExample)
@@ -56,6 +58,13 @@ app.use((req, res, next) => {
 
 // middleware handler de un error que no hemos pillado en algun middleware anterior
 app.use((err, req, res, next) => {
+  // esto viene del error que lanzamos con express-validator (express-validator pone la propiedad 'array' al objeto 'err')
+  if (err.array) {
+    console.log(err.array())
+    err.message = 'Inavlid request: ' + err.array().map(e => `${e.location} ${e.type} ${e.path} ${e.msg}`).join(', ')
+    err.status = 422
+  }
+
   res.status(err.status || 500)
 
   // set locals, DEV MODE Error details, PORDUCTION MODE not error details
