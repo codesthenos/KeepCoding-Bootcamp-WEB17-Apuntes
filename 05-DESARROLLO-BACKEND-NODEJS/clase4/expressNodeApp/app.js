@@ -35,12 +35,19 @@ app.get('/user', user)
 
 // middleware handler crea el 404 error y lo manda al siguiente middleware
 app.use((req, res, next) => {
-  next(createHttpError(404, 'ERROR 404'))
+  next(createHttpError(404))
 })
 
 // middleware handler de un error que no hemos pillado en algun middleware anterior
 app.use((err, req, res, next) => {
-  res.status(err.status || 500).send(`<h1>${err.message}</h1>`)
+  res.status(err.status || 500)
+
+  // set locals, DEV MODE Error details, PORDUCTION MODE not error details
+  res.locals.message = err.message
+  res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
+
+  // render error view
+  res.render('error')
 })
 
 export default app

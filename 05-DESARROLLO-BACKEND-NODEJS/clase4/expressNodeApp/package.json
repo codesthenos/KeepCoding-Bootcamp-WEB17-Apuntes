@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env DEBUG=expressnodeapp:* PORT=4321 node --watch server.js"
+    "dev": "cross-env NODEAPP_ENV=development DEBUG=expressnodeapp:* PORT=4321 node --watch server.js",
+    "start": "cross-env NODEAPP_ENV=production PORT=4567 node server.js"
   },
   "keywords": [
     "express",
