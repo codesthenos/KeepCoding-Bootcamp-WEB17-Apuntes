@@ -8,6 +8,12 @@
 npm install
 ```
 
+On first deploy you can run next command to empty the database and create initial data:
+
+```sh
+npm run initDB
+```
+
 ## Start
 
 To start in production mode:

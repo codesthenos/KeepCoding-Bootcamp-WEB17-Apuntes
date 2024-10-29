@@ -4,7 +4,11 @@ import morganLogger from 'morgan'
 // Controllers
 import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
+// Conexion base de datos
+import { connectMongoose } from './lib/connectMongoose.js'
 
+await connectMongoose()
+console.log('conectado a mongodb')
 /**
  *  Application ROUTES
  */

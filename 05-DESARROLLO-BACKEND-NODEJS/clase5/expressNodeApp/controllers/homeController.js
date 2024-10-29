@@ -1,17 +1,15 @@
 import assert from 'node:assert'
 import { query, validationResult } from 'express-validator'
+import Agent from '../models/Agent.js'
 
 // GET '/'
-export function index (req, res, next) {
+export async function index (req, res, next) {
   const now = new Date
 
   res.locals.name = '<script>alert("inyeccion de codigo")</script>'
   res.locals.isEven = (now.getSeconds() % 2) === 0
   res.locals.currentSecond = now.getSeconds()
-  res.locals.users = [
-    { name: 'Smith', age: 30 },
-    { name: 'Brown', age: 42 }
-  ]
+  res.locals.agents = await Agent.find()
 
   res.render('home')
 }
