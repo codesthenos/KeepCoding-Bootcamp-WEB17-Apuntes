@@ -1,6 +1,7 @@
 import readline from 'node:readline'
 import { connectMongoose } from './lib/connectMongoose.js'
 import Agent from './models/Agent.js'
+import User from './models/User.js'
 
 const connection = await connectMongoose()
 console.log('Connected to MongoDB:', connection.name)
@@ -14,9 +15,13 @@ if (questionResponse.toLowerCase().trim() !== 'yes') {
 
 // llamo a la funcion initAgents para resetar la base de datos
 await initAgents()
+await initUsers()
+
+// cierro conexion
+connection.close()
 
 // creo funcion para insertar agentes
-async function initAgents() {
+async function initAgents () {
   // delete all agents
   const deleteResult = await Agent.deleteMany()
   console.log(`Deleted ${deleteResult.deletedCount} agents`)
@@ -38,6 +43,24 @@ async function initAgents() {
     }
   ])
   console.log(`Created ${insertResult.length} agents`)
+}
+
+async function initUsers () {
+
+  const deleteResult = await User.deleteMany()
+  console.log(`Deleted ${deleteResult.deletedCount} users`)
+
+  const insertResult = await User.insertMany([
+    {
+      email: 'admin@example.com',
+      password: await User.hashPassword('1234')
+    },
+    {
+      email: 'user1@example.com',
+      password: await User.hashPassword('1234')
+    }
+  ])
+  console.log(`Created ${insertResult.length} users`)
 }
 
 function ask (questionText) {
