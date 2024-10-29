@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= appName %></title>
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><%= appName %></h1>
+      <p>Code Inyection example <%- name %></p>
+    </header>
+    <main>
+      <section>
+        <h2>Conditionals</h2>
+        <p>Current second: <%= currentSecond %></p>
+        <p>Current second
+        <% if (isEven) { %>
+          is EVEN</p>
+        <% } else { %>
+          is ODD</p>
+        <% } %>
+      </section>
+
+      <section>
+        <h2>Loops</h2>
+        <% agents.forEach(agent =>  { %>
+          <p><%= agent.name %> tiene <%= agent.age %></p>
+        <% }) %>
+      </section>
+    </main>
+    <footer>
+      <h2>FOOTER</h2>
+    </footer>
+  </body>
+</html>
