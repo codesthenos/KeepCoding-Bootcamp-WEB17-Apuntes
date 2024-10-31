@@ -30,3 +30,11 @@ export async function postLogin (req, res, next) {
     next(err)
   }
 }
+
+export function logout (req, res, next) {
+  // regenerate viene de session que lo importamos de express-session y borra la sesion actual
+  req.session.regenerate(error => {
+    if (error) return next(error)
+    res.redirect('/')
+  })
+}

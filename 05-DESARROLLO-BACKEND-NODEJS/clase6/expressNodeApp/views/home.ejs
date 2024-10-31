@@ -18,6 +18,9 @@
       <section>
         <h2>Sesion del usuario <%= session.userID %></h2>
         <p>User Email: <%=  session.userEmail %></p>
+        <%if (session.userID) { %>
+          <a href="/logout" class="btn btn-outline-success">Logout</a>
+        <% } %>
       </section>
       <section>
         <h2>Conditionals</h2>
@@ -31,7 +34,7 @@
       </section>
       <!--Contenido para usuarios NO LOGUEADOS-->
       <% if (!session.userEmail) {%>
-        <p>Para ver el contenido debe hacer <a href="/login">login</a></p>
+        <p>Para ver el contenido debe hacer <a href="/login" class="btn btn-outline-success">login</a></p>
       <% } %>
       <!--Contenido para usuarios LOGUEADOS-->
       <% if (session.userEmail) {%>

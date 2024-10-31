@@ -4,7 +4,7 @@ import morganLogger from 'morgan'
 // Controllers
 import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
-import { index as loginController, postLogin } from './controllers/loginController.js'
+import { index as loginController, logout, postLogin } from './controllers/loginController.js'
 // Conexion base de datos
 import { connectMongoose } from './lib/connectMongoose.js'
 // Middleware de sesiones
@@ -60,6 +60,9 @@ app.get('/login', loginController)
 app.post('/login', postLogin)
 // post
 app.post('/create-example', createExample)
+
+// logout redirect
+app.all('/logout', logout)
 
 // /user
 app.get('/user', user)

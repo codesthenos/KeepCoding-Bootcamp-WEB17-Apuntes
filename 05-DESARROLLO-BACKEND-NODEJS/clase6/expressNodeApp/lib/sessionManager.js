@@ -15,7 +15,7 @@ export const sessionMiddleware = session({
   })
 })
 // middleware para linkear la info de la sesion a la VIEW
-export function sessionViewsMiddleware (req, res, next) {
+export const sessionViewsMiddleware = (req, res, next) => {
   res.locals.session = req.session
   next()
 }
