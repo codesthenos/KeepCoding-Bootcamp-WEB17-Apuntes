@@ -4,7 +4,7 @@ import morganLogger from 'morgan'
 // Controllers
 import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
-import { index as loginController } from './controllers/loginController.js'
+import { index as loginController, postLogin } from './controllers/loginController.js'
 // Conexion base de datos
 import { connectMongoose } from './lib/connectMongoose.js'
 
@@ -52,7 +52,7 @@ app.get('/validate-queryString-example', valiateQueryExampleValidation, validate
 
 // login
 app.get('/login', loginController)
-
+app.post('/login', postLogin)
 // post
 app.post('/create-example', createExample)
 
