@@ -29,18 +29,24 @@
           is ODD</p>
         <% } %>
       </section>
-
-      <section>
-        <h2>Loops</h2>
-        <h3>Agents</h3>
-        <% agents.forEach(agent =>  { %>
-          <p><%= agent.name %> tiene <%= agent.age %></p>
-        <% }) %>
-        <h3>Users</h3>
-        <% users.forEach(user =>  { %>
-          <p><%= user.email %></p>
-        <% }) %>
-      </section>
+      <!--Contenido para usuarios NO LOGUEADOS-->
+      <% if (!session.userEmail) {%>
+        <p>Para ver el contenido debe hacer <a href="/login">login</a></p>
+      <% } %>
+      <!--Contenido para usuarios LOGUEADOS-->
+      <% if (session.userEmail) {%>
+        <section>
+          <h2>Loops</h2>
+            <h3>Agents</h3>
+            <% agents.forEach(agent =>  { %>
+              <p><%= agent.name %> tiene <%= agent.age %></p>
+            <% }) %>
+            <h3>Users</h3>
+            <% users.forEach(user =>  { %>
+              <p><%= user.email %></p>
+            <% }) %>
+        </section>
+      <% } %>
     </main>
     <%- include('footer.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
