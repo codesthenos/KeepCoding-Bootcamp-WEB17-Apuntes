@@ -6,12 +6,15 @@ import User from '../models/User.js'
 // GET '/'
 export async function index (req, res, next) {
   const now = new Date
+  const userId = req.session.userID
 
   res.locals.name = '<script>alert("inyeccion de codigo")</script>'
   res.locals.isEven = (now.getSeconds() % 2) === 0
   res.locals.currentSecond = now.getSeconds()
-  res.locals.agents = await Agent.find()
-  res.locals.users = await User.find()
+  
+  if (userId) {
+    res.locals.agents = await Agent.find({ owner: userId })
+  }
 
   res.render('home')
 }

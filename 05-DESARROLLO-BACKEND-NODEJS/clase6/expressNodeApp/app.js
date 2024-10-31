@@ -5,10 +5,11 @@ import morganLogger from 'morgan'
 import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
 import { index as loginController, logout, postLogin } from './controllers/loginController.js'
+import { index as agentsController, deleteAgent, postNew } from './controllers/agentsController.js'
 // Conexion base de datos
 import { connectMongoose } from './lib/connectMongoose.js'
 // Middleware de sesiones
-import { sessionMiddleware, sessionViewsMiddleware } from './lib/sessionManager.js'
+import { authValidation, sessionMiddleware, sessionViewsMiddleware } from './lib/sessionManager.js'
 
 await connectMongoose()
 console.log('conectado a mongodb')
@@ -41,7 +42,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
 // rutas
-// middleware de sesion
+// middlewares de sesion
 app.use(sessionMiddleware, sessionViewsMiddleware)
 
 // raiz
@@ -63,6 +64,11 @@ app.post('/create-example', createExample)
 
 // logout redirect
 app.all('/logout', logout)
+
+// agents
+app.get('/agents/new', authValidation, agentsController)
+app.post('/agents/new', authValidation, postNew)
+app.get('/agents/delete/:agentId', authValidation, deleteAgent)
 
 // /user
 app.get('/user', user)

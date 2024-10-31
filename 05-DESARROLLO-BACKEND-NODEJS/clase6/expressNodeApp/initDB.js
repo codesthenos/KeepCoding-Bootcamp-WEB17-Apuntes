@@ -14,8 +14,9 @@ if (questionResponse.toLowerCase().trim() !== 'yes') {
 }
 
 // llamo a la funcion initAgents para resetar la base de datos
-await initAgents()
+// Primero Users ya que Agents tiene una referencia a Users
 await initUsers()
+await initAgents()
 
 // cierro conexion
 connection.close()
@@ -26,20 +27,27 @@ async function initAgents () {
   const deleteResult = await Agent.deleteMany()
   console.log(`Deleted ${deleteResult.deletedCount} agents`)
 
+  const [admin, user1] = await Promise.all([
+    User.findOne({ email: 'admin@example.com' }),
+    User.findOne(({ email: 'user1@example.com' }))
+  ])
 
   // create inital agents
   const insertResult = await Agent.insertMany([
     {
       name: 'Smith',
-      age: 31
+      age: 31,
+      owner: admin._id
     },
     {
       name: 'Brown',
-      age: 42
+      age: 42,
+      owner: admin._id
     },
     {
       name: 'Jones',
-      age: 38
+      age: 38,
+      owner: user1._id
     }
   ])
   console.log(`Created ${insertResult.length} agents`)

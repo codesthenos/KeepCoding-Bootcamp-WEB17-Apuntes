@@ -12,9 +12,9 @@ export async function postLogin (req, res, next) {
   try {
     // Buscar el usuario en la base de datos
     const user = await User.findOne({ email: email.toLowerCase() })
+    // Validacion (email o password no coinciden)
     // comparo las passwords
     const isValidPassword = await user.comparePasswords(password)
-    // Validacion (email o password no coinciden)
     if (!user || !isValidPassword) {
       res.locals.error = 'Invalid credenteials'
       res.locals.email = email

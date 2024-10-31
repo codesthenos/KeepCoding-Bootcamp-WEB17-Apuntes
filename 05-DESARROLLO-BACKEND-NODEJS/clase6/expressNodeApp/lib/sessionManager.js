@@ -19,3 +19,12 @@ export const sessionViewsMiddleware = (req, res, next) => {
   res.locals.session = req.session
   next()
 }
+
+export function authValidation (req, res, next) {
+  // Si no esta logueado, no envia new-agent
+  if (!req.session.userID) {
+    res.redirect('/login')
+    return
+  }
+  next()
+}
