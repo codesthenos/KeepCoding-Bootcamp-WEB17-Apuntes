@@ -4,6 +4,7 @@ import morganLogger from 'morgan'
 // Controllers
 import { createExample, index as home, multipleParamInRouteExample, paramInRouteExample, queryStringParamsExample, valiateQueryExampleValidation, validateQueryStringExample } from './controllers/homeController.js'
 import { index as user } from './controllers/userController.js'
+import { index as loginController } from './controllers/loginController.js'
 // Conexion base de datos
 import { connectMongoose } from './lib/connectMongoose.js'
 
@@ -48,6 +49,9 @@ app.get('/multiple_params_in_route/:product/size/:size([0-9]+)/color/:color', mu
 app.get('/param_in_query', queryStringParamsExample)
 // validation
 app.get('/validate-queryString-example', valiateQueryExampleValidation, validateQueryStringExample)
+
+// login
+app.get('/login', loginController)
 
 // post
 app.post('/create-example', createExample)
