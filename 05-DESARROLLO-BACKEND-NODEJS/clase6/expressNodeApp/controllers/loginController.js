@@ -21,6 +21,9 @@ export async function postLogin (req, res, next) {
       res.render('login')
       return
     }
+    // Si email y pass coinciden apunto en su sesion que esta logueado
+    req.session.userID = user._id
+    req.session.userEmail = user.email
     // Si coincide redireccionamos
     res.redirect('/')
   } catch (err) {

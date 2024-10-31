@@ -1,0 +1,11 @@
+import session from 'express-session'
+import { SESSION_SECRET } from '../secret.js'
+
+// middleware para gestionar sesiones
+export const sessionMiddleware = session({
+  name: 'nodeapp-session', // nombre de la cookie que se genera
+  secret: SESSION_SECRET, // hace que el manejo de las sesiones sea seguro
+  saveUninitialized: true, // hace que las sesiones que no han hecho peticiones esten en la Store
+  resave: false, // fuerza que una sesion se guarde aunque la sesion no se haya modificado durante la peticion
+  cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
+})
