@@ -9,3 +9,8 @@ export const sessionMiddleware = session({
   resave: false, // fuerza que una sesion se guarde aunque la sesion no se haya modificado durante la peticion
   cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }
 })
+
+export function sessionViewsMiddleware (req, res, next) {
+  res.locals.session = req.session
+  next()
+}

@@ -16,6 +16,10 @@
     <%- include('header.ejs') %>
     <main>
       <section>
+        <h2>Sesion del usuario <%= session.userID %></h2>
+        <p>User Email: <%=  session.userEmail %></p>
+      </section>
+      <section>
         <h2>Conditionals</h2>
         <p>Current second: <%= currentSecond %></p>
         <p>Current second

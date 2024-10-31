@@ -8,7 +8,7 @@ import { index as loginController, postLogin } from './controllers/loginControll
 // Conexion base de datos
 import { connectMongoose } from './lib/connectMongoose.js'
 // Middleware de sesiones
-import { sessionMiddleware } from './lib/sessionManager.js'
+import { sessionMiddleware, sessionViewsMiddleware } from './lib/sessionManager.js'
 
 await connectMongoose()
 console.log('conectado a mongodb')
@@ -42,7 +42,7 @@ app.use(express.static('public'))
 
 // rutas
 // middleware de sesion
-app.use(sessionMiddleware)
+app.use(sessionMiddleware, sessionViewsMiddleware)
 
 // raiz
 app.get('/', home)
