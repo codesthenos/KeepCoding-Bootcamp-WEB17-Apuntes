@@ -1,6 +1,7 @@
 import assert from 'node:assert'
 import { query, validationResult } from 'express-validator'
 import Agent from '../models/Agent.js'
+import User from '../models/User.js'
 
 // GET '/'
 export async function index (req, res, next) {
@@ -10,6 +11,7 @@ export async function index (req, res, next) {
   res.locals.isEven = (now.getSeconds() % 2) === 0
   res.locals.currentSecond = now.getSeconds()
   res.locals.agents = await Agent.find()
+  res.locals.users = await User.find()
 
   res.render('home')
 }
