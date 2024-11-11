@@ -85,6 +85,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **31/10/2024**
 
 - Fecha entrega de practica: **10/11/2024**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-Desarrollo-backend-NODE-codesthenos-)
 
 ## 06-DESARROLLO-FRONTEND-JAVASCRIPT
 
