@@ -13,5 +13,26 @@
 
   <script type="module" async src="./index2.js"></script> <!--async hace que se carguen a la vez-->
   <script type="module" async src="./index.js"></script> <!--type="module" hace que las variables no se compartan entre scripts-->
+
+  <div id="body">
+    <p>Hola</p>
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjwoPGHrr8AxBF2SCfk9XU2VleFDPpW_NERQ&s" alt="logo keepcoding">
+    </div>
+  </div>
+
+  <script>
+    // diferentes modos de crear, incluir y acceder a los NODOS del DOM
+    const footer = document.createElement('footer')
+    document.body.appendChild(footer)
+    footer.innerHTML = '<h1>FOOTER</h1>'
+    // footer.outerHTML = ''
+    const span = document.createElement('span')
+    span.innerHTML = 'adios'
+    document.querySelector('footer').appendChild(span)
+    const span2 = document.createElement('span')
+    span2.textContent = 'adios2'
+    document.getElementsByTagName('footer')[0].appendChild(span2)
+  </script>
 </body>
 </html>
