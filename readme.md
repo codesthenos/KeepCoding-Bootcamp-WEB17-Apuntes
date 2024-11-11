@@ -88,7 +88,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
 
 ## 06-DESARROLLO-FRONTEND-JAVASCRIPT
 
-- Clases impartidas por _Eduardo Aguilar_ **profe no encontrado en github**
+- Clases impartidas por _Eduardo Aguilar Tirado_ [**@edu-aguilar**](https://github.com/edu-aguilar)
 
 - Fechas de las clases:
 
@@ -99,7 +99,6 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   4. **18/11/2024**
   5. **19/11/2024**
   6. **21/11/2024**
-  7. ???**01/12/2024**???
 
 - Fecha entrega de practica: **01/12/2024**
 
@@ -116,7 +115,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
 
 ## 08-WEB-COMPONENTS
 
-- Clases impartidas por _Eduardo Aguilar_ **profe no encontrado en github**
+- Clases impartidas por _Eduardo Aguilar Tirado_ [**@edu-aguilar**](https://github.com/edu-aguilar)
 
 - Fechas de las clases:
 
