@@ -27,12 +27,15 @@
     document.body.appendChild(footer)
     footer.innerHTML = '<h1>FOOTER</h1>'
     // footer.outerHTML = ''
+    const p = document.createElement('p')
+    p.innerHTML = 'adios <span>innerHTML</span>'
+    document.querySelector('footer').appendChild(p)
+    const p2 = document.createElement('p')
+    p2.textContent = 'adios textContent'
+    document.getElementsByTagName('footer')[0].appendChild(p2)
     const span = document.createElement('span')
-    span.innerHTML = 'adios'
-    document.querySelector('footer').appendChild(span)
-    const span2 = document.createElement('span')
-    span2.textContent = 'adios2'
-    document.getElementsByTagName('footer')[0].appendChild(span2)
+    span.innerHTML = 'Span appended using p2.appendChild(span) <strong>strong using innerHTML</strong>'
+    p2.appendChild(span)
   </script>
 </body>
 </html>
