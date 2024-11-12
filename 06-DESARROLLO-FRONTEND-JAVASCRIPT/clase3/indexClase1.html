@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase 1</title>
+</head>
+<body>
+  <h1>Hello world</h1>
+  <script>
+    console.log('Hello world')
+  </script>
+
+  <script type="module" async src="./index2.js"></script> <!--async hace que se carguen a la vez-->
+  <script type="module" async src="./index.js"></script> <!--type="module" hace que las variables no se compartan entre scripts-->
+
+  <div id="body">
+    <p>Hola</p>
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjwoPGHrr8AxBF2SCfk9XU2VleFDPpW_NERQ&s" alt="logo keepcoding">
+    </div>
+  </div>
+
+  <script>
+    // diferentes modos de crear, incluir y acceder a los NODOS del DOM
+    const footer = document.createElement('footer')
+    document.body.appendChild(footer)
+    footer.innerHTML = '<h1>FOOTER</h1>'
+    // footer.outerHTML = '' para el texto, entre los tags, innerhtml para meter tanto texto como otros tags
+    const p = document.createElement('p')
+    p.innerHTML = 'adios <span>innerHTML</span>'
+    document.querySelector('footer').appendChild(p)
+    const p2 = document.createElement('p')
+    p2.textContent = 'adios textContent'
+    document.getElementsByTagName('footer')[0].appendChild(p2)
+    const span = document.createElement('span')
+    span.innerHTML = 'Span appended using p2.appendChild(span) <strong>strong using innerHTML</strong>'
+    p2.appendChild(span)
+  </script>
+</body>
+</html>
