@@ -24,8 +24,9 @@ const tweets = [{
 }];
 
 const drawTweets = () => {
+  // creo html element que quiero renderizar
   const tweetList = document.createElement('ul')
-
+  // creo string de html que va a rellenar el html element
   const stringTweetList = tweets.map(tweet => `
     <li style="list-style: none;">
       <h3>User: ${tweet.handler}</h3>
@@ -34,14 +35,15 @@ const drawTweets = () => {
       <p>Likes: ${tweet.likes}</p>
     </li>
     `).join('\n')
-
+  // meto el html en forma de string en el html element
   tweetList.innerHTML = `
   <h2>Tweets</h2>
 
   ${stringTweetList}
   `
-
+  // localizo elemento del DOM donde quiero meter el html element que he creado
   const target = document.querySelector('div')
+  // meto el html element creado en el elemento del DOM encontrado
   target.appendChild(tweetList)
 }
 
