@@ -26,9 +26,11 @@ const tweets = [{
 const drawTweets = () => {
   // creo html element que quiero renderizar
   const tweetList = document.createElement('ul')
+  // quito los puntos por defecto del ul
+  tweetList.style.listStyle = 'none'
   // creo string de html que va a rellenar el html element
   const stringTweetList = tweets.map(tweet => `
-    <li style="list-style: none;">
+    <li>
       <h3>User: ${tweet.handler}</h3>
       <h4>Date: ${tweet.date}</h4>
       <p>Message: ${tweet.message}</p>
