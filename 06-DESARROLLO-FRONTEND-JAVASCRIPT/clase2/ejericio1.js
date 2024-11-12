@@ -53,6 +53,8 @@ drawTweets();
 
 const drawTweetsForEach = () => {
   
+  const target = document.querySelector('div')
+  
   tweets.forEach(tweet => {
 
     const newTweet = document.createElement('div')
@@ -64,7 +66,6 @@ const drawTweetsForEach = () => {
     <p>Likes: ${tweet.likes}</p>
     `
 
-    const target = document.querySelector('div')
 
     target.appendChild(newTweet)
   })
