@@ -48,3 +48,24 @@ const drawTweets = () => {
 }
 
 drawTweets();
+
+const drawTweetsForEach = () => {
+  
+  tweets.forEach(tweet => {
+
+    const newTweet = document.createElement('div')
+
+    newTweet.innerHTML = `
+    <h3>User: ${tweet.handler}</h3>
+    <h4>Date: ${tweet.date}</h4>
+    <p>Message: ${tweet.message}</p>
+    <p>Likes: ${tweet.likes}</p>
+    `
+
+    const target = document.querySelector('div')
+
+    target.appendChild(newTweet)
+  })
+}
+
+drawTweetsForEach()
