@@ -25,23 +25,26 @@ const drawTweetsForEach = () => {
   })
 }
 // load tweets button
+const loadTweetButton = document.getElementById(loadButtonId)
+
 const loadTweetsButtonHandler = () => {
   const ul = document.querySelector('ul')
-  if (ul) return
-  drawTweets()
-  drawTweetsForEach()
+  if (!ul) {
+    loadTweetButton.setAttribute('disabled', true)
+    drawTweets()
+    drawTweetsForEach()
+  }
 }
-
-const loadTweetButton = document.getElementById(loadButtonId)
 
 loadTweetButton.addEventListener('click', loadTweetsButtonHandler)
 // show tweets button
+const showTweetButton = document.getElementById(showButtonId)
+
 const showTweetButtonHandler = () => {
   const ul = document.querySelector('ul')
   if (ul) ul.toggleAttribute('hidden')
   Array.from(document.querySelectorAll('div')).map(div => div.toggleAttribute('hidden'))
+  showTweetButton.textContent = ul.hasAttribute('hidden') ? 'Hide tweets' : 'Show tweets'
 }
-
-const showTweetButton = document.getElementById(showButtonId)
 
 showTweetButton.addEventListener('click', showTweetButtonHandler)
