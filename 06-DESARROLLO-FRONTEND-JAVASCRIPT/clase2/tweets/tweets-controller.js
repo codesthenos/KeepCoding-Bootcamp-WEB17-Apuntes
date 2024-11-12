@@ -26,6 +26,8 @@ const drawTweetsForEach = () => {
 }
 // load tweets button
 const loadTweetsButtonHandler = () => {
+  const ul = document.querySelector('ul')
+  if (ul) return
   drawTweets()
   drawTweetsForEach()
 }
