@@ -24,3 +24,8 @@ export const tweets = [{
   message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
   likes: 400,
 }];
+
+export const fecthedTweets = async () => {
+  const tweets =  await fetch()
+    .then(res => res.json())
+}
