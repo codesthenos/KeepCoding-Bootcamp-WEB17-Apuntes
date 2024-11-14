@@ -2,24 +2,28 @@
 import { fecthedTweets } from "./tweets-model.js"
 import { tweetView, myTweetView, buildNoTweetsH2 } from "./tweets-view.js"
 
-const tweets = await fecthedTweets()
 
 const showButtonId = 'show-tweets'
 const loadButtonId = 'load-tweets'
 // draw tweets profe
-const drawTweets = () => {
+const drawTweets = async  () => {
+  const tweets = await fecthedTweets()
+
   const tweetList = myTweetView(tweets)
-
+  
   const target = document.querySelector('div')
-
+  
   target.appendChild(tweetList)
 }
 // draw tweets mio
-const drawTweetsForEach = () => {
-  
+const drawTweetsForEach = async () => {
   const target = document.querySelector('div')
+  
+  const tweets = await fecthedTweets()
 
-  if (tweets.length === 0) return target.innerHTML = buildNoTweetsH2()
+  if (!tweets.length) return target.innerHTML = buildNoTweetsH2()
+  
+    target.innerHTML = ''
   
   tweets.forEach(tweet => {
     
