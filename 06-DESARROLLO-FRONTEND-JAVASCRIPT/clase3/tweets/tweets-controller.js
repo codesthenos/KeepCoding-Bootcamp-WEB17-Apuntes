@@ -1,6 +1,8 @@
 // CONTROLADOR - nexo de union entre MODELO y VISTA
-import { fecthedTweets as tweets } from "./tweets-model.js"
+import { fecthedTweets } from "./tweets-model.js"
 import { tweetView, myTweetView } from "./tweets-view.js"
+
+const tweets = await fecthedTweets()
 
 const showButtonId = 'show-tweets'
 const loadButtonId = 'load-tweets'

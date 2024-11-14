@@ -28,4 +28,6 @@ export const tweets = [{
 export const fecthedTweets = async () => {
   const tweets =  await fetch('http://localhost:8000/api/tweets/')
     .then(res => res.json())
+  
+  return tweets
 }
