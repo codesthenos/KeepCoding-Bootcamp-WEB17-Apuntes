@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="spinner.css" />
+  </head>
+  <body>
+    <h1>hello world!!</h1>
+
+    <section>
+      <div>
+        <h2>Ejercicio interacción DOM</h2>
+      </div>
+      <div>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJWNZUIl1-WfkVs_2f3WHDrWLUOkgh8fSbBw&s"
+          alt="kc-logo"
+        />
+      </div>
+    </section>
+    <section class="spinner hidden">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </section>
+    <section id="tweets-container"></section>
+
+    <script type="module" src="tweets-controller.js"></script>
+    <script type="module" src="./tweets/tweets-controller.js"></script>
+  </body>
+</html>
