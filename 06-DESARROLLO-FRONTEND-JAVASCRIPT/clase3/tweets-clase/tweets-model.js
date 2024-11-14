@@ -3,8 +3,15 @@
 // los tweets tienen q venir de SPARREST
 
 export async function getTweets() {
-  const response = await fetch("http://localhost:8000/api/tweets");
-  const tweets = await response.json();
+  try {
+    const response = await fetch("http://localhost:8000/api/tweetsa");
 
-  return tweets;
+    if (!response.ok) throw new Error('Recurso no existente')
+    const tweets = await response.json();
+    
+    return tweets;
+  } catch (error) {
+    if (error.message === 'Recurso no existente') throw new Error(error.message)
+    throw new Error('Twitter esta fallando, intentelo mas tarde')
+  }
 }

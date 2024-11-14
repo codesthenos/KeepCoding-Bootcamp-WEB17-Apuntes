@@ -3,15 +3,7 @@
 import { getTweets } from "./tweets-model.js";
 import { buildTweet, buildEmptyTweetList } from "./tweets-view.js";
 
-async function showTweets() {
-  const tweetsContainer = document.querySelector('#tweets-container');
-  const spinner = document.querySelector('.spinner')
-  tweetsContainer.innerHTML = "";
-
-  spinner.classList.toggle('hidden')
-  const tweets = await getTweets();
-  spinner.classList.toggle('hidden');
-
+async function drawTweets(tweets, tweetsContainer) {
   if(!tweets.length) {
     tweetsContainer.innerHTML = buildEmptyTweetList();
   } else {
@@ -20,7 +12,23 @@ async function showTweets() {
       tweetsContainer.appendChild(newTweet);
     })
   }
+}
 
+async function showTweets() {
+  const tweetsContainer = document.querySelector('#tweets-container');
+  const spinner = document.querySelector('.spinner')
+  tweetsContainer.innerHTML = "";
+
+  spinner.classList.toggle('hidden')
+  let tweets = []
+  try {
+    tweets = await getTweets();
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    drawTweets(tweets, tweetsContainer);
+    spinner.classList.toggle('hidden');
+  }
 }
 
 document.addEventListener("DOMContentLoaded", showTweets);
