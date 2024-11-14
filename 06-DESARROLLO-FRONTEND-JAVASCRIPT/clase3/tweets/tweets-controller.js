@@ -7,11 +7,16 @@ const showButtonId = 'show-tweets'
 const loadButtonId = 'load-tweets'
 // draw tweets profe
 const drawTweets = async  () => {
-  const tweets = await fecthedTweets()
-
-  const tweetList = myTweetView(tweets)
-  
   const target = document.querySelector('div')
+
+  
+  const spinner = document.querySelector('.loader')
+  spinner.classList.toggle('hidden')
+  
+  const tweets = await fecthedTweets()
+  
+  spinner.classList.toggle('hidden')
+  const tweetList = myTweetView(tweets)
   
   target.appendChild(tweetList)
 }
