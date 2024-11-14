@@ -33,3 +33,14 @@ export const myTweetView = tweets => {
   `
   return tweetList
 }
+
+export const buildNoTweetsH2 = () => {
+  /* devolver un HTMLElement (para usar appendChild())
+
+  const heading2 = document.createElement('h2')
+  heading2.textContent = 'No tweets'
+  return heading2
+  */
+ // devuelvo cadena de texto para usar luego el .innerHTML
+ return '<h2>No tweets</h2>'
+}

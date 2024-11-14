@@ -1,6 +1,6 @@
 // CONTROLADOR - nexo de union entre MODELO y VISTA
 import { fecthedTweets } from "./tweets-model.js"
-import { tweetView, myTweetView } from "./tweets-view.js"
+import { tweetView, myTweetView, buildNoTweetsH2 } from "./tweets-view.js"
 
 const tweets = await fecthedTweets()
 
@@ -19,12 +19,7 @@ const drawTweetsForEach = () => {
   
   const target = document.querySelector('div')
 
-  if (tweets.length === 0) {
-    const noAddsMessage = document.createElement('p')
-    noAddsMessage.textContent = 'No tweets'
-    target.appendChild(noAddsMessage)
-    return
-  }
+  if (tweets.length === 0) return target.innerHTML = buildNoTweetsH2()
   
   tweets.forEach(tweet => {
     
