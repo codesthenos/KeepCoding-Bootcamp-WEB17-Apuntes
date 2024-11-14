@@ -18,6 +18,13 @@ const drawTweets = () => {
 const drawTweetsForEach = () => {
   
   const target = document.querySelector('div')
+
+  if (tweets.length === 0) {
+    const noAddsMessage = document.createElement('p')
+    noAddsMessage.textContent = 'No tweets'
+    target.appendChild(noAddsMessage)
+    return
+  }
   
   tweets.forEach(tweet => {
     
