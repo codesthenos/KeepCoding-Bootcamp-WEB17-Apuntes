@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tweetsController(tweetsContainer)
   const { showNotification } = notificationController(notificationContainer)
   
-  tweetsContainer.addEventListener("loading-tweets-error", (event) => {
-    showNotification(event.detail)
+  tweetsContainer.addEventListener("loading-tweets-info", (event) => {
+    showNotification(event.detail.message, event.detail.type)
   })
 })

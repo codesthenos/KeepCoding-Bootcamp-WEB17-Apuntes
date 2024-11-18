@@ -14,6 +14,16 @@ function drawTweets(tweets, tweetsContainer) {
   }
 }
 
+const fireEvent = (message, type, element) => {
+  // CREO EVENTO CUSTOM
+  const customEventSuccess = new CustomEvent('loading-tweets-info', {
+    detail: { message, type }
+  });
+  // DISPARO EL CUSTOM EVENT
+  element.dispatchEvent(customEventSuccess)
+  return
+}
+
 export async function tweetsController(tweetsContainer) {
   const spinner = document.querySelector('.spinner')
   tweetsContainer.innerHTML = "";
@@ -23,13 +33,11 @@ export async function tweetsController(tweetsContainer) {
   try {
     tweets = await getTweets();
     drawTweets(tweets, tweetsContainer);
-  } catch (error) {
-    // CREO EVENTO CUSTOM
-    const customEvent = new CustomEvent('loading-tweets-error', {
-      detail: error.message
-    });
     // DISPARO EL CUSTOM EVENT
-    tweetsContainer.dispatchEvent(customEvent)
+    fireEvent('TWEETS CARGADOS', 'success', tweetsContainer)
+  } catch (error) {
+    // DISPARO EL CUSTOM EVENT
+    fireEvent(error.message, 'error', tweetsContainer)
   } finally {
     spinner.classList.toggle('hidden');
   }
