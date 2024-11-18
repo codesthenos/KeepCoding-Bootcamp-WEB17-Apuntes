@@ -14,7 +14,7 @@ async function drawTweets(tweets, tweetsContainer) {
   }
 }
 
-export async function showTweets(tweetsContainer) {
+export async function tweetsController(tweetsContainer) {
   const spinner = document.querySelector('.spinner')
   tweetsContainer.innerHTML = "";
 
