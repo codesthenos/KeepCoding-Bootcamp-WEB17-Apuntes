@@ -22,6 +22,7 @@ export async function tweetsController(tweetsContainer) {
   let tweets = []
   try {
     tweets = await getTweets();
+    drawTweets(tweets, tweetsContainer);
   } catch (error) {
     // CREO EVENTO CUSTOM
     const customEvent = new CustomEvent('loading-tweets-error', {
@@ -30,7 +31,6 @@ export async function tweetsController(tweetsContainer) {
     // DISPARO EL CUSTOM EVENT
     tweetsContainer.dispatchEvent(customEvent)
   } finally {
-    drawTweets(tweets, tweetsContainer);
     spinner.classList.toggle('hidden');
   }
 }

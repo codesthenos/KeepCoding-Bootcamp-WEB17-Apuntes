@@ -1,15 +1,15 @@
 import { notificationController } from './notification-controller.js'
 import { tweetsController } from './tweets-controller.js'
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   const tweetsContainer = document.querySelector('#tweets-container')
   const notificationContainer = document.querySelector('#notifications-container')
 
-  await tweetsController(tweetsContainer)
+  tweetsController(tweetsContainer)
   const { showNotification } = notificationController(notificationContainer)
   
-  tweetsContainer.addEventListener("loading-tweets-error", () => {
-    showNotification()
+  tweetsContainer.addEventListener("loading-tweets-error", (event) => {
+    showNotification(event.detail)
   })
 })
