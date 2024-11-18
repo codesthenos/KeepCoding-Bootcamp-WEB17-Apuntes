@@ -4,7 +4,7 @@
 
 export async function getTweets() {
   try {
-    const response = await fetch("http://localhost:8000/api/tweetsa");
+    const response = await fetch("http://localhost:8000/api/tweets/");
 
     if (!response.ok) throw new Error('Recurso no existente')
     const tweets = await response.json();

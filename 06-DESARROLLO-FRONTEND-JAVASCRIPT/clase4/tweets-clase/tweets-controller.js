@@ -14,8 +14,7 @@ async function drawTweets(tweets, tweetsContainer) {
   }
 }
 
-async function showTweets() {
-  const tweetsContainer = document.querySelector('#tweets-container');
+export async function showTweets(tweetsContainer) {
   const spinner = document.querySelector('.spinner')
   tweetsContainer.innerHTML = "";
 
@@ -30,5 +29,3 @@ async function showTweets() {
     spinner.classList.toggle('hidden');
   }
 }
-
-document.addEventListener("DOMContentLoaded", showTweets);
