@@ -26,7 +26,7 @@ const handleLoginUser = async (userEmail, password) => {
   try {
     const token = await loginUser(userEmail, password)
     window.localStorage.setItem('jwt', token)
-    //window.location.href = 'http://127.0.0.1:5500/06-DESARROLLO-FRONTEND-JAVASCRIPT/clase5/tweets-clase/index.html'
+    window.location.href = 'http://127.0.0.1:5500/06-DESARROLLO-FRONTEND-JAVASCRIPT/clase5/tweets-clase/index.html'
   } catch (error) {
     alert(error.message)
   }
