@@ -1,3 +1,4 @@
+import { REGEXP } from "../utils/consts.js"
 import { loginUser } from "./login-model.js"
 
 export const loginController = form => {
@@ -10,26 +11,22 @@ export const loginController = form => {
     const userEmail = userEmailElement.value
     const password = passwordElement.value
 
-    const errors = []
     // validarlos
     // regexp para validar EMAIL
-    const emailRegExp = new RegExp(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/)
+    const emailRegExp = new RegExp(REGEXP.email)
     if (!emailRegExp.test(userEmail)) {
-      errors.push('Formato de email incorrecto')
-    }
-    for (const error of errors) {
       // notificaciones
-    }
-    // enviarlos a la API para crear el usuario
-    if (errors.length === 0) {
+      alert('Formato de email incorrecto')
+    } else {
       handleLoginUser(userEmail, password)
-    } 
+    }
   })
 }
 const handleLoginUser = async (userEmail, password) => {
   try {
-    await loginUser(userEmail, password)
-    window.location.href = 'http://127.0.0.1:5500/06-DESARROLLO-FRONTEND-JAVASCRIPT/clase5/tweets-clase/index.html'
+    const token = await loginUser(userEmail, password)
+    window.localStorage.setItem('jwt', token)
+    //window.location.href = 'http://127.0.0.1:5500/06-DESARROLLO-FRONTEND-JAVASCRIPT/clase5/tweets-clase/index.html'
   } catch (error) {
     alert(error.message)
   }

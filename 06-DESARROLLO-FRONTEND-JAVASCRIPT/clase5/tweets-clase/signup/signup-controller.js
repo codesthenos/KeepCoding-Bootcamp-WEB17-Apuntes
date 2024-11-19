@@ -1,3 +1,4 @@
+import { REGEXP } from "../utils/consts.js"
 import { createUser } from "./signup-model.js"
 
 export const signupController = form => {
@@ -15,7 +16,7 @@ export const signupController = form => {
     const errors = []
     // validarlos
     // regexp para validar EMAIL
-    const emailRegExp = new RegExp(/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/)
+    const emailRegExp = new RegExp(REGEXP.email)
     if (!emailRegExp.test(userEmail)) {
       errors.push('Formato de email incorrecto')
     }

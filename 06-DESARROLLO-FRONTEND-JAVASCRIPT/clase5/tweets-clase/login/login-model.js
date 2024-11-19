@@ -10,6 +10,8 @@ export const loginUser = async (email, password) => {
     }
   })
   if (!response.ok) {
-    throw new Error('Error creando usuario')
+    throw new Error('Error iniciando sesion')
   }
+  const { accessToken } = await response.json()
+  return accessToken
 }
