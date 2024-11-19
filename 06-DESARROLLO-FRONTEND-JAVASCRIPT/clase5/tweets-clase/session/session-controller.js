@@ -9,10 +9,11 @@ export const sessionController = sessionContainer => {
   if (isUserLogged()) {
     // create user button
     sessionContainer.innerHTML = buildAuthorizedButton()
-    sessionContainer.addEventListener('click', () => {
+    const logoutbutton = sessionContainer.querySelector('button')
+    logoutbutton.addEventListener('click', () => {
       window.localStorage.removeItem('jwt')
       
-      // window.location.reload() funciona pero hacemos otra cosa mejor
+      // window.location.reload() refresca la pantalla como f5, de la otra manera no se hace refresh
       sessionController(sessionContainer)
     })
   } else {
