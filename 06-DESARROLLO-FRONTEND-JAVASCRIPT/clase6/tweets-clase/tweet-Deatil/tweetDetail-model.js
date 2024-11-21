@@ -16,12 +16,15 @@ export const getTweet = async ({ tweetId }) => {
 export const removeTweet = async ({ tweetId }) => {
   const token = localStorage.getItem('jwt')
   try {
-    await fetch(`http://localhost:8000/api/tweets/${tweetId}`,{
+    const response = await fetch(`http://localhost:8000/api/tweets/${tweetId}`,{
       method: 'DELETE',
       headers: {
         "Authorization": `Bearer ${token}`
       }
     })
+    if (!response.ok) {
+      throw new Error('Fallo borrando el tweet')
+    }
   } catch (error) {
     alert(error.message)
   }
