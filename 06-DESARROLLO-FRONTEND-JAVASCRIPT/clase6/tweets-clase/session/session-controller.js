@@ -1,11 +1,7 @@
+import { isUserLogged } from "../utils/auth.js"
 import { buildAuthorizedButton, buildUnAuthorizedButton } from "./session-view.js"
 
 export const sessionController = sessionContainer => {
-  const isUserLogged = () => {
-    const token = window.localStorage.getItem('jwt')
-    // !!tranforma token a boolean
-    return !!token
-  }
   if (isUserLogged()) {
     // create user button
     sessionContainer.innerHTML = buildAuthorizedButton()
