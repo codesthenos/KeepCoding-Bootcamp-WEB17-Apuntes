@@ -29,9 +29,8 @@ export async function tweetsController(tweetsContainer) {
   tweetsContainer.innerHTML = "";
 
   spinner.classList.toggle('hidden')
-  let tweets = []
   try {
-    tweets = await getTweets();
+    const tweets = await getTweets();
     drawTweets(tweets, tweetsContainer);
     // DISPARO EL CUSTOM EVENT
     fireEvent('TWEETS CARGADOS', 'success', tweetsContainer)

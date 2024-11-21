@@ -6,6 +6,7 @@ export const buildTweet = (tweet) => {
   const createdAt = new Date(tweet.updatedAt)
   tweetLink.innerHTML = `
   <div>
+    <h2>${tweet.user.username}</h2>
     <span>${tweet.handler ? tweet.handler : ''}</span>
     <span>${tweet.date ? tweet.date : createdAt.toDateString()}</span>
     <p>${tweet.message}</p>
