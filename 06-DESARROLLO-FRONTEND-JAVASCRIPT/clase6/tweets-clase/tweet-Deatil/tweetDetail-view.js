@@ -9,3 +9,9 @@ export const buildTweetDetail = ({ tweet }) => {
   </div>
   `
 }
+
+export const buildDeleteButton = () => {
+  const removeButton = document.createElement('button')
+  removeButton.textContent = 'Borrar tweet'
+  return removeButton
+}
