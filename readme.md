@@ -102,6 +102,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **21/11/2024**
 
 - Fecha entrega de practica: **01/12/2024**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-Desarrollo-frontend-JavaScript-codesthenos)
 
 ## 07-FRONTEND-PRO
 
@@ -125,9 +126,9 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   2. **10/12/2024**
   3. **12/12/2024**
 
-## 09-FUNDAMENTOS-REACT
+## 09-DESARROLLO-BACKEND-AVANZADO-NODEJS
 
-- Clases impartidas por _David Jimenez_ **profe no encontrado en github**
+- Clases impartidas por _Javier Miguel_ [**@jamg44**](https://github.com/jamg44)
 
 - Fechas de las clases:
 
@@ -137,7 +138,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   3. **19/12/2024**
   4. **07/01/2025**
   5. **08/01/2025**
-  6. **10/01/2025**
+  6. **09/01/2025**
 
 - Fecha entrega de practica: **19/01/2025**
 
@@ -152,9 +153,9 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   2. **21/01/2025**
   3. **23/01/2025**
 
-## 11-DESARROLLO-BACKEND-AVANZADO-NODEJS
+## 11-FUNDAMENTOS-REACT
 
-- Clases impartidas por _Javier Miguel_ [**@jamg44**](https://github.com/jamg44)
+- Clases impartidas por _David Jimenez_ **profe no encontrado en github**
 
 - Fechas de las clases:
 
