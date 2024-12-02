@@ -10,6 +10,9 @@ html {
     background-color: config.$secondary-color;
     color: config.$primary-color;
     ul {
+      h3 {
+        color: config.$primary-light-color;
+      }
       text-align: center;
       li a {
         font: {

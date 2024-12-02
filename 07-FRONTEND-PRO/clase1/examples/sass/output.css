@@ -7,10 +7,13 @@ html {
 }
 html div.nav {
   background-color: #531253;
-  color: #97D8B2;
+  color: #2f774d;
 }
 html div.nav ul {
   text-align: center;
+}
+html div.nav ul h3 {
+  color: rgb(154.6385542169, 215.3614457831, 179.9397590361);
 }
 html div.nav ul li a {
   font-family: "Arial";
@@ -18,7 +21,7 @@ html div.nav ul li a {
   font-size: 15px;
   font-weight: 800;
   text-decoration: underline;
-  color: #97D8B2;
+  color: #2f774d;
 }
 html div.nav ul li a.disabled {
   text-decoration: none;
