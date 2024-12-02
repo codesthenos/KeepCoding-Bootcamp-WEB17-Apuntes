@@ -1,0 +1,19 @@
+{
+  "name": "clase1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "sass:example": "sass examples/sass/styles.scss examples/sass/output.css",
+    "sass:example:dev": "sass --watch examples/sass/styles.scss examples/sass/output.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.81.0"
+  }
+}

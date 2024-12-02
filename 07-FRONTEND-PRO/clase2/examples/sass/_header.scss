@@ -1,0 +1,31 @@
+@use './config';
+@use './mixins';
+
+.color-secondary {
+  color: config.$secondary-color;
+}
+html {
+  font-size: config.$font-size;
+  div.nav {
+    background-color: config.$secondary-color;
+    color: config.$primary-color;
+    ul {
+      h3 {
+        color: config.$primary-light-color;
+      }
+      text-align: center;
+      li a {
+        font: {
+          family: 'Arial';
+          weight: 500;
+          size: 15px;
+        }
+        @include mixins.text-primary-bold;
+        &.disabled {
+          @extend .color-secondary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

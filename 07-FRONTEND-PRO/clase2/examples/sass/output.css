@@ -1,0 +1,51 @@
+.color-secondary, html div.nav ul li a.disabled {
+  color: #531253;
+}
+
+html {
+  font-size: 14px;
+}
+html div.nav {
+  background-color: #531253;
+  color: #2f774d;
+}
+html div.nav ul {
+  text-align: center;
+}
+html div.nav ul h3 {
+  color: rgb(154.6385542169, 215.3614457831, 179.9397590361);
+}
+html div.nav ul li a {
+  font-family: "Arial";
+  font-weight: 500;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+  color: #2f774d;
+}
+html div.nav ul li a.disabled {
+  text-decoration: none;
+}
+
+/*
+:root {
+  --primary-color: $primary-color;
+}
+
+div {
+  color: var(--primary-color);
+}
+*/
+/*
+div {
+  color: $primary-color;
+  background-color: $secondary-color;
+  }
+
+  html {
+    font-size: $font-size;
+
+  }
+*/
+
+/*# sourceMappingURL=output.css.map */

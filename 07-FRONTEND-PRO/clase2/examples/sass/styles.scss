@@ -1,0 +1,31 @@
+//@import './config';
+@forward './header';
+//@import './mixins';
+//@import './buttons';
+// variables scss no son variables css, hay que hacer esto
+/*
+:root {
+  --primary-color: $primary-color;
+}
+
+div {
+  color: var(--primary-color);
+}
+*/
+
+// overrides sobreescribir variables
+$primary-color: #A0ACAD;
+/*
+div {
+  color: $primary-color;
+  background-color: $secondary-color;
+  }
+  
+  html {
+    font-size: $font-size;
+    
+  }
+*/
+// %placeholder que uso pero no se genera, util para usar en extends
+
+// functions custom o default
