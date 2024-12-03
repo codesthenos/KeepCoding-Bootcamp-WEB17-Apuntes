@@ -1,7 +1,26 @@
+@use 'sass:map';
 @use './config';
 
 @mixin text-primary-bold {
   font-weight: 800;
   text-decoration: underline;
   color: config.$primary-color;
+}
+
+@mixin brand-color($selector, $valor-sass, $valor-scss) {
+  body.scss & {
+    #{$selector}: $valor-scss;
+  }
+  body.sass & {
+    #{$selector}: $valor-sass;
+  }
+}
+// TODO: mixin con 'map'
+
+@mixin brand-color-map($selector, $values) {
+  @each $class, $value in $values {
+    body.#{$class} {
+      #{$selector}: $value
+    }
+  }
 }

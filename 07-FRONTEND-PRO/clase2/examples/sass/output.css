@@ -6,14 +6,25 @@ html {
   font-size: 14px;
 }
 html div.nav {
-  background-color: #531253;
   color: #2f774d;
+}
+html div.nav body.sass {
+  background-color: #2f774d;
+}
+html div.nav body.scss {
+  background-color: #531253;
+}
+html div.nav body.css {
+  background-color: red;
 }
 html div.nav ul {
   text-align: center;
 }
-html div.nav ul h3 {
-  color: rgb(154.6385542169, 215.3614457831, 179.9397590361);
+body.scss html div.nav ul h3 {
+  color: #2f774d;
+}
+body.sass html div.nav ul h3 {
+  color: #531253;
 }
 html div.nav ul li a {
   font-family: "Arial";
