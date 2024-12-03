@@ -1,0 +1,32 @@
+@use './config';
+@use './mixins';
+
+.color-secondary {
+  color: config.$secondary-color;
+}
+html {
+  font-size: config.$font-size;
+  div.nav {
+    $values: ("sass": config.$primary-color, "scss": config.$secondary-color, "css": red);
+    @include mixins.brand-color-map(background-color, $values);
+    color: config.$primary-color;
+    ul {
+      h3 {
+        @include mixins.brand-color(color, config.$secondary-color, config.$primary-color);
+      }
+      text-align: center;
+      li a {
+        font: {
+          family: 'Arial';
+          weight: 500;
+          size: 15px;
+        }
+        @include mixins.text-primary-bold;
+        &.disabled {
+          @extend .color-secondary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
