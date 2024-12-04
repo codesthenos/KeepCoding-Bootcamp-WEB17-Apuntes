@@ -1,5 +1,5 @@
 // this makes the transpiler understand that this file is a module
-export {}
+// export {}
 
 interface IBook {
   title: string
@@ -125,6 +125,44 @@ const products: Product[] = [
 ]
 console.table(products)
 
+interface Service {
+  customerName: string
+  price: number
+  periodicity: string
+}
+
+const services: Service[] = [
+  {
+    customerName: 'Juan',
+    price: 22,
+    periodicity: 'periodicity 1'
+  },
+  {
+    customerName: 'Pepe',
+    price: 22000,
+    periodicity: 'periodicity 2'
+  },
+  {
+    customerName: 'Antonio',
+    price: 2,
+    periodicity: 'periodicity 3'
+  }
+]
+console.table(services)
+
+function findCheap<T extends { price: number }> (array: T[]): number {
+  let cheapest = array[0].price
+  array.forEach(element => {
+    if (element.price < cheapest) {
+      cheapest = element.price
+    }
+  })
+  return cheapest
+}
+
+const cheapestProduct = findCheap(products)
+const cheapestService = findCheap(services)
+console.log('cheapest PRODUCT: ', cheapestProduct,' | cheapest SERVICE: ', cheapestService)
 /**
  * TODO:
  * Exercise 2
