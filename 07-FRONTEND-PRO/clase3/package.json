@@ -10,7 +10,7 @@
     "sass:example": "sass examples/sass/styles.scss examples/sass/output.css",
     "sass:example:dev": "sass --watch examples/sass/styles.scss examples/sass/output.css",
     "ts:build": "tsc examples/typescript/index.ts --outFile examples/typescript/index.js",
-    "ts:build:dev": "tsc examples/typescript/6.genericos.ts --watch --outFile examples/typescript/6.genericos.js"
+    "ts:build:dev": "tsc examples/typescript/6.genericos.ts --watch --outFile examples/typescript/6.genericos.js --module system --target es2022"
   },
   "keywords": [],
   "author": "",

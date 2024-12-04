@@ -1,3 +1,6 @@
+// this makes the transpiler understand that this file is a module
+export {}
+
 interface IBook {
   title: string
   author: string
@@ -16,18 +19,23 @@ interface IMagazine {
 // 1. Añadir la propiedad location (p.e. Sala 1)
 // 2. Añadir propiedad topic.
 // 3. Mantener el uso de genericos.
-interface ILibrary {
-  items: Array<T>
+interface ILibrary<T> {
   createdAt: Date
   location: string
   topic: string
+  add: (item: T) => void
+  list: () => void
 }
 
-class Library<T> {
+class Library<T> implements ILibrary<T> {
   private items: Array<T> = []
   public createdAt: Date
-  constructor () {
+  public location: string
+  public topic: string
+  constructor (location: string, topic: string) {
     this.createdAt = new Date()
+    this.location = location
+    this.topic = topic
   }
   public add (item: T): void {
     this.items.push(item)
@@ -73,8 +81,8 @@ const magazine2 = {
   barcode: 'barcode2'
 }
 
-const bookLibrary = new Library<IBook>()
-const magazineLibrary = new Library<IMagazine>()
+const bookLibrary = new Library<IBook>('spain', 'history')
+const magazineLibrary = new Library<IMagazine>('eeuu', 'stories')
 
 bookLibrary.add(book1)
 
