@@ -95,3 +95,44 @@ async function get<T> (path: string) {
 }
 
 const books = await get<IBook[]>('/books')
+// ejercicio
+interface Product {
+  name: string
+  price: number
+  description: string
+  category: string
+}
+
+const products: Product[] = [
+  {
+    name: 'shirt',
+    price: 22,
+    description: 'shirt 22 dollar',
+    category: 'clothes'
+  },
+  {
+    name: 'moto',
+    price: 22000,
+    description: 'moto 22000 dollar',
+    category: 'motor'
+  },
+  {
+    name: 'football',
+    price: 26,
+    description: 'football 26 dollar',
+    category: 'sports'
+  }
+]
+console.table(products)
+
+/**
+ * TODO:
+ * Exercise 2
+ * Define una interfaz addicional `Service` con las propiedades
+ * customerName: string
+ * price: number
+ * periodicity: string
+ * 
+ * Define una función `findCheap` que reciba un array de tipo genérico y devuelva el elemento más barato.
+ * Implementa esa función para buscar el elemento más barato de una lista de Products y el más barato de una lista de Services.
+ */
