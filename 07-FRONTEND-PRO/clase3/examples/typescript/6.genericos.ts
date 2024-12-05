@@ -20,15 +20,17 @@ interface IMagazine {
 // 2. Añadir propiedad topic.
 // 3. Mantener el uso de genericos.
 interface ILibrary<T> {
+  items: T[]
   createdAt: Date
   location: string
   topic: string
   add: (item: T) => void
   list: () => void
+  get?: () => T[]
 }
 
 class Library<T> implements ILibrary<T> {
-  private items: Array<T> = []
+  readonly items: Array<T> = []
   public createdAt: Date
   public location: string
   public topic: string
@@ -44,6 +46,24 @@ class Library<T> implements ILibrary<T> {
   public list (): void {
     console.table(this.items)
   }
+}
+
+const bookLibrary1: ILibrary<IBook> = {
+  items: [],
+  createdAt: new Date(),
+  location: 'spain',
+  topic: 'sports',
+  add: (item: IBook) => this.items.push(item),
+  list: () => {}
+}
+
+const magazineLibrary1: ILibrary<IMagazine> = {
+  items: [],
+  createdAt: new Date(),
+  location: 'england',
+  topic: 'motor',
+  add: (item: IMagazine) => this.items.push(item),
+  list: () => {}
 }
 
 const book1: IBook = {
@@ -94,7 +114,7 @@ async function get<T> (path: string) {
       .then(json => json as T))
 }
 
-const books = await get<IBook[]>('/books')
+//const books = await get<IBook[]>('/books')
 // ejercicio
 interface Product {
   name: string
@@ -150,11 +170,11 @@ const services: Service[] = [
 ]
 console.table(services)
 
-function findCheap<T extends { price: number }> (array: T[]): number {
-  let cheapest = array[0].price
+function findCheap<T extends { price: number }> (array: T[]): T {
+  let cheapest = array[0]
   array.forEach(element => {
-    if (element.price < cheapest) {
-      cheapest = element.price
+    if (element.price < cheapest.price) {
+      cheapest = element
     }
   })
   return cheapest
@@ -174,3 +194,52 @@ console.log('cheapest PRODUCT: ', cheapestProduct,' | cheapest SERVICE: ', cheap
  * Define una función `findCheap` que reciba un array de tipo genérico y devuelva el elemento más barato.
  * Implementa esa función para buscar el elemento más barato de una lista de Products y el más barato de una lista de Services.
  */
+
+// API
+
+interface ApiResponse<T> {
+  ts: number
+  statusCode: number
+  data: T
+}
+
+interface User {
+  id: number
+  name: string
+}
+
+const userResponse: ApiResponse<User[]> = {
+  ts: 123456,
+  statusCode: 200,
+  data: [
+    // Array de usuarios...
+  ]
+}
+
+const exampleResponse1: ApiResponse<User[]> = {
+  ts: 123456,
+  statusCode: 200,
+  data: [
+    // Array de productos...
+  ]
+}
+
+const exampleResponse2: ApiResponse<string> = {
+  ts: 123456,
+  statusCode: 200,
+  data: 'string'
+}
+
+// extends:
+interface ApiResponse2 {
+  ts: number
+  statusCode: number
+}
+
+interface UserResponse2 extends ApiResponse2 {
+  data: User[]
+}
+
+interface StringResponse2 extends ApiResponse2 {
+  data: string
+}

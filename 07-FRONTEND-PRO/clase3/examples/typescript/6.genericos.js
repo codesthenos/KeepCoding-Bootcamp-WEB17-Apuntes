@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 // this makes the transpiler understand that this file is a module
 // export {}
+var _this = this;
 var Library = /** @class */ (function () {
     function Library(location, topic) {
         this.items = [];
@@ -51,6 +52,22 @@ var Library = /** @class */ (function () {
     };
     return Library;
 }());
+var bookLibrary1 = {
+    items: [],
+    createdAt: new Date(),
+    location: 'spain',
+    topic: 'sports',
+    add: function (item) { return _this.items.push(item); },
+    list: function () { }
+};
+var magazineLibrary1 = {
+    items: [],
+    createdAt: new Date(),
+    location: 'england',
+    topic: 'motor',
+    add: function (item) { return _this.items.push(item); },
+    list: function () { }
+};
 var book1 = {
     title: 'Libro 1',
     author: 'Author 1',
@@ -94,7 +111,6 @@ function get(path) {
         });
     });
 }
-var books = await get('/books');
 var products = [
     {
         name: 'shirt',
@@ -135,10 +151,10 @@ var services = [
 ];
 console.table(services);
 function findCheap(array) {
-    var cheapest = array[0].price;
+    var cheapest = array[0];
     array.forEach(function (element) {
-        if (element.price < cheapest) {
-            cheapest = element.price;
+        if (element.price < cheapest.price) {
+            cheapest = element;
         }
     });
     return cheapest;
@@ -146,14 +162,22 @@ function findCheap(array) {
 var cheapestProduct = findCheap(products);
 var cheapestService = findCheap(services);
 console.log('cheapest PRODUCT: ', cheapestProduct, ' | cheapest SERVICE: ', cheapestService);
-/**
- * TODO:
- * Exercise 2
- * Define una interfaz addicional `Service` con las propiedades
- * customerName: string
- * price: number
- * periodicity: string
- *
- * Define una función `findCheap` que reciba un array de tipo genérico y devuelva el elemento más barato.
- * Implementa esa función para buscar el elemento más barato de una lista de Products y el más barato de una lista de Services.
- */ 
+var userResponse = {
+    ts: 123456,
+    statusCode: 200,
+    data: [
+    // Array de usuarios...
+    ]
+};
+var exampleResponse1 = {
+    ts: 123456,
+    statusCode: 200,
+    data: [
+    // Array de productos...
+    ]
+};
+var exampleResponse2 = {
+    ts: 123456,
+    statusCode: 200,
+    data: 'string'
+};
