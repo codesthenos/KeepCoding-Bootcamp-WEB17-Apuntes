@@ -2,7 +2,6 @@
   "name": "clase1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "directories": {
     "example": "examples"
   },
@@ -11,14 +10,19 @@
     "sass:example:dev": "sass --watch examples/sass/styles.scss examples/sass/output.css",
     "ts:build": "tsc examples/typescript/index.ts --outFile examples/typescript/index.js",
     "ts:build:dev": "tsc examples/typescript/7.avanzados.ts --watch --outFile examples/typescript/7.avanzados.js",
-    "dev": "parcel parcel-harry-potter/src/index.html"
+    "dev": "parcel parcel-harry-potter/src/index.html",
+    "build": "rimraf dist && parcel build parcel-harry-potter/src/index.html",
+    "server": "http-server dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "http-server": "^14.1.1",
     "parcel": "^2.13.2",
+    "rimraf": "^6.0.1",
     "sass": "^1.81.0",
+    "svgo": "^3.3.2",
     "typescript": "^5.7.2"
   }
 }
