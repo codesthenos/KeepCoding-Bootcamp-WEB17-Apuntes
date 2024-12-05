@@ -1,0 +1,72 @@
+.back-button, .home-button {
+  margin: 5px;
+  border-radius: 2px;
+  padding: 0.2em;
+}
+
+.home-button {
+  background-color: #22bc62;
+}
+
+.color-secondary, div.nav ul li a.disabled {
+  color: #531253;
+}
+
+div.nav {
+  color: #22bc62;
+}
+body.audi div.nav {
+  background-color: #531253;
+}
+body.vw div.nav {
+  background-color: #22bc62;
+}
+body.audi div.nav h3 {
+  color: #22bc62;
+}
+body.vw div.nav h3 {
+  color: #531253;
+}
+body.audi div.nav h3 {
+  color: #22bc62;
+}
+body.skoda div.nav h3 {
+  color: #531253;
+}
+body.seat div.nav h3 {
+  color: #ffffff;
+}
+body.ducati div.nav h3 {
+  color: red;
+}
+div.nav ul {
+  text-align: center;
+}
+div.nav ul li a {
+  font-family: "Arial";
+  font-weight: 500;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: underline;
+  color: #22bc62;
+}
+div.nav ul li a.disabled {
+  text-decoration: none;
+}
+
+/*
+:root {
+    --primary-color: $primary-color;
+}
+
+div {
+    color: var(--primary-color);
+}
+    *
+
+html {
+    font-size: $font-size;
+}
+*/
+
+/*# sourceMappingURL=output.css.map */

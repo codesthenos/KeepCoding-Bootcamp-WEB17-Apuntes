@@ -1,0 +1,237 @@
+:root {
+  --header-font-family: "Poltawski Nowy", serif;
+  --body-font-family: "Public Sans", sans-serif;
+  --nav-height: 62px;
+  --bg-color: #f0f0f0;
+  --bg-color-light: #f8f8f8;
+  --gold-color: #caac00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font-family);
+}
+
+.container {
+  width: 90%;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 1px 4px #92a1b0a6;
+}
+
+.nav-container {
+  height: var(--nav-height);
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.navbar .menu-items {
+  display: flex;
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.navbar .nav-container a {
+  color: var(--gold-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: var(--header-font-family);
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  padding: .7rem;
+  text-decoration: none;
+}
+
+.navbar .nav-container a:hover {
+  font-weight: bolder;
+}
+
+.nav-container {
+  height: calc(var(--nav-height)  - 2px);
+  display: flex;
+  position: relative;
+}
+
+.nav-container .hamburger-wrapper {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.nav-container .checkbox {
+  height: calc(var(--nav-height) / 2);
+  width: calc(var(--nav-height) / 2);
+  opacity: 0;
+  cursor: pointer;
+  z-index: 99999;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav-container .hamburger-lines {
+  height: calc(calc(var(--nav-height) / 2)  - 6px);
+  width: calc(var(--nav-height) / 2);
+  z-index: 9999;
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+}
+
+.nav-container .hamburger-lines .line {
+  background: #0e2431;
+  border-radius: 10px;
+  width: 100%;
+  height: 4px;
+  display: block;
+}
+
+.nav-container .hamburger-lines .line1 {
+  transform-origin: 0 0;
+  transition: transform .4s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line2 {
+  transition: transform .2s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line3 {
+  transform-origin: 0 100%;
+  transition: transform .4s ease-in-out;
+}
+
+.navbar .menu-items {
+  text-align: center;
+  z-index: 999;
+  background-color: #2f465cf2;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-top: 180px;
+  transition: transform .5s ease-in-out;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-150%);
+  box-shadow: inset 0 0 2000px #ffffff80;
+}
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.logo {
+  align-items: center;
+  height: 100%;
+  display: flex;
+}
+
+.logo img {
+  max-height: var(--nav-height);
+  width: auto;
+}
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .logo {
+  display: none;
+}
+
+footer.footer {
+  background-color: var(--bg-color);
+  color: #3d3d3d;
+  font-family: var(--body-font-family);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  font-size: .8rem;
+  display: flex;
+}
+
+footer.footer .social {
+  margin-top: 1rem;
+}
+
+footer.footer a {
+  color: #3d3d3d;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+}
+
+footer.footer a .icon {
+  color: #3d3d3d;
+  fill: #3d3d3d;
+}
+
+section#header {
+  z-index: 1;
+  filter: brightness(.7);
+  background-image: url("header.c3de348f.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  display: flex;
+}
+
+section#header h1 {
+  color: var(--gold-color);
+  font-family: var(--header-font-family);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  font-size: 2rem;
+}
+
+section.inner {
+  padding: 3rem 0;
+}
+
+section.inner h2 {
+  font-family: var(--header-font-family);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  margin-bottom: 2rem;
+}
+
+section.inner p {
+  font-family: var(--body-font-family);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+/*# sourceMappingURL=index.7d7f9414.css.map */
