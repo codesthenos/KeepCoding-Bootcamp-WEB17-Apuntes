@@ -1,0 +1,32 @@
+@use './config' as *;
+@use './mixins';
+
+.color-secondary {
+    color: $secondary-color;
+}
+
+div.nav {
+    //background-color: $secondary-color; // Este color debe cambiar en funcion de una clase global Si body.audi &primary-color si body.vw $secondary-color
+    @include mixins.brand-color(background-color, $secondary-color, $primary-color);
+    color: $primary-color;
+    h3 {
+        // color: $primary-light-color;
+        @include mixins.brand-color(color, $primary-color, $secondary-color);
+        @include mixins.brand-color-map(color, ("audi": #22bc62, "skoda": #531253, "seat": #ffffff, "ducati": red))
+    }
+    ul {
+        text-align: center;
+        li a {
+            font: {
+                family: 'Arial';
+                weight: 500;
+                size: 15px;
+            }
+            @include mixins.text-primary-bold;
+            &.disabled {
+                @extend .color-secondary;
+                text-decoration: none;
+            }
+        }
+    }
+}

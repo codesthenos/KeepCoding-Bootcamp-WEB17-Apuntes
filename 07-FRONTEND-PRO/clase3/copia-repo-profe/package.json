@@ -1,0 +1,22 @@
+{
+  "name": "frontend-pro",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">     <img src=\"https://bootcamp.keepcoding.io/hs-fs/hubfs/logo%20keepcoding%20mail%20temarios@2x-100.jpg?width=300&height=175&name=logo%20keepcoding%20mail%20temarios@2x-100.jpg\" alt=\"KeepCoding Web Bootcamp XV - Frontend PRO\"> </div>",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "sass:example": "sass examples/sass/styles.scss examples/sass/output.css",
+    "sass:example:dev": "sass --watch examples/sass/styles.scss examples/sass/output.css",
+    "ts:build": "tsc examples/typescript/3.objetos.ts --outFile examples/typescript/dist.js",
+    "ts:build:dev": "tsc examples/typescript/7.genericos.ts --watch --outFile examples/typescript/dist.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.81.0",
+    "typescript": "^5.7.2"
+  }
+}

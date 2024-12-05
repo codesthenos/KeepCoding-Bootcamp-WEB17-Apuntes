@@ -1,0 +1,35 @@
+// Los archivos con miembros exportados (funciones, variables o mixins)
+// No se importan globalmente. Se utiliza la sentencia @use donde se vaya a utilizar
+// @import './config';
+// @import './mixins';
+
+// No utlizamos import para archivos parciales.
+// Utilizamos @forward que no sobreescribe el contenido de variables
+@forward './buttons';
+@forward './header';
+
+// ....
+// Otro código
+// ...
+
+// Overrides
+// Sobreescribir variables en cascada
+$primary-color: #A0ACAD;
+
+// Las variables en scss no se transforman a variables en CSS.
+/*
+:root {
+    --primary-color: $primary-color;
+}
+
+div {
+    color: var(--primary-color);
+}
+    *
+
+html {
+    font-size: $font-size;
+}
+*/
+
+

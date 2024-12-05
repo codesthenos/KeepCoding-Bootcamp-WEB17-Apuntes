@@ -1,0 +1,27 @@
+@use './config';
+// Los mixins son porciones de SCSS que podemos utilizar
+@mixin text-primary-bold {
+    font-weight: 800;
+    text-decoration: underline;
+    color: config.$primary-color;
+}
+
+@mixin brand-color($selector, $valor-audi, $valor-vw) {
+    body.audi & {
+        #{$selector}: $valor-audi;
+    }
+    body.vw & {
+        #{$selector}: $valor-vw;
+    }
+}
+
+// TODO: Mixin de brand color con map
+// Podemos reescribir el mixin anterior utilizando un map de N valores?
+// https://sass-lang.com/documentation/values/maps/#do-something-for-every-pair
+@mixin brand-color-map($selector, $brands-values) {
+    @each $brand, $value in $brands-values {
+        body.#{$brand} & {
+            #{$selector}: $value;
+        }
+    }
+}
