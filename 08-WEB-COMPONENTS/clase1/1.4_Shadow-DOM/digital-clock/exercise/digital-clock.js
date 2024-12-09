@@ -3,13 +3,17 @@
   2- Each second, we must calculate the time and update the component HTML
   3- Maybe we should use custom-properties...
 */
+// SHADOW DOM AL COMPONENTE
 class DigitalClock extends HTMLElement {
   constructor () {
     super()
+    // SHADOW DOM
+    this.attachShadow({ mode: 'open' })
   }
   connectedCallback () {
+    
     setInterval(() => {
-      this.innerHTML = this.getTime()
+      this.shadowRoot.innerHTML = this.getTime()
     }, 1000)
   }
   getTime () {
