@@ -8,7 +8,7 @@ const template = document.createElement('template')
 
 template.innerHTML = `
   <style>
-    h2 {
+    h2, h1 {
       color: var(--digital-clock-color, greenyellow);
     }
   </style>
@@ -22,6 +22,11 @@ class DigitalClock extends HTMLElement {
     super()
     // SHADOW DOM AL COMPONENTE
     this.attachShadow({ mode: 'open' })
+
+    const a = this.getAttribute('a')
+    const h1A = document.createElement('h1')
+    h1A.textContent = a
+    this.shadowRoot.appendChild(h1A)
   }
   connectedCallback () {
     const clonedTemplate = template.content.cloneNode(true)
