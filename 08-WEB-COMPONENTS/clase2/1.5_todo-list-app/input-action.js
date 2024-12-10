@@ -23,7 +23,7 @@ templateElement.innerHTML = `
 
 <div class="input-action-wrapper">
   <input type="text" />
-  <button></button>
+  <button disabled></button>
 </div>
 `
 
@@ -33,7 +33,7 @@ class InputAction extends HTMLElement {
 
     this.attachShadow({ mode: "open" })
 
-    this.buttonLabel = this.getAttribute('button-label') ?? 'action'
+    this.buttonLabel = this.getAttribute('button-label') ?? 'ACTION'
     this.placeholder = this.getAttribute('placeholder') ?? 'placeholder text'
   }
 
@@ -41,9 +41,36 @@ class InputAction extends HTMLElement {
     const template = templateElement.content.cloneNode(true)
 
     template.querySelector('button').textContent = this.buttonLabel
+    template.querySelector('input').setAttribute('placeholder', this.placeholder)
 
     this.shadowRoot.appendChild(template)
+
+    const button = this.shadowRoot.querySelector('button')
+    const input = this.shadowRoot.querySelector('input')
+    // add click event to the button in the shadow dom
+    button.addEventListener('click', () => {
+      const inputText = input.value
+      const customEvent = new CustomEvent('input-action-submit', {
+        detail: inputText
+      })
+
+      this.dispatchEvent(customEvent)
+      // clear input value after use it
+      input.value = ''
+      // set disabled
+      button.setAttribute('disabled', '')
+    })
+    // add input event to the input to listen when it changes
+    input.addEventListener('input', (event) => {
+      const value = event.target.value
+      
+      if (!value) {
+        button.setAttribute('disabled', '')
+      } else {
+        button.removeAttribute('disabled')
+      }
+    })
   }
 }
 
-customElements.define("input-action", InputAction)
+window.customElements.define("input-action", InputAction)
