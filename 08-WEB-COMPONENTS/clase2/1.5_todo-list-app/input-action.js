@@ -47,7 +47,7 @@ class InputAction extends HTMLElement {
 
     const button = this.shadowRoot.querySelector('button')
     const input = this.shadowRoot.querySelector('input')
-    // add click event to the button in the shadow dom
+    // add in the button in the shadow dom a click event listener that dispatches a custom event
     button.addEventListener('click', () => {
       const inputText = input.value
       const customEvent = new CustomEvent('input-action-submit', {
@@ -60,7 +60,7 @@ class InputAction extends HTMLElement {
       // set disabled
       button.setAttribute('disabled', '')
     })
-    // add input event to the input to listen when it changes
+    // add input event to the input in the shadow dom to listen when it changes
     input.addEventListener('input', (event) => {
       const value = event.target.value
       
