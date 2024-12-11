@@ -21,6 +21,7 @@ templateElement.innerHTML = `
   <h1></h1>
   <input-action placeholder="New task here" button-label="ADD"></input-action>
 </div>
+<button></button>
 `
 
 class TodoList extends HTMLElement {
@@ -30,6 +31,7 @@ class TodoList extends HTMLElement {
     this.attachShadow({ mode: "open" })
 
     this.title = this.getAttribute('title') ?? 'DEFAULT TITLE'
+    this.buttonLabel = this.getAttribute('button-label') ?? 'ACTION BUTTON'
   }
 
   createTask ({ text, checked, taskId }) {
@@ -93,6 +95,13 @@ class TodoList extends HTMLElement {
     const template = templateElement.content.cloneNode(true)
 
     template.querySelector('h1').textContent = this.title
+
+    const button = template.querySelector('button')
+    button.textContent = this.buttonLabel
+
+    button.addEventListener('click', () => {
+      // delete all checkeds class method
+    })
 
     this.shadowRoot.appendChild(template)
 
