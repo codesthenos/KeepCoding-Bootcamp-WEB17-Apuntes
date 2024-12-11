@@ -13,6 +13,7 @@ template.innerHTML = `
     }
   </style>
   <div class="digital-clock-container">
+    <h1></h1>
     <h2></h2>
   </div>
 `
@@ -23,15 +24,14 @@ class DigitalClock extends HTMLElement {
     // SHADOW DOM AL COMPONENTE
     this.attachShadow({ mode: 'open' })
 
-    const a = this.getAttribute('a')
-    const h1A = document.createElement('h1')
-    h1A.textContent = a
-    this.shadowRoot.appendChild(h1A)
+    this.title = this.getAttribute('title') ?? 'DEFAULT TITLE'
   }
   connectedCallback () {
     const clonedTemplate = template.content.cloneNode(true)
 
     this.shadowRoot.appendChild(clonedTemplate)
+
+    this.shadowRoot.querySelector('h1').textContent = this.title
     
     setInterval(() => {
       this.shadowRoot.querySelector('h2').textContent = this.getTime()
