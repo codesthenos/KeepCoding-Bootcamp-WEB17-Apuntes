@@ -36,6 +36,11 @@ class TodoList extends HTMLElement {
     const newTask = document.createElement('div')
     newTask.innerHTML = `<action-item id="${taskId}" text="${text}" ${checked ? 'checked' : ''}></action-item>`
 
+    newTask.querySelector('action-item').addEventListener('action-item-remove', () => {
+
+      this.deleteTask({ id: taskId })
+    })
+
     return newTask
   }
 
@@ -82,22 +87,7 @@ class TodoList extends HTMLElement {
       // persistency
       this.storeTask({ text: event.detail, checked: false, taskId })
 
-      const newActionItem = newActionItemDiv.querySelector('action-item')
-      // add remove listener to a created action item
-      newActionItem.addEventListener('action-item-remove', () => {
-        const taskId = newActionItem.getAttribute('id')
-
-        this.deleteTask({ id: taskId })
-      })
       todoWrapper.appendChild(newActionItemDiv)
-    })
-    // add again for the ones are already in the screen
-    actionItems.forEach(actionItem => {
-      actionItem.addEventListener('action-item-remove', () => {
-        const taskId = actionItem.getAttribute('id')
-
-        this.deleteTask({ id: taskId })
-      })
     })
   }
 }
