@@ -1,3 +1,14 @@
+/*
+responsabilidad: reaccionar a cuando se quiere
+	crear un nuevo item y crearlo.
+	Borrar elementos y gestionar todo's completados
+custom properties
+	- XX
+eventos
+	- X
+propiedades
+	- title 
+*/
 const templateElement = document.createElement("template")
 
 templateElement.innerHTML = `
@@ -6,12 +17,12 @@ templateElement.innerHTML = `
 
 </style>
 
-<div class="keepcoding-component-wrapper">
-  <span>keepcoding component boilerplate</span>
+<div class="todo-list-wrapper">
+  
 </div>
 `
 
-class KeepcodingComponent extends HTMLElement {
+class TodoList extends HTMLElement {
   constructor () {
     super()
 
@@ -24,4 +35,4 @@ class KeepcodingComponent extends HTMLElement {
   }
 }
 
-window.customElements.define("keepcoding-component", KeepcodingComponent)
+customElements.define("todo-list", TodoList)

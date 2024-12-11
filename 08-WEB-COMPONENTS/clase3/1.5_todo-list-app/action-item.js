@@ -1,3 +1,18 @@
+/*
+responsabilidad: pintar un texto a modo de tarea pendiente.
+	Borrarlo si se pulsa el botón de borrar.
+	Modificar la apariencia cuando esté completada
+
+custom properties
+	- XXX
+
+eventos
+	- action-item-remove
+	- action-item-complete
+	
+propiedades
+	- text
+*/
 const templateElement = document.createElement("template")
 
 templateElement.innerHTML = `

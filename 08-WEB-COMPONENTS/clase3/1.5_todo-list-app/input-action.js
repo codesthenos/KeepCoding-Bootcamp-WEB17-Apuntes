@@ -1,17 +1,17 @@
 /*
 responsabilidad: recoger un texto. Mantener el botón
-    deshabilitado mientras no haya nada escrito.
-    Limpiar el contenido del input cuando el botón se pulse.
+  deshabilitado mientras no haya nada escrito.
+  Limpiar el contenido del input cuando el botón se pulse.
 
 custom properties
-    - XXX
+  - XXX
 
 eventos
-    - input-action-submit: al pulsar el botón
+  - input-action-submit: al pulsar el botón
 
 propiedades
-    - button-label
-    - placeholder
+  - button-label
+  - placeholder
 */
 const templateElement = document.createElement("template")
 
