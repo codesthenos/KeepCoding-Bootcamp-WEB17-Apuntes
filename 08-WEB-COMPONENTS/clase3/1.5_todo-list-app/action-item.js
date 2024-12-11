@@ -12,6 +12,7 @@ eventos
 	
 propiedades
 	- text
+  - checked
 */
 const templateElement = document.createElement("template")
 
