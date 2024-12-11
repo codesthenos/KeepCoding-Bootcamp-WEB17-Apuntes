@@ -20,8 +20,6 @@ templateElement.innerHTML = `
 <div class="todo-list-wrapper">
   <h1></h1>
   <input-action placeholder="New task here" button-label="ADD"></input-action>
-  <action-item text="first task default" checked></action-item>
-  <action-item text="second task default"></action-item>
 </div>
 `
 
@@ -43,15 +41,16 @@ class TodoList extends HTMLElement {
 
   storeTask ({ text, checked }) {
     const currentTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
-
-    localStorage.setItem('TODOS', JSON.stringify([...currentTasks, { text, checked }]))
+    const newTask = { text, checked }
+    
+    localStorage.setItem('TODOS', JSON.stringify([...currentTasks, newTask]))
   }
 
   showStoredTasks ({ container }) {
     const storedTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
 
     storedTasks.forEach(task => {
-      const taskDiv = this.createTask({ text: task.text, checked: task.checked})
+      const taskDiv = this.createTask({ text: task.text, checked: task.checked })
       container.appendChild(taskDiv)
     })
   }
