@@ -32,17 +32,17 @@ class TodoList extends HTMLElement {
     this.title = this.getAttribute('title') ?? 'DEFAULT TITLE'
   }
 
-  createTask ({ text, checked }) {
+  createTask ({ text, checked, taskId }) {
     const newTask = document.createElement('div')
-    newTask.innerHTML = `<action-item text="${text}" ${checked ? 'checked' : ''}></action-item>`
+    newTask.innerHTML = `<action-item id="${taskId}" text="${text}" ${checked ? 'checked' : ''}></action-item>`
 
     return newTask
   }
 
-  storeTask ({ text, checked }) {
+  storeTask ({ text, checked, taskId }) {
     const currentTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
-    const newTask = { text, checked }
-    
+    const newTask = { text, checked, id: taskId }
+
     localStorage.setItem('TODOS', JSON.stringify([...currentTasks, newTask]))
   }
 
@@ -50,9 +50,16 @@ class TodoList extends HTMLElement {
     const storedTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
 
     storedTasks.forEach(task => {
-      const taskDiv = this.createTask({ text: task.text, checked: task.checked })
+      const taskDiv = this.createTask({ text: task.text, checked: task.checked, taskId: task.id })
       container.appendChild(taskDiv)
     })
+  }
+
+  deleteTask ({ id }) {
+    const currentTasks = JSON.parse(localStorage.getItem('TODOS'))
+    const tasksWithoutDeleted = currentTasks.filter(currentTask => currentTask.id !== id)
+    
+    localStorage.setItem('TODOS', JSON.stringify(tasksWithoutDeleted))
   }
 
   connectedCallback () {
@@ -64,14 +71,33 @@ class TodoList extends HTMLElement {
 
     const inputAction = this.shadowRoot.querySelector('input-action')
     const todoWrapper = this.shadowRoot.querySelector('.todo-list-wrapper')
-
+    
     this.showStoredTasks({ container: todoWrapper })
-
+    
+    const actionItems = Array.from(todoWrapper.querySelectorAll('action-item'))
+    
     inputAction.addEventListener('input-action-submit', (event) => {
-      const newActionItemDiv = this.createTask({ text: event.detail })
+      const taskId = crypto.randomUUID()
+      const newActionItemDiv = this.createTask({ text: event.detail, taskId })
       // persistency
-      this.storeTask({ text: event.detail, checked: false })
+      this.storeTask({ text: event.detail, checked: false, taskId })
+
+      const newActionItem = newActionItemDiv.querySelector('action-item')
+      // add remove listener to a created action item
+      newActionItem.addEventListener('action-item-remove', () => {
+        const taskId = newActionItem.getAttribute('id')
+
+        this.deleteTask({ id: taskId })
+      })
       todoWrapper.appendChild(newActionItemDiv)
+    })
+    // add again for the ones are already in the screen
+    actionItems.forEach(actionItem => {
+      actionItem.addEventListener('action-item-remove', () => {
+        const taskId = actionItem.getAttribute('id')
+
+        this.deleteTask({ id: taskId })
+      })
     })
   }
 }
