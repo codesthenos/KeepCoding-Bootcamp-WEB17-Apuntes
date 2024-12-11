@@ -36,9 +36,14 @@ class TodoList extends HTMLElement {
     const newTask = document.createElement('div')
     newTask.innerHTML = `<action-item id="${taskId}" text="${text}" ${checked ? 'checked' : ''}></action-item>`
 
-    newTask.querySelector('action-item').addEventListener('action-item-remove', () => {
+    const actionItem = newTask.querySelector('action-item')
 
+    actionItem.addEventListener('action-item-remove', () => {
       this.deleteTask({ id: taskId })
+    })
+
+    actionItem.addEventListener('action-item-status-change', (event) => {
+      this.toggleTask({ id: taskId, checked: event.detail })
     })
 
     return newTask
@@ -67,6 +72,23 @@ class TodoList extends HTMLElement {
     localStorage.setItem('TODOS', JSON.stringify(tasksWithoutDeleted))
   }
 
+  toggleTask ({ id, checked }) {
+    const currentTasks = JSON.parse(localStorage.getItem('TODOS'))
+
+    const finalTasks = currentTasks.map(currentTask => {
+      if (currentTask.id !== id) {
+        return currentTask
+      } else {
+        return {
+          ...currentTask,
+          checked
+        }
+      }
+    })
+
+    localStorage.setItem('TODOS', JSON.stringify(finalTasks))
+  }
+
   connectedCallback () {
     const template = templateElement.content.cloneNode(true)
 
@@ -76,15 +98,13 @@ class TodoList extends HTMLElement {
 
     const inputAction = this.shadowRoot.querySelector('input-action')
     const todoWrapper = this.shadowRoot.querySelector('.todo-list-wrapper')
-    
+
     this.showStoredTasks({ container: todoWrapper })
-    
-    const actionItems = Array.from(todoWrapper.querySelectorAll('action-item'))
     
     inputAction.addEventListener('input-action-submit', (event) => {
       const taskId = crypto.randomUUID()
       const newActionItemDiv = this.createTask({ text: event.detail, taskId })
-      // persistency
+
       this.storeTask({ text: event.detail, checked: false, taskId })
 
       todoWrapper.appendChild(newActionItemDiv)
