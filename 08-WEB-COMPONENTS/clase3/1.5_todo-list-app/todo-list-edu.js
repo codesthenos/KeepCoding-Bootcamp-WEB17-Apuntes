@@ -30,26 +30,40 @@ class TodoList extends HTMLElement {
 
     this.shadowRoot.appendChild(template)
 
-    const currentTodos = JSON.parse(localStorage.getItem('TODOS')) ?? []
+    const currentTodos = this.getCurrentTodos()
 
     currentTodos.forEach(todo => {
-      const actionItem = document.createElement('action-item')
-      this.shadowRoot.appendChild(actionItem)
-      actionItem.setAttribute('text', todo.text)
+      this.drawActionItem(todo.text)
     })
 
     this.shadowRoot.querySelector('input-action').addEventListener('input-action-submit', (event) => {
       const text = event.detail
-      const actionItem = document.createElement('action-item')
+      const id = Date.now().toString()
       
-      this.shadowRoot.appendChild(actionItem)
+      this.drawActionItem(text, id)
 
-      actionItem.setAttribute('text', text)
+      const currentTodos = this.getCurrentTodos()
 
-      const currentTodos = JSON.parse(localStorage.getItem('TODOS')) ?? []
-
-      localStorage.setItem('TODOS', JSON.stringify([...currentTodos, { text }]))
+      localStorage.setItem('TODOS', JSON.stringify([...currentTodos, { text, isCompleted: false, id }]))
     })
+  }
+
+  drawActionItem (text, id) {
+    const actionItem = document.createElement('action-item')
+    this.shadowRoot.appendChild(actionItem)
+    actionItem.setAttribute('text', text)
+    actionItem.setAttribute('id', id)
+    actionItem.addEventListener('action-item-status-change', (event) => {
+      const currentTodos = this.getCurrentTodos()
+      currentTodos.forEach(todo => {
+        
+      })
+    })
+  }
+
+  getCurrentTodos () {
+    const currentTodos = JSON.parse(localStorage.getItem('TODOS')) ?? []
+    return currentTodos
   }
 }
 

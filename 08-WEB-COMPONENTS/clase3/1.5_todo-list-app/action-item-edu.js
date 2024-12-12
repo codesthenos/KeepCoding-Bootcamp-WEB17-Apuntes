@@ -40,6 +40,8 @@ class ActionItem extends HTMLElement {
     this.text = this.getAttribute('text') ?? ''
     // checked
     this.checked = this.hasAttribute('checked')
+
+    this.id = this.getAttribute('id') ?? null
   }
 
   connectedCallback() {
@@ -65,7 +67,10 @@ class ActionItem extends HTMLElement {
 
     checkbox.addEventListener('change', () => {
       const customEvent = new CustomEvent('action-item-status-change', {
-        detail: checkbox.checked
+        detail: {
+          isCompleted: checkbox.checked,
+          id: this.id
+        }
       })
 
       this.dispatchEvent(customEvent)
@@ -73,12 +78,14 @@ class ActionItem extends HTMLElement {
   }
 
   static get observedAttributes () {
-    return ["text"]
+    return ['text', 'id']
   }
 
   attributeChangedCallback (propName, oldValue, newValue) {
     if (propName === 'text') {
       this.shadowRoot.querySelector('span').textContent = newValue
+    } else if (propName === 'id') {
+      this.id = newValue
     }
   }
 }
