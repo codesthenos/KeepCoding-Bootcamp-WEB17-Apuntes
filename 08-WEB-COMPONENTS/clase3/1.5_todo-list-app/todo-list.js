@@ -9,6 +9,9 @@ eventos
 propiedades
 	- title 
 */
+import "./action-item.js"
+import "./input-action.js"
+
 const templateElement = document.createElement("template")
 
 templateElement.innerHTML = `
