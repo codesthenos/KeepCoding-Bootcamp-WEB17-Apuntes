@@ -35,8 +35,12 @@ class TodoList extends HTMLElement {
       const actionItem = document.createElement('action-item')
       
       this.shadowRoot.appendChild(actionItem)
-      
+
       actionItem.setAttribute('text', text)
+
+      const currentTodos = JSON.parse(localStorage.getItem('TODOS')) ?? []
+
+      localStorage.setItem('TODOS', JSON.stringify([...currentTodos, { text }]))
     })
   }
 }
