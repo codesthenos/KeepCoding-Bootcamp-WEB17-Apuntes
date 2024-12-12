@@ -32,6 +32,8 @@ class TodoList extends HTMLElement {
 
     this.title = this.getAttribute('title') ?? 'DEFAULT TITLE'
     this.buttonLabel = this.getAttribute('button-label') ?? 'ACTION BUTTON'
+
+    this.storedTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
   }
 
   createTask ({ text, checked, taskId }) {
@@ -52,43 +54,43 @@ class TodoList extends HTMLElement {
   }
 
   storeTask ({ text, checked, taskId }) {
-    const currentTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
     const newTask = { text, checked, id: taskId }
+    this.storedTasks = [...this.storedTasks, newTask]
 
-    localStorage.setItem('TODOS', JSON.stringify([...currentTasks, newTask]))
+    localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
   }
 
-  showStoredTasks ({ container }) {
-    const storedTasks = JSON.parse(localStorage.getItem('TODOS')) ?? []
-
-    storedTasks.forEach(task => {
+  showStoredTasks ({ container, tasks }) {
+    tasks.forEach(task => {
       const taskDiv = this.createTask({ text: task.text, checked: task.checked, taskId: task.id })
+
       container.appendChild(taskDiv)
     })
   }
 
   deleteTask ({ id }) {
-    const currentTasks = JSON.parse(localStorage.getItem('TODOS'))
-    const tasksWithoutDeleted = currentTasks.filter(currentTask => currentTask.id !== id)
-    
-    localStorage.setItem('TODOS', JSON.stringify(tasksWithoutDeleted))
+    this.storedTasks = this.storedTasks.filter(task => task.id !== id)
+
+    localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
   }
 
   toggleTask ({ id, checked }) {
-    const currentTasks = JSON.parse(localStorage.getItem('TODOS'))
-
-    const finalTasks = currentTasks.map(currentTask => {
-      if (currentTask.id !== id) {
-        return currentTask
+    this.storedTasks = this.storedTasks.map(task => {
+      if (task.id !== id) {
+        return task
       } else {
         return {
-          ...currentTask,
+          ...task,
           checked
         }
       }
     })
+    
+    localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
+  }
 
-    localStorage.setItem('TODOS', JSON.stringify(finalTasks))
+  deleteAllChecked () {
+
   }
 
   connectedCallback () {
@@ -101,6 +103,7 @@ class TodoList extends HTMLElement {
 
     button.addEventListener('click', () => {
       // delete all checkeds class method
+      this.deleteAllChecked()
     })
 
     this.shadowRoot.appendChild(template)
@@ -108,7 +111,7 @@ class TodoList extends HTMLElement {
     const inputAction = this.shadowRoot.querySelector('input-action')
     const todoWrapper = this.shadowRoot.querySelector('.todo-list-wrapper')
 
-    this.showStoredTasks({ container: todoWrapper })
+    this.showStoredTasks({ container: todoWrapper, tasks: this.storedTasks })
     
     inputAction.addEventListener('input-action-submit', (event) => {
       const taskId = crypto.randomUUID()
