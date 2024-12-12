@@ -100,12 +100,8 @@ class TodoList extends HTMLElement {
 
     localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
     // delete them from the current dom without refresh
-    const actionItems = Array.from(this.shadowRoot.querySelectorAll('action-item'))
-    actionItems.forEach(actionItem => {
-      if (actionItem.hasAttribute('checked')) {
-        actionItem.parentElement.remove()
-      }
-    })
+    const actionItems = Array.from(this.shadowRoot.querySelectorAll('action-item[checked]'))
+    actionItems.forEach(actionItem => actionItem.parentElement.remove())
   }
 
   connectedCallback () {
