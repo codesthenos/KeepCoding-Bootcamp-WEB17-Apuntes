@@ -85,12 +85,27 @@ class TodoList extends HTMLElement {
         }
       }
     })
-    
+
     localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
+
+    if (checked) {
+      this.shadowRoot.querySelector(`#${id}`).setAttribute('checked', '')
+    } else {
+      this.shadowRoot.querySelector(`#${id}`).removeAttribute('checked')
+    }
   }
 
   deleteAllChecked () {
+    this.storedTasks = this.storedTasks.filter(task => !task.checked)
 
+    localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
+    // delete them from the current dom without refresh
+    const actionItems = Array.from(this.shadowRoot.querySelectorAll('action-item'))
+    actionItems.forEach(actionItem => {
+      if (actionItem.hasAttribute('checked')) {
+        actionItem.parentElement.remove()
+      }
+    })
   }
 
   connectedCallback () {
@@ -102,7 +117,6 @@ class TodoList extends HTMLElement {
     button.textContent = this.buttonLabel
 
     button.addEventListener('click', () => {
-      // delete all checkeds class method
       this.deleteAllChecked()
     })
 
@@ -114,10 +128,10 @@ class TodoList extends HTMLElement {
     this.showStoredTasks({ container: todoWrapper, tasks: this.storedTasks })
     
     inputAction.addEventListener('input-action-submit', (event) => {
-      const taskId = crypto.randomUUID()
+      const taskId = `ID-${crypto.randomUUID()}`
       const newActionItemDiv = this.createTask({ text: event.detail, taskId })
 
-      this.storeTask({ text: event.detail, checked: false, taskId })
+      this.storeTask({ text: event.detail, checked: false, taskId: taskId })
 
       todoWrapper.appendChild(newActionItemDiv)
     })
