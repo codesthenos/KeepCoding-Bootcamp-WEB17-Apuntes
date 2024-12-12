@@ -30,6 +30,14 @@ class TodoList extends HTMLElement {
 
     this.shadowRoot.appendChild(template)
 
+    const currentTodos = JSON.parse(localStorage.getItem('TODOS')) ?? []
+
+    currentTodos.forEach(todo => {
+      const actionItem = document.createElement('action-item')
+      this.shadowRoot.appendChild(actionItem)
+      actionItem.setAttribute('text', todo.text)
+    })
+
     this.shadowRoot.querySelector('input-action').addEventListener('input-action-submit', (event) => {
       const text = event.detail
       const actionItem = document.createElement('action-item')
