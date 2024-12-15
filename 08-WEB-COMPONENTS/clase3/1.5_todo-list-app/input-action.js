@@ -70,6 +70,21 @@ class InputAction extends HTMLElement {
         button.removeAttribute('disabled')
       }
     })
+    // add to 'Enter' key the same functionality as the ADD button
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const inputText = input.value
+        const customEvent = new CustomEvent('input-action-submit', {
+          detail: inputText
+        })
+  
+        this.dispatchEvent(customEvent)
+        // clear input value after use it
+        input.value = ''
+        // set disabled
+        button.setAttribute('disabled', '')
+      }
+    })
   }
 }
 
