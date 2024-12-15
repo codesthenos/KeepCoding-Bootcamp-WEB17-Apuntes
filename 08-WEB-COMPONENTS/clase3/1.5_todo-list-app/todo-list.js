@@ -53,6 +53,10 @@ class TodoList extends HTMLElement {
       this.toggleTask({ id: taskId, checked: event.detail })
     })
 
+    actionItem.addEventListener('action-item-edit', (event) => {
+      this.updateTask({ id: taskId, newText: event.detail })
+    })
+
     return newTask
   }
 
@@ -105,6 +109,30 @@ class TodoList extends HTMLElement {
     // delete them from the current dom without refresh
     const actionItems = Array.from(this.shadowRoot.querySelectorAll('action-item[checked]'))
     actionItems.forEach(actionItem => actionItem.parentElement.remove())
+  }
+
+  updateTask ({ id, newText }) {
+    this.storedTasks = this.storedTasks.map(task => {
+      if (task.id !== id) {
+        return task
+      } else {
+        return {
+          ...task,
+          text: newText
+        }
+      }
+    })
+
+    localStorage.setItem('TODOS', JSON.stringify(this.storedTasks))
+
+    const actionItem = this.shadowRoot.querySelector(`#${id}`)
+    actionItem.setAttribute('text', newText)
+
+    const editInput = actionItem.shadowRoot.querySelector('.edit-input')
+    editInput.classList.add('visually-hidden')
+    editInput.setAttribute('disabled', '')
+
+    actionItem.shadowRoot.querySelector('span').textContent = newText
   }
 
   connectedCallback () {

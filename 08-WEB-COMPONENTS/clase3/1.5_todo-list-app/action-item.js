@@ -18,14 +18,23 @@ const templateElement = document.createElement("template")
 
 templateElement.innerHTML = `
 <style>
-  input:checked + span {
+  input:checked ~ span {
     text-decoration: line-through;
+  }
+  .action-item-wrapper {
+    cursor: pointer;
+  }
+  .visually-hidden {
+    opacity: 0;
+    position: absolute;
+    z-index: -5;
   }
 
 </style>
 
 <div class="action-item-wrapper">
   <input type="checkbox" />
+  <input class="visually-hidden edit-input" disabled />
   <span></span>
   <button>🚮</button>
 </div>
@@ -45,7 +54,35 @@ class ActionItem extends HTMLElement {
   connectedCallback() {
     const template = templateElement.content.cloneNode(true)
 
-    template.querySelector('span').textContent = this.text
+    const span = template.querySelector('span')
+
+    span.textContent = this.text
+
+    const editInput = template.querySelector('.edit-input')
+
+    span.addEventListener('click', () => {
+      if (editInput.hasAttribute('disabled')) {
+        editInput.classList.remove('visually-hidden')
+        editInput.removeAttribute('disabled')
+        editInput.setAttribute('value', this.text)
+        span.textContent = '❌'
+      } else {
+        editInput.classList.add('visually-hidden')
+        editInput.setAttribute('disabled', '')
+        span.textContent = this.text
+      }
+    })
+
+    editInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const customEvent = new CustomEvent('action-item-edit', {
+          detail: event.target.value
+        })
+
+        this.dispatchEvent(customEvent)
+      }
+    })
+
     if (this.checked) {
       template.querySelector('input').setAttribute('checked', '')
     }
