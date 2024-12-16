@@ -1,3 +1,4 @@
+import 'dotenv/config' // Node > v22 --> node --env-file
 import http from 'node:http'
 import debugLib from 'debug'
 import app from './app.js'
