@@ -8,6 +8,12 @@
 npm install
 ```
 
+On first deploy rename the .env.example to .env and edit the environment variables
+
+```sh
+cp .env.example .env
+```
+
 On first deploy you can run next command to empty the database and create initial data:
 
 ```js
