@@ -7,13 +7,25 @@ export async function index(req, res, next) {
 
   const now = new Date()
   const userId = req.session.userId
+  const filterAge = req.query.age
+  const filterName = req.query.name
+  const limit = req.query.limit
+  const skip = req.query.skip
+  const sort = req.query.sort
 
   res.locals.nombre = '<script>alert("inyeccion de codigo")</script>'
   res.locals.esPar = (now.getSeconds() % 2) === 0
   res.locals.segundoActual = now.getSeconds()
 
   if (userId) {
-    res.locals.agents = await Agent.find({ owner: userId })
+    const filter = { owner: userId }
+    if (filterAge) {
+      filter.age = filterAge
+    }
+    if (filterName) {
+      filter.name = filterName
+    }
+    res.locals.agents = await Agent.list(filter, limit, skip, sort)
   }
 
   res.render('home')
