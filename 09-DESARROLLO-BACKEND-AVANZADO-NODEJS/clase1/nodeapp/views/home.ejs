@@ -24,6 +24,7 @@
     <h2>Bucles</h2>
     <% agents.forEach(agent => { %>
       <p><%= agent.name %> tiene <%= agent.age %> años.  <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a></p>
+      <img src="avatars/<%= agent.avatar %>" alt="" style="max-width: 200px;" />
     <% }) %>
   <% } %>
 

@@ -16,7 +16,8 @@ export async function postNew(req, res, next) {
     const agent = new Agent({
       name,
       age,
-      owner: userId
+      owner: userId,
+      avatar: req.file.filename
     })
 
     // la guardo en base de datos
