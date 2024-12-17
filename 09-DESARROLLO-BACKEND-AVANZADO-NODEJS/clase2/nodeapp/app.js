@@ -93,12 +93,18 @@ app.use((err, req, res, next) => {
 
   res.status(err.status || 500)
 
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
-
-  // render error view
-  res.render('error')
+  // if error thrown from API route, respond a json
+  if (req.url.startsWith('/api')) {
+    res.json({ error: err.message })
+  } else {
+    // set locals, only providing error in development
+    res.locals.message = err.message
+    res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
+  
+    // render error view if error is not from API route
+    res.render('error')
+  }
 })
+
 
 export default app
