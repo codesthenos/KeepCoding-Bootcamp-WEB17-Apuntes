@@ -1,6 +1,7 @@
 import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
+import cookieParser from 'cookie-parser'
 import connectMongoose from './lib/connectMongoose.js'
 import * as sessionManager from './lib/sessionManager.js'
 import * as homeController from './controllers/homeController.js'
@@ -8,6 +9,7 @@ import * as loginController from './controllers/loginController.js'
 import * as agentsController from './controllers/agentsController.js'
 import upload from './lib/uploadConfigure.js'
 import i18n from './lib/i18nConfigure.js'
+import * as langController from './controllers/langController.js'
 
 await connectMongoose() // top level await
 console.log('Conectado a MongoDB.')
@@ -23,6 +25,7 @@ app.use(logger('dev'))
 app.use(express.json()) // parsear el body que venga en formato JSON
 app.use(express.urlencoded({ extended: false })) // parsear el body que venga urlencoded (formularios)
 app.use(express.static('public'))
+app.use(cookieParser())
 
 /**
  * Website routes
@@ -31,6 +34,13 @@ app.use(express.static('public'))
 app.use(sessionManager.middleware, sessionManager.useSessionInViews)
 // internacionalizacion mete en las vistas funciones que peudo usar como __
 app.use(i18n.init)
+// creo middleware para poder usar i18n con $ igual que hacia con __ por probar cosas
+app.use((req, res, next) => {
+  res.locals.$ = i18n.__
+  res.$ = i18n.__
+  next()
+})
+app.get('/change-locale/:locale', langController.changeLocale)
 
 // public pages
 app.get('/', homeController.index)

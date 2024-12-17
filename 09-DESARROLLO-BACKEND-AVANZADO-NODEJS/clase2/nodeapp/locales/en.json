@@ -8,5 +8,9 @@
   "Mouse": {
     "one": "Mouse",
     "other": "Mice"
-  }
+  },
+  "New Agent": "New Agent",
+  "Name": "Name",
+  "Age": "Age",
+  "Submit": "Create"
 }

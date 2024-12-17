@@ -7,7 +7,8 @@ const i18n = new I18n({
   directory: path.join(__dirname, '..', 'locales'),
   defaultLocale: 'en',
   autoReload: true, // watch for changes in JSON files to reload changes - defaults to false
-  syncFiles: true // sync all info across all files - defaults to false
+  syncFiles: true, // sync all info across all files - defaults to false
+  cookie: 'nodeapp-locale', // cookie a la que tiene que hacer caso i18n para elegir idioma
 })
 
 export default i18n
