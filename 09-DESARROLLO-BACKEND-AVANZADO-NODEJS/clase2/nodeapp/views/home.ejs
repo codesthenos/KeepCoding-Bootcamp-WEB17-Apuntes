@@ -23,11 +23,15 @@
   <% if (session.userId) { %>
     <h2>Bucles</h2>
     <% agents.forEach(agent => { %>
-      <p><%= agent.name %> tiene <%= agent.age %> años.  <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a></p>
+      <p><%= __('{{name}} is {{age}} years old.', agent) %> <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a></p>
       <img src="<%= agent.avatar ? `/avatars/${agent.avatar}` : '/avatars/placeholder.jpg' %>" alt="" style="max-width: 200px;" />
     <% }) %>
   <% } %>
-
+  
+  <h2><%= __('Pluralization example') %></h2>
+  <p>0 <%= __n('Mouse', 0) %></p>
+  <p>1 <%= __n('Mouse', 1) %></p>
+  <p>8 <%= __n('Mouse', 8) %></p>
 
 </div>
 

@@ -13,7 +13,7 @@ export async function index(req, res, next) {
   const skip = req.query.skip
   const sort = req.query.sort
 
-  res.locals.nombre = '<script>alert("inyeccion de codigo")</script>'
+  res.locals.nombre = `<script>alert("${res.__('code injection')}")</script>`
   res.locals.esPar = (now.getSeconds() % 2) === 0
   res.locals.segundoActual = now.getSeconds()
 

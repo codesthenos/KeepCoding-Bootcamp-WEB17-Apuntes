@@ -1,5 +1,12 @@
 {
   "Conditionals": "Condicionales",
   "Current second is even.": "El segundo actual es par.",
-  "Current second is odd.": "El segundo actual es impar."
+  "Current second is odd.": "El segundo actual es impar.",
+  "{{name}} is {{age}} years old.": "{{name}} tiene {{age}} años.",
+  "code injection": "inyeccion de codigo",
+  "Pluralization example": "Pluralization example",
+  "Mouse": {
+    "one": "Ratón",
+    "other": "Ratones"
+  }
 }
