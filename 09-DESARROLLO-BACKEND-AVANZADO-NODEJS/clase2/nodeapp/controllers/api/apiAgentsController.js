@@ -25,3 +25,31 @@ export async function apiAgentList (req, res, next) {
     next(error)
   }
 }
+
+export async function apiAgentGetOne (req, res, next) {
+  try {
+    const agentId = req.params.agentId
+
+    const agent = await Agent.findById(agentId)
+
+    res.json(agent)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export async function apiAgentNew (req, res, next) {
+  try {
+    const agentData = req.body
+
+    const agent = new Agent(agentData)
+    // puedo hacer esto gracias al middleware upload.single que uso en app.js
+    agent.avatar = req.file?.filename
+
+    const savedAgent = await agent.save()
+
+    res.status(201).json({ result: savedAgent })
+  } catch (error) {
+    next(error)
+  }
+}

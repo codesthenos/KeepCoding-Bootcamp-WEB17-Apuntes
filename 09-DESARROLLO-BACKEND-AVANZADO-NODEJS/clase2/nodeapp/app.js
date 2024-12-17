@@ -33,6 +33,8 @@ app.use(cookieParser())
  */
 
 app.get('/api/agents', apiAgentsController.apiAgentList)
+app.get('/api/agents/:agentId', apiAgentsController.apiAgentGetOne)
+app.post('/api/agents', upload.single('avatar'), apiAgentsController.apiAgentNew)
 
 /**
  * Website routes
@@ -105,6 +107,5 @@ app.use((err, req, res, next) => {
     res.render('error')
   }
 })
-
 
 export default app
