@@ -21,10 +21,10 @@
 
   <% // contenido para usuarios logados %>
   <% if (session.userId) { %>
-    <h2>Bucles</h2>
+    <h2><%= __('Loops') %></h2>
     <% agents.forEach(agent => { %>
       <p><%= __('{{name}} is {{age}} years old.', agent) %> <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a></p>
-      <img src="<%= agent.avatar ? `/avatars/${agent.avatar}` : '/avatars/placeholder.jpg' %>" alt="" style="max-width: 200px;" />
+      <img src="<%= agent.avatar ? `/avatars/${agent.avatar}` : '/avatars/placeholder.jpg' %>" alt="" />
     <% }) %>
   <% } %>
   
