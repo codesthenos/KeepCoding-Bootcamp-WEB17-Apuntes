@@ -10,6 +10,7 @@ import * as agentsController from './controllers/agentsController.js'
 import upload from './lib/uploadConfigure.js'
 import i18n from './lib/i18nConfigure.js'
 import * as langController from './controllers/langController.js'
+import * as apiAgentsController from './controllers/api/apiAgentsController.js'
 
 await connectMongoose() // top level await
 console.log('Conectado a MongoDB.')
@@ -26,6 +27,12 @@ app.use(express.json()) // parsear el body que venga en formato JSON
 app.use(express.urlencoded({ extended: false })) // parsear el body que venga urlencoded (formularios)
 app.use(express.static('public'))
 app.use(cookieParser())
+
+/**
+ * API routes
+ */
+
+app.get('/api/agents', apiAgentsController.apiAgentList)
 
 /**
  * Website routes
