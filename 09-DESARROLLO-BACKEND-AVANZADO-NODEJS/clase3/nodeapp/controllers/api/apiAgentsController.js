@@ -17,8 +17,10 @@ export async function apiAgentList (req, res, next) {
       filter.name = filterName
     }
 
-    const agents = await Agent.list(filter, limit, skip, sort, fields)
-    const totalAgents = await Agent.countDocuments(filter)
+    const [agents, totalAgents] = await Promise.all([
+      Agent.list(filter, limit, skip, sort, fields),
+      Agent.countDocuments(filter)
+    ])
 
     res.json({ agents, count: totalAgents })
   } catch (error) {
@@ -49,6 +51,34 @@ export async function apiAgentNew (req, res, next) {
     const savedAgent = await agent.save()
 
     res.status(201).json({ result: savedAgent })
+  } catch (error) {
+    next(error)
+  }
+}
+
+export async function apiAgentUpdate (req, res, next) {
+  try {
+    const agentId = req.params.agentId
+
+    const agentData = req.body
+    agentData.avatar = req.file?.filename
+
+    const agent = await Agent.findByIdAndUpdate(agentId, agentData, {
+      new: true
+    })
+
+    res.json(agent)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export async function apiAgentDelete (req, res, next) {
+  try {
+    const agentId = req.params.agentId
+    await Agent.findByIdAndDelete({ _id: agentId })
+
+    res.json()
   } catch (error) {
     next(error)
   }

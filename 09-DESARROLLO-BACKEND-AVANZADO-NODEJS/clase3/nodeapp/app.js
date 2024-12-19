@@ -35,6 +35,8 @@ app.use(cookieParser())
 app.get('/api/agents', apiAgentsController.apiAgentList)
 app.get('/api/agents/:agentId', apiAgentsController.apiAgentGetOne)
 app.post('/api/agents', upload.single('avatar'), apiAgentsController.apiAgentNew)
+app.put('/api/agents/:agentId', upload.single('avatar'), apiAgentsController.apiAgentUpdate)
+app.delete('/api/agents/:agentId', apiAgentsController.apiAgentDelete)
 
 /**
  * Website routes
