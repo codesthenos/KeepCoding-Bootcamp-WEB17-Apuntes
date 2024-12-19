@@ -11,6 +11,7 @@ import upload from './lib/uploadConfigure.js'
 import i18n from './lib/i18nConfigure.js'
 import * as langController from './controllers/langController.js'
 import * as apiAgentsController from './controllers/api/apiAgentsController.js'
+import swaggerMiddleware from './lib/swaggerMiddleware.js'
 
 await connectMongoose() // top level await
 console.log('Conectado a MongoDB.')
@@ -31,7 +32,7 @@ app.use(cookieParser())
 /**
  * API routes
  */
-
+// CRUD for AGENTS
 app.get('/api/agents', apiAgentsController.apiAgentList)
 app.get('/api/agents/:agentId', apiAgentsController.apiAgentGetOne)
 app.post('/api/agents', upload.single('avatar'), apiAgentsController.apiAgentNew)
@@ -58,6 +59,8 @@ app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)
+// route to documentation
+app.get('/api-doc', swaggerMiddleware)
 
 // private pages
 app.get('/agents/new', sessionManager.isLoggedIn, agentsController.index)
