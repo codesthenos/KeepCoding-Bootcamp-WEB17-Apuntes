@@ -9,12 +9,17 @@ export async function apiAgentList (req, res, next) {
     const sort = req.query.sort
     const fields = req.query.fields
 
+    const userId = req.apiUserId
+
     const filter = {}
     if (filterAge) {
       filter.age = filterAge
     }
     if (filterName) {
       filter.name = filterName
+    }
+    if (userId) {
+      filter.owner = userId
     }
 
     const [agents, totalAgents] = await Promise.all([

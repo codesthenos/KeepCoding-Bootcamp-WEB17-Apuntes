@@ -12,6 +12,8 @@ import i18n from './lib/i18nConfigure.js'
 import * as langController from './controllers/langController.js'
 import * as apiAgentsController from './controllers/api/apiAgentsController.js'
 import swaggerMiddleware from './lib/swaggerMiddleware.js'
+import * as apiLoginController from './controllers/api/apiLoginController.js'
+import * as jwtAuth from './lib/jwtAuthMiddleware.js'
 
 await connectMongoose() // top level await
 console.log('Conectado a MongoDB.')
@@ -32,12 +34,14 @@ app.use(cookieParser())
 /**
  * API routes
  */
+
+app.post('/api/login', apiLoginController.loginJWT)
 // CRUD for AGENTS
-app.get('/api/agents', apiAgentsController.apiAgentList)
-app.get('/api/agents/:agentId', apiAgentsController.apiAgentGetOne)
-app.post('/api/agents', upload.single('avatar'), apiAgentsController.apiAgentNew)
-app.put('/api/agents/:agentId', upload.single('avatar'), apiAgentsController.apiAgentUpdate)
-app.delete('/api/agents/:agentId', apiAgentsController.apiAgentDelete)
+app.get('/api/agents', jwtAuth.guard, apiAgentsController.apiAgentList)
+app.get('/api/agents/:agentId', jwtAuth.guard, apiAgentsController.apiAgentGetOne)
+app.post('/api/agents', jwtAuth.guard, upload.single('avatar'), apiAgentsController.apiAgentNew)
+app.put('/api/agents/:agentId', jwtAuth.guard, upload.single('avatar'), apiAgentsController.apiAgentUpdate)
+app.delete('/api/agents/:agentId', jwtAuth.guard, apiAgentsController.apiAgentDelete)
 
 /**
  * Website routes
