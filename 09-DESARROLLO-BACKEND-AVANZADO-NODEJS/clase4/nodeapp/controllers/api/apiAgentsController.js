@@ -1,3 +1,4 @@
+import createError from 'http-errors'
 import Agent from "../../models/Agent.js"
 
 export async function apiAgentList (req, res, next) {
@@ -48,10 +49,12 @@ export async function apiAgentGetOne (req, res, next) {
 export async function apiAgentNew (req, res, next) {
   try {
     const agentData = req.body
+    const userId = req.apiUserId
 
     const agent = new Agent(agentData)
     // puedo hacer esto gracias al middleware upload.single que uso en app.js
     agent.avatar = req.file?.filename
+    agent.owner = userId
 
     const savedAgent = await agent.save()
 
@@ -64,11 +67,12 @@ export async function apiAgentNew (req, res, next) {
 export async function apiAgentUpdate (req, res, next) {
   try {
     const agentId = req.params.agentId
+    const userId = req.apiUserId
 
     const agentData = req.body
     agentData.avatar = req.file?.filename
 
-    const agent = await Agent.findByIdAndUpdate(agentId, agentData, {
+    const agent = await Agent.findOneAndUpdate({ _id: agentId, owner: userId }, agentData, {
       new: true
     })
 
@@ -81,9 +85,23 @@ export async function apiAgentUpdate (req, res, next) {
 export async function apiAgentDelete (req, res, next) {
   try {
     const agentId = req.params.agentId
+    const userId = req.apiUserId
+
+    const agent = await Agent.findById(agentId)
+
+    if (!agent) {
+      console.warn(`WARNING - el usuario ${userId} está intentando eliminar un agente inexistente`)
+      return next(createError(404, 'Agent not found'))
+    }
+
+    if (agent.owner.toString() !== userId) {
+      console.warn(`WARNING - el usuario ${userId} está intentando eliminar un agente de otro usuario`)
+      return next(createError(401, 'User logged not owner'))
+    }
+
     await Agent.findByIdAndDelete({ _id: agentId })
 
-    res.json()
+    res.json({ result: 'agent deleted'})
   } catch (error) {
     next(error)
   }
