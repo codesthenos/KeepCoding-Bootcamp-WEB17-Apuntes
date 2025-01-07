@@ -9,8 +9,23 @@ const options = {
       version: '0.1.0',
       description: 'API de NodeApp',
     },
-  },
-  apis: ['swagger.yaml'], // Adjust the path if necessary
+    /* POR VER
+    securityDefinitions: {
+      bearerAuth: {
+        type: 'apiKey',
+        name: 'Authorization',
+        in: 'header',
+        bearerFormat: 'JWT',
+        schema: 'bearer',
+        description: 'JWT Authorization header. Example: "Authorization: {token}"'
+      }
+    },
+    security: [
+      { bearerAuth: [] }
+    ]
+  */},
+  // apis: ['swagger.yaml']
+  apis: ['controllers/api/**/*.js']
 };
 // parse the .yaml a .json
 const specification = swaggerJSDoc(options)
