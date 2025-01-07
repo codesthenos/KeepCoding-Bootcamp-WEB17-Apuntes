@@ -25,6 +25,9 @@ export async function postLogin(req, res, next) {
     req.session.userId = user._id
     req.session.userName = user.email
 
+    // enviamos un email antes de hacer la redireccion a la home despues del login
+    await user.sendEmail('Asunto del email', 'Cuerpo del email')
+
     // redirect a la home
     res.redirect('/')
   } catch (error) {
