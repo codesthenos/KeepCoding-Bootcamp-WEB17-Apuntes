@@ -14,6 +14,7 @@ import * as apiAgentsController from './controllers/api/apiAgentsController.js'
 import swaggerMiddleware from './lib/swaggerMiddleware.js'
 import * as apiLoginController from './controllers/api/apiLoginController.js'
 import * as jwtAuth from './lib/jwtAuthMiddleware.js'
+import basciAuthMiddleware from './lib/basicAuthMiddleware.js'
 
 await connectMongoose() // top level await
 console.log('Conectado a MongoDB.')
@@ -59,7 +60,7 @@ app.use((req, res, next) => {
 app.get('/change-locale/:locale', langController.changeLocale)
 
 // public pages
-app.get('/', homeController.index)
+app.get('/', basciAuthMiddleware, homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)
