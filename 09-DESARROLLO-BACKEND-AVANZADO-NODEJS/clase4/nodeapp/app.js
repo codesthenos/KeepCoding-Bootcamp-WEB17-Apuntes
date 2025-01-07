@@ -64,7 +64,7 @@ app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)
 // route to documentation
-app.get('/api-doc', swaggerMiddleware)
+app.use('/api-doc', swaggerMiddleware)
 
 // private pages
 app.get('/agents/new', sessionManager.isLoggedIn, agentsController.index)
