@@ -1,0 +1,38 @@
+<%- include('header.ejs') %>
+
+<div class="container">
+
+  <p>User ID: <%= session.userId %></p>
+
+  <p>Ejemplo de inyección de código <%= nombre %></p>
+
+  <h2><%= __('Conditionals') %></h2>
+  <p>El segundo actual es: <%= segundoActual %></p>
+  <% if (esPar) { %>
+    <p><%= __('Current second is even.') %></p>
+  <% } else { %>
+    <p><%= __('Current second is odd.') %></p>
+  <% } %>
+
+  <% // contenido para usuarios NO logados %>
+  <% if (!session.userId) { %>
+    <p>Para ver el contenido debes hacer <a href="/login">login</a></p>
+  <% } %>
+
+  <% // contenido para usuarios logados %>
+  <% if (session.userId) { %>
+    <h2><%= __('Loops') %></h2>
+    <% agents.forEach(agent => { %>
+      <p><%= __('{{name}} is {{age}} years old.', agent) %> <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a></p>
+      <img src="<%= agent.avatar ? `/avatars/${agent.avatar}` : '/avatars/placeholder.jpg' %>" alt="" />
+    <% }) %>
+  <% } %>
+  
+  <h2><%= __('Pluralization example') %></h2>
+  <p>0 <%= __n('Mouse', 0) %></p>
+  <p>1 <%= __n('Mouse', 1) %></p>
+  <p>8 <%= __n('Mouse', 8) %></p>
+
+</div>
+
+<%- include('footer.ejs') %>
