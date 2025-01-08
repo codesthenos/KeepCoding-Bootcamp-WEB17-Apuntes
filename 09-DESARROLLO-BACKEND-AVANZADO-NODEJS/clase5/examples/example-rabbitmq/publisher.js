@@ -3,7 +3,7 @@ import amqplib from 'amqplib'
 
 const EXCHANGE_NAME = 'peticiones-de-tareas'
 
-// conectar con el BROKER de RabbitMQ
+// conectar con el BROKER de RabbitMQ (manejar procesos lentos)
 const connection = await amqplib.connect(process.env.RABBITMQ_BROKER_URL)
 
 // crear canal entre RabbitMQ y nuestra APP (nodeapp)
@@ -15,8 +15,13 @@ await channel.assertExchange(EXCHANGE_NAME, 'direct', {
 }) // asegura de que existe un exchange y si no existe lo crea
 
 // publicar un mensaje
-const message = {
-  tarea: 'enviar un email ' + Date.now()
-}
+while (true) {
+  const message = {
+    tarea: 'enviar un email ' + Date.now()
+  }
+  
+  channel.publish(EXCHANGE_NAME, '*', Buffer.from(JSON.stringify(message)))
 
-channel.publish(EXCHANGE_NAME, '*', Buffer.from(JSON.stringify(message)))
+  console.log(message.tarea)
+  await new Promise(resolve => setTimeout(resolve, 500))
+}
