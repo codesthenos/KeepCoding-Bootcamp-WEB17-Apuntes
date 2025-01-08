@@ -1,0 +1,17 @@
+{
+	"Conditionals": "Conditionals",
+	"Current second is even.": "Current second is even.",
+	"Current second is odd.": "Current second is odd.",
+	"{{name}} is {{age}} years old.": "{{name}} is {{age}} years old.",
+	"code injection": "code injection",
+	"Pluralization example": "Pluralization example",
+	"Mouse": {
+		"one": "Mouse",
+		"other": "Mice"
+	},
+	"New Agent": "New Agent",
+	"Name": "Name",
+	"Age": "Age",
+	"Submit": "Create",
+	"Loops": "Loops"
+}
