@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 app.get('/change-locale/:locale', langController.changeLocale)
 
 // public pages
-app.get('/', basciAuthMiddleware, homeController.index)
+app.get('/', homeController.index)
 app.get('/login', loginController.index)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)

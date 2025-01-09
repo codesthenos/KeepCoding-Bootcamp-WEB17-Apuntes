@@ -3,6 +3,10 @@
 
   <script defer>
     const socket = io()
+
+    socket.on('server-message', msg => {
+      console.log(`message from server: ${msg}`)
+    })
   </script>
 </body>
 </html>

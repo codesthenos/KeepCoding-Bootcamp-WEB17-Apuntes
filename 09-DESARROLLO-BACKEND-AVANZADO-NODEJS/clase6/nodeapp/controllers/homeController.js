@@ -1,6 +1,7 @@
 import assert from 'node:assert'
 import { query, validationResult } from 'express-validator'
 import Agent from '../models/Agent.js'
+import { io } from '../webSocketServer.js'
 
 // GET /
 export async function index(req, res, next) {
@@ -26,6 +27,11 @@ export async function index(req, res, next) {
       filter.name = filterName
     }
     res.locals.agents = await Agent.list(filter, limit, skip, sort)
+
+    setTimeout(() => {
+      console.log('sending welcome message to user with sessionId', req.session.id)
+      io.to(req.session.id).emit('server-message', `welcome user ${userId}`)
+    }, 2000)
   }
 
   res.render('home')
