@@ -2,12 +2,16 @@ import 'dotenv/config' // Node > v22 --> node --env-file
 import http from 'node:http'
 import debugLib from 'debug'
 import app from './app.js'
+import { setupSocketServer } from './webSocketServer.js'
 
 const debug = debugLib('nodeapp:server')
 const port = process.env.PORT || 3000
 
 // create http server
 const server = http.createServer(app)
+
+// websockets
+setupSocketServer(server)
 
 server.on('error', err => console.error(err))
 server.on('listening', () => { debug(`Servidor arrancado en puerto ${port}`)})

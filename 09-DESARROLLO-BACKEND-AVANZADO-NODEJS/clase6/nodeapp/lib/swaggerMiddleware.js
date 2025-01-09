@@ -11,15 +11,15 @@ const options = {
     },
     components: {
       securitySchemes: {
-        rawTokenAuth: {
-          type: 'apiKey',
-          in: 'header',
-          name: 'Authorization',
+        jwtAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
           description: 'JWT Authorization header. Example: "Authorization: {token}"'
         }
       },
       security: [
-        { rawTokenAuth: [] }
+        { jwtAuth: [] }
       ]
     }
   },
