@@ -141,6 +141,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **09/01/2025**
 
 - Fecha entrega de practica: **19/01/2025**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-Backend-Avanzado-NODE-codesthenos)
 
 ## 10-TDD-JAVASCRIPT
 
