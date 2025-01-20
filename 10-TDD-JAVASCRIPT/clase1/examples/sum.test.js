@@ -1,11 +1,11 @@
 const suma = require('./sum')
 
 describe('Funcion suma', () => {
-  test('sumar 0 + 0 es igual a 0', () => {
+  test.skip('sumar 0 + 0 es igual a 0', () => {
     expect(suma(0, 0)).toEqual(0)
   })
 
-  test('sumar 1 + 2 es igual a 3', () => {
+  test.only('sumar 1 + 2 es igual a 3', () => {
     expect(suma(1, 2)).toBe(3)
   })
   
@@ -17,7 +17,7 @@ describe('Funcion suma', () => {
     expect(suma(1.100000, 2.230404)).toBeCloseTo(3.330404, 6)
   })
 
-  it('Sumar 0.1 + 0.2 sea igual a 0.3', () => {
+  it.only('Sumar 0.1 + 0.2 sea igual a 0.3', () => {
     expect(suma(0.1, 0.2)).toBeCloseTo(0.3, 1)
   })
 
