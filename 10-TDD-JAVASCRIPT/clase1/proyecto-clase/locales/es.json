@@ -1,0 +1,19 @@
+{
+	"Conditionals": "Condicionales",
+	"Current second is even": "El segundo actual es par.",
+	"{{name}} is {{age}} years old.": "{{name}} tiene {{age}} años.",
+	"code injection": "inyección de código",
+	"Pluralization example": "Ejemplo de pluralización",
+	"Mouse": {
+		"one": "Ratón",
+		"other": "Ratones"
+	},
+	"New Agent": "Nuevo agente",
+	"Name": "Nombre",
+	"Age": "Edad",
+	"Avatar": "Avatar",
+	"Submit": "Crear",
+	"Bucles": "Bucles",
+	"Home": "Inicio",
+	"API Documentation": "API Documentation"
+}
