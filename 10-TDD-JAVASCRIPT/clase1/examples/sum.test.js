@@ -49,6 +49,8 @@ describe.only('Testear con valores no numericos', () => {
   })
 
   it('Sumar algo que no sea un numero debe devolver un error', () => {
-    expect(() => suma('b', 'b')).toThrow()
+    expect(() => suma('c', 'b')).toThrow()
+    expect(() => suma(null, 'b')).toThrow()
+    expect(() => suma('c', undefined)).toThrow()
   })
 })
