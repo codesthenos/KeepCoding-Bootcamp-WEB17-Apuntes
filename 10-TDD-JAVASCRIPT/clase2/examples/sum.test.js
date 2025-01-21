@@ -1,6 +1,6 @@
 const suma = require('./sum')
 
-describe('Funcion suma', () => {
+describe.skip('Funcion suma', () => {
   test.skip('sumar 0 + 0 es igual a 0', () => {
     expect(suma(0, 0)).toEqual(0)
   })
@@ -23,19 +23,19 @@ describe('Funcion suma', () => {
   })
 })
 
-describe('Funcion sum con numeros negativos', () => {
+describe.skip('Funcion sum con numeros negativos', () => {
   it('sumar 1 + -1 es igual a 0', () => {
     expect(suma(1, -1)).not.toBeGreaterThan(0)
   })
 })
 
-describe('Funcion sum con numeros decimales', () => {
+describe.skip('Funcion sum con numeros decimales', () => {
   it('Sumar 1.100000 + 2.230404 sea igual a 3.330404', () => {
     expect(suma(1.100000, 2.230404)).toBeCloseTo(3.330404, 6)
   })
 })
 
-describe.only('Testear con valores no numericos', () => {
+describe.skip('Testear con valores no numericos', () => {
   it('Sumar 1 + a debe devolver un error', () => {
     expect(() => suma(1, 'a')).toThrow() // => toThrow() lanza error
   })

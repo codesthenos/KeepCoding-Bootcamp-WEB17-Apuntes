@@ -12,9 +12,11 @@ describe('Funcion avg', () => {
   it('Array de numeros positivos el valor es positivo', () => {
     const array = [1, 2, 3, 4, 5]
     expect(avg(array)).toBeGreaterThan(0)
+    expect(avg(array)).toBe(3)
   })
   it('Array de elementos negativos el valor es negativo', () => {
     const array = [-1, -2, -3, -4, -5]
     expect(avg(array)).toBeLessThan(0)
+    expect(avg(array)).toBe(-3)
   })
 })
