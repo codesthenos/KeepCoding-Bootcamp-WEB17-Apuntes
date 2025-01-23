@@ -1,11 +1,13 @@
 import { Carrito } from './Carrito'
 
 describe('Testing class carrito', () => {
+  let carrito
+
+  beforeEach(() => {
+    carrito = new Carrito()
+  })
+
   describe('Testeando getTotalItems y addItem', () => {
-    let carrito
-    beforeEach(() => {
-      carrito = new Carrito()
-    })
 
     it('Carrito.getTotalItems debe devolver 0 a la inicializacion', () => {
       expect(carrito.getTotalItems()).toBe(0)
@@ -39,19 +41,63 @@ describe('Testing class carrito', () => {
       expect(() => carrito.addItem({})).toThrow('Item must have price and name')
     })
   })
-  // TODO
-  // Testing getTotalCheckout
-  // 1. Should return 10 after adding 1 sushiItem
-  // 2. Should return 20 after adding 2 sushiItem
-  // 3. Should return 11.5 after adding 1 sushiItem and 1 waterItem
-  // 4. Should return 0 if carrito is empty
 
-  // Testing addItem (detail)
-  // 1. Should contain the added item in the carrito.items array
-  // 2. Should have an empty array in .items when no adding item
-  // 3. Should check the item before add it
+  describe('Testeando getTotalCheckout', () => {
 
-  // Testing removeItem (tiene 2 aproximaciones)
-  // 1. Should return an empty array after adding 1 item and removing 1 item
-  // 2. Should return an array of 1 item after adding 2 items and removing 1 item
+    it('Carrito.getTotalCheckout debe devolver 10 despues de incluir un elemento en el carrito', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      expect(carrito.getTotalCheckout()).toBe(10)
+    })
+
+    it('Carrito.getTotalCheckout debe devolver 20 despues de incluir dos elementos en el carrito', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      carrito.addItem({ name: 'sushi', price: 10 })
+      expect(carrito.getTotalCheckout()).toBe(20)
+    })
+
+    it('Carrito.getTotalCheckout debe devolver 11.5 despues de incluir un elemento en el carrito', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      carrito.addItem({ name: 'agua', price: 1.5 })
+      expect(carrito.getTotalCheckout()).toBe(11.5)
+    })
+
+    it('Carrito.getTotalCheckout debe devolver 0 si el carrito esta vacio', () => {
+      expect(carrito.getTotalCheckout()).toBe(0)
+    })
+  })
+
+  describe('Testeando addItem', () => {
+
+    it('Carrito.items debe contener el item agregado', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      expect(carrito.items).toEqual([{ name: 'sushi', price: 10 }])
+    })
+
+    it('Carrito.items debe estar vacio si no se agrega ningun item', () => {
+      expect(carrito.items).toEqual([])
+    })
+
+    it('Carrito.addItem debe verificar el item antes de agregarlo', () => {
+      expect(() => carrito.checkItem('sushi')).toThrow('Item must be an object')
+      expect(() => carrito.checkItem({ name: 'sushi' })).toThrow('Item must have price and name')
+
+      expect(carrito.checkItem({ name: 'sushi', price: 10 })).toBe(undefined)
+    })
+  })
+
+  describe('Testeando removeItem', () => {
+
+    it('Carrito.removeItem debe remover el item del carrito', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      carrito.removeItem({ name: 'sushi', price: 10 })
+      expect(carrito.items).toEqual([])
+    })
+
+    it('Carrito.removeItem debe devolver un array de 1 elemento despues de incluir 2 y borrar 1', () => {
+      carrito.addItem({ name: 'sushi', price: 10 })
+      carrito.addItem({ name: 'agua', price: 1.5 })
+      carrito.removeItem({ name: 'sushi', price: 10 })
+      expect(carrito.getTotalItems()).toBe(1)
+    })
+  })
 })
