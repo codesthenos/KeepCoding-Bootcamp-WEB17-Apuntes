@@ -1,4 +1,4 @@
-const suma = require('./sum')
+import { suma } from './sum.js'
 
 describe.skip('Funcion suma', () => {
   test.skip('sumar 0 + 0 es igual a 0', () => {

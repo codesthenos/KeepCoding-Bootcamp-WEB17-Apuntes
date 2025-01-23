@@ -1,5 +1,4 @@
-const avg = require('./avg')
-
+import { avg } from './avg.js'
 describe('Funcion avg', () => {
   it('Array de 1 el valor es 1', () => {
     const array = [1, 1, 1, 1, 1]
@@ -12,11 +11,13 @@ describe('Funcion avg', () => {
   it('Array de numeros positivos el valor es positivo', () => {
     const array = [1, 2, 3, 4, 5]
     expect(avg(array)).toBeGreaterThan(0)
+    expect(avg(array)).toBePositive(0)
     expect(avg(array)).toBe(3)
   })
   it('Array de elementos negativos el valor es negativo', () => {
     const array = [-1, -2, -3, -4, -5]
     expect(avg(array)).toBeLessThan(0)
+    expect(avg(array)).toBeNegative(0)
     expect(avg(array)).toBe(-3)
   })
   it('Array de elementos N, debe devolver N', () => {
