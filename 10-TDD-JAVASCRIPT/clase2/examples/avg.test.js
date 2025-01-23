@@ -19,4 +19,13 @@ describe('Funcion avg', () => {
     expect(avg(array)).toBeLessThan(0)
     expect(avg(array)).toBe(-3)
   })
+  it('Array de elementos N, debe devolver N', () => {
+    expect.assertions(3)
+    for (let i = 0; i < 3; i++) {
+      const n = Math.floor(Math.random() * 1000)
+      const array = [n, n, n, n, n]
+      array.push(n)
+      expect(avg(array)).toBe(n)
+    }
+  })
 })
