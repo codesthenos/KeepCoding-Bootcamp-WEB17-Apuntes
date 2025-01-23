@@ -39,4 +39,19 @@ describe('Testing class carrito', () => {
       expect(() => carrito.addItem({})).toThrow('Item must have price and name')
     })
   })
+  // TODO
+  // Testing getTotalCheckout
+  // 1. Should return 10 after adding 1 sushiItem
+  // 2. Should return 20 after adding 2 sushiItem
+  // 3. Should return 11.5 after adding 1 sushiItem and 1 waterItem
+  // 4. Should return 0 if carrito is empty
+
+  // Testing addItem (detail)
+  // 1. Should contain the added item in the carrito.items array
+  // 2. Should have an empty array in .items when no adding item
+  // 3. Should check the item before add it
+
+  // Testing removeItem (tiene 2 aproximaciones)
+  // 1. Should return an empty array after adding 1 item and removing 1 item
+  // 2. Should return an array of 1 item after adding 2 items and removing 1 item
 })
