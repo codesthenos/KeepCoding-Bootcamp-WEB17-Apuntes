@@ -1,0 +1,52 @@
+<%- include('header.ejs') %>
+
+<div class="container">
+
+  <p>User ID: <%= session.userId %></p>
+
+  <p>Ejemplo de inyección de código <%= nombre %></p>
+
+  <h2><%= __('Conditionals') %></h2>
+  <p>El segundo actual es: <%= segundoActual %></p>
+  <% if (esPar) { %>
+    <p><%= __('Current second is even') %></p>
+  <% } else { %>
+    <p>El segundo actual es impar.</p>
+  <% } %>
+
+  <% // contenido para usuarios NO logados %>
+  <% if (!session.userId) { %>
+    <p>Para ver el contenido debes hacer <a href="/login">login</a></p>
+  <% } %>
+
+  <% // contenido para usuarios logados %>
+  <% if (session.userId) { %>
+    <h2><%= __('Bucles') %></h2>
+    <form>
+      <input type="text" name="name">
+      <button type="submit">buscar</button>
+    </form>
+    <% agents.forEach(agent => { %>
+      <p>
+        <img
+          src="<%= agent.avatar ? `/avatars/${agent.avatar}` : 'https://placehold.co/50' %>"
+          alt="avatar"
+          width="50"
+        >
+
+        <%= __('{{name}} is {{age}} years old.', agent) %>
+        <a href="/agents/delete/<%= agent.id %>"><i class="bi bi-trash"></i></a>
+      </p>
+    <% }) %>
+  <% } %>
+
+  <h2><%= __('Pluralization example') %></h2>
+  <p>0 <%= __n('Mouse', 0) %></p>
+  <p>1 <%= __n('Mouse', 1) %></p>
+  <p>2 <%= __n('Mouse', 2) %></p>
+  <p>3 <%= __n('Mouse', 3) %></p>
+  <p>4 <%= __n('Mouse', 4) %></p>
+
+</div>
+
+<%- include('footer.ejs') %>
