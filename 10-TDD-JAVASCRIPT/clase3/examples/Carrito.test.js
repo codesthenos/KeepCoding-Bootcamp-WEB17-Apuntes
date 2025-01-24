@@ -77,11 +77,16 @@ describe('Testing class carrito', () => {
       expect(carrito.items).toEqual([])
     })
 
-    it('Carrito.addItem debe verificar el item antes de agregarlo', () => {
+    it.only('Carrito.addItem debe verificar el item antes de agregarlo', () => {
       expect(() => carrito.checkItem('sushi')).toThrow('Item must be an object')
       expect(() => carrito.checkItem({ name: 'sushi' })).toThrow('Item must have price and name')
 
-      expect(carrito.checkItem({ name: 'sushi', price: 10 })).toBe(undefined)
+      const spy = jest.spyOn(carrito, 'checkItem') // mira a ver si checkItem se llama
+      carrito.addItem({ name: 'sushi', price: 10 })
+
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledWith({ name: 'sushi', price: 10 })
+      expect(spy).toHaveBeenCalledTimes(1)
     })
   })
 
