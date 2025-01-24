@@ -25,7 +25,8 @@ export class Carrito {
   }
 
   removeItem(item) {
-    this.items = this.items.filter(i => i.id !== item.id)
+    const itemToDelete = this.items.find(i => i.name === item.name)
+    this.items = this.items.filter(i => i.id !== itemToDelete.id)
     return this.items
   }
 }

@@ -77,7 +77,7 @@ describe('Testing class carrito', () => {
       expect(carrito.items).toEqual([])
     })
 
-    it.only('Carrito.addItem debe verificar el item antes de agregarlo', () => {
+    it('Carrito.addItem debe verificar el item antes de agregarlo', () => {
       expect(() => carrito.checkItem('sushi')).toThrow('Item must be an object')
       expect(() => carrito.checkItem({ name: 'sushi' })).toThrow('Item must have price and name')
 
@@ -91,18 +91,20 @@ describe('Testing class carrito', () => {
   })
 
   describe('Testeando removeItem', () => {
-
+    const shusiItem = { name: 'sushi', price: 10 }
+    const waterItem = { name: 'water', price: 1.5 }
+    
     it('Carrito.removeItem debe remover el item del carrito', () => {
-      carrito.addItem({ name: 'sushi', price: 10 })
-      carrito.removeItem({ name: 'sushi', price: 10 })
+      carrito.addItem(shusiItem)
+      carrito.removeItem(shusiItem)
       expect(carrito.items).toEqual([])
     })
 
     it('Carrito.removeItem debe devolver un array de 1 elemento despues de incluir 2 y borrar 1', () => {
-      carrito.addItem({ name: 'sushi', price: 10 })
-      carrito.addItem({ name: 'agua', price: 1.5 })
-      carrito.addItem({ name: 'sushi', price: 10 })
-      expect(carrito.removeItem({ name: 'sushi', price: 10 })).toBeArrayOfSize(2)
+      carrito.addItem(shusiItem)
+      carrito.addItem(waterItem)
+      carrito.addItem(shusiItem)
+      expect(carrito.removeItem(shusiItem)).toBeArrayOfSize(2)
       expect(carrito.getTotalItems()).toBe(2)
     })
   })
