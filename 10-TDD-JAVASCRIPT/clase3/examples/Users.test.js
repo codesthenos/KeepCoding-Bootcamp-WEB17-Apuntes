@@ -1,7 +1,10 @@
+import axios from 'axios'
 import { Users } from './Users'
 
+jest.mock('axios')
+
 describe('Users class test', () => {
-  describe('usando api real', () => {
+  describe.skip('usando api real', () => {
     // Hooks
     // Lifecycle methods Aplica por bloque de describe
     // beforeEach(() => {}) Ejecuta lo de dentro antes de cada test
@@ -30,12 +33,16 @@ describe('Users class test', () => {
       expect(users[2]).toContainEntry(['name','Clementine Bauch'])
     })
   })
-  describe.skip('usando mock', () => {
-    // TODO revisar como mockear clases
+  describe('usando mock', () => {
     let users
     beforeAll( async () => {
-      users = await Users.all() 
-    })
+      const mockUsers = Array.from({ length: 10 }, () => (
+        { name: 'Clementine Bauch', age: 20 }
+      ))
+      mockUsers[5] = { name: 'Ervin Howell' }
+      axios.get.mockResolvedValue({ data: mockUsers })
+      users = await Users.all()
+  })
     afterAll(() => {
       users = undefined
     })
@@ -52,6 +59,9 @@ describe('Users class test', () => {
       expect(users[2]).toContainKey('name')
       expect(users[2].name).toMatch(/Bauch/)
       expect(users[2]).toContainEntry(['name','Clementine Bauch'])
+    })
+    it('Debe devolver un elemento 6 con el nombre Ervin Howell', async () => {
+      expect(users[5]).toContainEntry(['name','Ervin Howell'])
     })
   })
 })
