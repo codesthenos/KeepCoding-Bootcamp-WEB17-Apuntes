@@ -21,10 +21,11 @@ export class Carrito {
 
   addItem(item) {
     this.checkItem(item)
-    this.items = [...this.items, item]
+    this.items = [...this.items, { ...item, id: crypto.randomUUID() }]
   }
 
   removeItem(item) {
-    this.items = this.items.filter(i => i.name !== item.name)
+    this.items = this.items.filter(i => i.id !== item.id)
+    return this.items
   }
 }

@@ -70,7 +70,7 @@ describe('Testing class carrito', () => {
 
     it('Carrito.items debe contener el item agregado', () => {
       carrito.addItem({ name: 'sushi', price: 10 })
-      expect(carrito.items).toEqual([{ name: 'sushi', price: 10 }])
+      expect(carrito.items).toBeArrayOfSize(1)
     })
 
     it('Carrito.items debe estar vacio si no se agrega ningun item', () => {
@@ -96,8 +96,9 @@ describe('Testing class carrito', () => {
     it('Carrito.removeItem debe devolver un array de 1 elemento despues de incluir 2 y borrar 1', () => {
       carrito.addItem({ name: 'sushi', price: 10 })
       carrito.addItem({ name: 'agua', price: 1.5 })
-      carrito.removeItem({ name: 'sushi', price: 10 })
-      expect(carrito.getTotalItems()).toBe(1)
+      carrito.addItem({ name: 'sushi', price: 10 })
+      expect(carrito.removeItem({ name: 'sushi', price: 10 })).toBeArrayOfSize(2)
+      expect(carrito.getTotalItems()).toBe(2)
     })
   })
 })
