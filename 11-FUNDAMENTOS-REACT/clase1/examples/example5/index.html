@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX-JS</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script
+  crossorigin
+  src="https://unpkg.com/react@18/umd/react.development.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/@babel/standalone@7.8.3/babel.min.js"
+></script>
+<script type="text/babel">
+  const root = document.getElementById('root')
+
+  const className = 'container'
+  const reactJSXText = 'JSX-JS'
+  const condition = true
+
+  const CreateH2 = (props) => {
+    return <h2>{props.children}</h2>
+  }
+
+  const CreateApp = (props) => {
+    const reactJSX = <h1>{props.children}</h1>
+    
+    return (
+      <div className={props.className}>
+        {reactJSX}
+        <CreateH2>{props.text2}</CreateH2>
+        <CreateH2>SECOND H2</CreateH2>
+      </div>
+    )
+  }
+  
+  const app = <CreateApp className={className} text2='EJEMPLO 5'>{reactJSXText}</CreateApp>
+
+  ReactDOM.createRoot(root).render(app)
+</script>
+</html>
