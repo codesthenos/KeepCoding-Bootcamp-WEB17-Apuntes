@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REACT-DOM</title>
+  <title>REACT JSX</title>
 </head>
 <body>
   <div id="root"></div>
@@ -16,13 +16,14 @@
   crossorigin
   src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
 ></script>
-<script type="text/javascript">
+<script
+  crossorigin
+  src="https://unpkg.com/@babel/standalone@7.8.3/babel.min.js"
+></script>
+<script type="text/babel">
   const root = document.getElementById('root')
 
-  const element = React.createElement('div', {
-    className: 'container',
-    children: 'Hello REACT'
-  }, 'Bye REACT') // This property is the children prop and overwrites the given avobe
+  const element = <h1 className='container'>REACT JSX</h1>
 
   ReactDOM.createRoot(root).render(element)
 </script>
