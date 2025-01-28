@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STATE</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script
+  crossorigin
+  src="https://unpkg.com/react@18/umd/react.development.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/@babel/standalone@7.8.3/babel.min.js"
+></script>
+<script type="text/babel">
+  const root = document.getElementById('root')
+
+  const getCountParam = () => {
+    const initalURL = new URL(window.location)
+    return initalURL.searchParams.get('count')
+  }
+
+  const setCountParam = (param) => {
+    const initalURL = new URL(window.location)
+    initalURL.searchParams.set('count', param)
+    window.history.pushState({}, '', initalURL)
+  }
+
+  const initialCountParam = getCountParam()
+
+  if (!initialCountParam) {
+    setCountParam('0')
+  }
+
+  const Counter = () => {
+
+    const [count, setCount] = React.useState(0)
+
+    React.useEffect(() => {
+      const initialCountParam = getCountParam()
+      setCount(+initialCountParam)
+    },[])
+
+    const updateState = ({ isAdd }) => {
+      const prevCount = getCountParam()
+      const newCount = isAdd ? +prevCount + 1 : +prevCount - 1
+      setCountParam(newCount.toString())
+      setCount(newCount)
+    }
+
+    const handleBack = () => {
+      updateState({ isAdd: false })
+    }
+    const handleForward = () => {
+      updateState({ isAdd: true })
+    }
+
+    return (
+      <div>
+        <button onClick={handleBack}>- 1</button>
+        <span>{count}</span>
+        <button onClick={handleForward}>+ 1</button>
+      </div>
+    )
+  }
+
+  ReactDOM.createRoot(root).render(<Counter />)
+</script>
+</html>
