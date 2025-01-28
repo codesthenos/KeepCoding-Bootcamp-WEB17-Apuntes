@@ -3,7 +3,8 @@
   margin: 0 auto;
   padding-inline: 2rem;
   font-family: Arial, Helvetica, sans-serif;
-  h1, h3 {
+  h1,
+  h3 {
     text-align: center;
   }
   ul {
@@ -12,5 +13,5 @@
   }
 }
 .TweetsPage.green {
-  color: blueviolet
+  color: blueviolet;
 }

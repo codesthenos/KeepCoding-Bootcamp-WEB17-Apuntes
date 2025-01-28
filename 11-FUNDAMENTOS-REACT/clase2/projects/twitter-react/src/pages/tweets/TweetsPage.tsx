@@ -21,19 +21,17 @@ const condition = true
 
 function TweetsPage() {
   return (
-    <div className="TweetsPage">
-      <h1>Tweets Page</h1>
-      <ul className={clsx("TweetsPage", { green: condition })}>
-        {
-          tweets.map(tweet => {
-            return (
-              <li key={tweet.id}>
-                <h3>{tweet.updatedAt.split('T')[0]}</h3>
-                <p>{tweet.content}</p>
-              </li>
-            )
-          })
-        }
+    <div className='TweetsPage'>
+      <h1 className='p-4 font-sans text-3xl font-bold'>Tweets Page</h1>
+      <ul className={clsx('TweetsPage', { green: condition })}>
+        {tweets.map((tweet) => {
+          return (
+            <li key={tweet.id}>
+              <h3>{tweet.updatedAt.split('T')[0]}</h3>
+              <p>{tweet.content}</p>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
