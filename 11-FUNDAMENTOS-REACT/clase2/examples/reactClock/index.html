@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URL-STATE</title>
+  <title>REACT-CLOCK</title>
 </head>
 <body>
   <div id="root"></div>
@@ -40,7 +40,19 @@
     setCountParam('0')
   }
 
-  const Counter = () => {
+  const Clock = () => {
+    function tick () {
+    const now = new Date().toLocaleTimeString()
+    
+    const element = (
+      <div className='container'>
+        <h1>{now}</h1>
+      </div>
+    )
+    domRoot.render(element)
+    }
+    // tick()
+    // setInterval(tick, 1000)
 
     const [count, setCount] = React.useState(getCountParam())
 
@@ -67,6 +79,6 @@
     )
   }
 
-  ReactDOM.createRoot(root).render(<Counter />)
+  ReactDOM.createRoot(root).render(<Clock />)
 </script>
 </html>
