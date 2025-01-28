@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 import './TweetsPage.css'
+import Button from '../../components/Button'
+import { useState } from 'react'
 
 const tweets = [
   {
@@ -19,7 +21,12 @@ const tweets = [
 ]
 const condition = true
 
+type variant = 'primary' | 'secondary'
+
 function TweetsPage() {
+  const [variant1, setVariant1] = useState<variant>('primary')
+  const [variant2, setVariant2] = useState<variant>('secondary')
+
   return (
     <div className='TweetsPage'>
       <h1 className='p-4 font-sans text-3xl font-bold'>Tweets Page</h1>
@@ -33,6 +40,16 @@ function TweetsPage() {
           )
         })}
       </ul>
+      <Button onClick={() => {
+        setVariant1(prev => {
+          return prev === 'primary' ? 'secondary' : 'primary'
+        })
+      }} variant={variant1}>Click me</Button>
+      <Button onClick={() => {
+        setVariant2(prev => {
+          return prev === 'secondary' ? 'primary' : 'secondary'
+        })
+      }} variant={variant2}>Click me</Button>
     </div>
   )
 }
