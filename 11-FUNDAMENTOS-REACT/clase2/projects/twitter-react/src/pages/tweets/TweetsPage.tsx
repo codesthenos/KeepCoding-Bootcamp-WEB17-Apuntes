@@ -1,3 +1,6 @@
+import clsx from 'clsx'
+import './TweetsPage.css'
+
 const tweets = [
   {
     content:
@@ -14,24 +17,25 @@ const tweets = [
     id: 2
   }
 ]
+const condition = true
 
 function TweetsPage() {
   return (
-    <>
+    <div className="TweetsPage">
       <h1>Tweets Page</h1>
-      <ul>
+      <ul className={clsx("TweetsPage", { green: condition })}>
         {
           tweets.map(tweet => {
             return (
               <li key={tweet.id}>
-                <h3>{tweet.updatedAt}</h3>
+                <h3>{tweet.updatedAt.split('T')[0]}</h3>
                 <p>{tweet.content}</p>
               </li>
             )
           })
         }
       </ul>
-    </>
+    </div>
   )
 }
 
