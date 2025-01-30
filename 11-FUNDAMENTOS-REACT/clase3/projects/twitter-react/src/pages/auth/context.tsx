@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 
-interface AuthContextP {
+interface AuthContextI {
   isLogged: boolean
   onLogin: () => void
   onLogout: () => void
@@ -11,13 +11,13 @@ interface Props {
   children: React.ReactNode
 }
 
-const AuthContext = createContext<AuthContextP>({
+const AuthContext = createContext<AuthContextI>({
   isLogged: false,
   onLogin: () => {},
   onLogout: () => {}
 })
 
-export const AuthProvider = ({ defaultIsLogged }: Props) => {
+export const AuthProvider = ({ defaultIsLogged, children }: Props) => {
   const [isLogged, setIslogged] = useState(defaultIsLogged)
   const handleLogin = () => {
     setIslogged(true)
@@ -26,9 +26,9 @@ export const AuthProvider = ({ defaultIsLogged }: Props) => {
     setIslogged(false)
   }
   
-  const authValue = { isLogged, handleLogin, handleLogout }
+  const authValue = { isLogged, onLogin: handleLogin, onLogout: handleLogout }
 
-  return AuthContext.Provider
+  return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
 }
 
 export function useAuth () {

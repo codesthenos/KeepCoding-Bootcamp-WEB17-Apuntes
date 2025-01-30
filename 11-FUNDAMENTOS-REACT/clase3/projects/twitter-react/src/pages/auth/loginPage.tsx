@@ -1,12 +1,11 @@
 import { useState } from "react"
 import Button from "../../components/Button"
 import { login } from "./service"
+import { useAuth } from "./context"
 
-interface Props {
-  onLogin: () => void
-}
+function LoginPage () {
+  const { onLogin } = useAuth()
 
-function LoginPage ({ onLogin }: Props) {
   const [usernameValue, setUsernameValue] = useState('')
   const [passwordValue, setpasswordValue] = useState('')
 

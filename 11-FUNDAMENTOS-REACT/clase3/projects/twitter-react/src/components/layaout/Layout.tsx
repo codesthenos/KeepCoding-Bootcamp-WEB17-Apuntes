@@ -1,14 +1,14 @@
 import Footer from "./Footer"
-import Header, { type HeaderProps } from "./Header"
+import Header from "./Header"
 
-interface Props extends HeaderProps {
+interface Props {
   title: string
   children: React.ReactNode
 }
 
-export default function Layout ({ children, title, ...rest }: Props) {
+export default function Layout ({ children, title }: Props) {
   return <div>
-    <Header {...rest}/>
+    <Header />
     <main>
       <h2>
         {title}

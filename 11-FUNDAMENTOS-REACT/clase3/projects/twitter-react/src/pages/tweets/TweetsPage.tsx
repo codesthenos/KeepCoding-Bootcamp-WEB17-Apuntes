@@ -6,11 +6,12 @@ import { getLatestTweets } from './service'
 import type { tweet, variant } from './types'
 import { logout } from '../auth/service'
 import Layout from '../../components/layaout/Layout'
-import { HeaderProps } from '../../components/layaout/Header'
+import { useAuth } from '../auth/context'
 
 const condition = true
 
-function TweetsPage({ onLogout, isLogged }: HeaderProps) {
+function TweetsPage() {
+  const { onLogout } = useAuth()
   const [variant1, setVariant1] = useState<variant>('primary')
   const [variant2, setVariant2] = useState<variant>('secondary')
 
@@ -28,7 +29,7 @@ function TweetsPage({ onLogout, isLogged }: HeaderProps) {
   }
 
   return (
-    <Layout onLogout={onLogout} title='What are you thinking?' isLogged={isLogged}>
+    <Layout title='What are you thinking?'>
       <div className='TweetsPage'>
         <h1 className='p-4 font-sans text-3xl font-bold'>Tweets Page</h1>
         <ul className={clsx('TweetsPage', { green: condition })}>
