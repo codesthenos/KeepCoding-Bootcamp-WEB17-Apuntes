@@ -2,8 +2,12 @@ import { useState } from 'react'
 import LoginPage from './pages/auth/loginPage'
 import TweetsPage from './pages/tweets/TweetsPage'
 
-function App() {
-  const [isLogged, setIslogged] = useState(false)
+interface Props {
+  defaultIsLogged: boolean
+}
+
+function App({ defaultIsLogged }: Props) {
+  const [isLogged, setIslogged] = useState(defaultIsLogged)
   const handleLogin = () => {
     setIslogged(true)
   }
