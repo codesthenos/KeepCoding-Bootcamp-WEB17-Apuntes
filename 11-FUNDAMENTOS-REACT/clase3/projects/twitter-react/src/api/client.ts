@@ -5,3 +5,7 @@ export const client = axios.create({
 })
 
 client.interceptors.response.use(res => res.data)
+
+export const setAuthorizationHeader = (accessToken: string) => {
+  client.defaults.headers["authorization"] = `Bearer ${accessToken}`
+}

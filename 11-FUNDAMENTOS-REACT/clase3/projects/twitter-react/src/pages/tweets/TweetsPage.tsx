@@ -7,7 +7,7 @@ import type { tweet, variant } from './types'
 
 const condition = true
 
-function TweetsPage() {
+function TweetsPage({ onLogout }: { onLogout: () => void}) {
   const [variant1, setVariant1] = useState<variant>('primary')
   const [variant2, setVariant2] = useState<variant>('secondary')
 
@@ -18,6 +18,10 @@ function TweetsPage() {
       setTweets(res)
     })
   }, [])
+
+  const handleLogoutButton = () => {
+    onLogout()
+  }
 
   return (
     <div className='TweetsPage'>
@@ -36,12 +40,13 @@ function TweetsPage() {
         setVariant1(prev => {
           return prev === 'primary' ? 'secondary' : 'primary'
         })
-      }} variant={variant1}>Click me</Button>
+      }} $variant={variant1}>Click me</Button>
       <Button onClick={() => {
         setVariant2(prev => {
           return prev === 'secondary' ? 'primary' : 'secondary'
         })
-      }} variant={variant2}>Click me</Button>
+      }} $variant={variant2}>Click me</Button>
+      <Button $variant="primary" onClick={handleLogoutButton}>Logout</Button>
     </div>
   )
 }
