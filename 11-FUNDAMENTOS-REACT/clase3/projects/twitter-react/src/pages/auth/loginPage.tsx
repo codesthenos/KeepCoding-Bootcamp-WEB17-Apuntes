@@ -15,10 +15,10 @@ function LoginPage ({ onLogin }: Props) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const { username, password } = event.target
+    // si no controlo los inputs con estados uso esto const { username, password } = event.target
 
     try {
-      await login({ username: username.value, password: password.value})
+      await login({ username: usernameValue, password: passwordValue})
       onLogin()
     } catch (error) {
       console.error(error)
