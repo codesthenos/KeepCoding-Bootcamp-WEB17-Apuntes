@@ -9,3 +9,7 @@ client.interceptors.response.use(res => res.data)
 export const setAuthorizationHeader = (accessToken: string) => {
   client.defaults.headers["authorization"] = `Bearer ${accessToken}`
 }
+
+export const removeAuthorizationHeader = () => {
+  delete client.defaults.headers["authorization"]
+}

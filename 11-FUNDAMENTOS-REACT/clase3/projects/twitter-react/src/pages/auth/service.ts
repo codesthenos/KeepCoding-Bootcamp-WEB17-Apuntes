@@ -1,4 +1,4 @@
-import { client, setAuthorizationHeader } from "../../api/client"
+import { client, removeAuthorizationHeader, setAuthorizationHeader } from "../../api/client"
 import type { Credentials, Login } from "./types"
 
 export const login = async (credentials: Credentials) => {
@@ -7,4 +7,8 @@ export const login = async (credentials: Credentials) => {
   const { accessToken } = response
 
   setAuthorizationHeader(accessToken)
+}
+
+export const logout = async () => {
+  removeAuthorizationHeader()
 }

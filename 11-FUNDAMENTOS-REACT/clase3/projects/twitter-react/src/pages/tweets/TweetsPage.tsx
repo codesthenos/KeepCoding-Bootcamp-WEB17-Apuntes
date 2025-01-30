@@ -4,6 +4,7 @@ import Button from '../../components/Button'
 import { useEffect, useState } from 'react'
 import { getLatestTweets } from './service'
 import type { tweet, variant } from './types'
+import { logout } from '../auth/service'
 
 const condition = true
 
@@ -19,7 +20,8 @@ function TweetsPage({ onLogout }: { onLogout: () => void}) {
     })
   }, [])
 
-  const handleLogoutButton = () => {
+  const handleLogoutButton = async () => {
+    await logout()
     onLogout()
   }
 
