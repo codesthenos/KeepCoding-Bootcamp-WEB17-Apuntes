@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Button from "../../components/Button"
 import { login } from "./service"
 
@@ -6,6 +7,11 @@ interface Props {
 }
 
 function LoginPage ({ onLogin }: Props) {
+  const [usernameValue, setUsernameValue] = useState('')
+  const [passwordValue, setpasswordValue] = useState('')
+
+  const isDisabled = !usernameValue || !passwordValue
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -18,19 +24,25 @@ function LoginPage ({ onLogin }: Props) {
       console.error(error)
     }
   }
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsernameValue(event.target.value)
+  }
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setpasswordValue(event.target.value)
+  }
   return (
     <div className="max-w-3xl mx-auto text-center">
       <h1 className="uppercase font-bold text-2xl mb-6">Log in to Twitter</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username: </label>
-          <input type="text" id="username" name="username" className="border border-zinc-900 rounded-xl mb-2" />
+          <input onChange={handleUsernameChange} value={usernameValue} type="text" id="username" name="username" className="border border-zinc-900 rounded-xl mb-2" />
         </div>
         <div>
           <label htmlFor="password">Password: </label>
-          <input type="password" id="password" name="password" className="border border-zinc-900 rounded-xl" />
+          <input onChange={handlePasswordChange} value={passwordValue} type="password" id="password" name="password" className="border border-zinc-900 rounded-xl" />
         </div>
-        <Button $variant="primary" type="submit">Login</Button>
+        <Button $variant="primary" type="submit" disabled={isDisabled}>Login</Button>
       </form>
     </div>
   )
