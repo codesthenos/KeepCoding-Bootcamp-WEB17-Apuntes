@@ -4,7 +4,7 @@ import App from './App'
 import './index.css'
 import storage from './utils/storage'
 import { setAuthorizationHeader } from './api/client'
-import { AuthProvider } from './pages/auth/context'
+import { AuthProvider } from './pages/auth/AuthProvider'
 
 const accessToken = storage.get('auth')
 
