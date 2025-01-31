@@ -156,7 +156,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
 
 ## 11-FUNDAMENTOS-REACT
 
-- Clases impartidas por _David Jimenez_ [**@daviddjj76**](https://github.com/daviddjj76)
+- Clases impartidas por _David Jimenez_ [**@davidjj76**](https://github.com/davidjj76)
 
 - Fechas de las clases:
 
@@ -172,7 +172,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
 
 ## 12-REACT-AVANZADO
 
-- Clases impartidas por _David Jimenez_ [**@daviddjj76**](https://github.com/daviddjj76)
+- Clases impartidas por _David Jimenez_ [**@davidjj76**](https://github.com/davidjj76)
 
 - Fechas de las clases:
 
