@@ -1,0 +1,17 @@
+.TweetsPage {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-inline: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  h1,
+  h3 {
+    text-align: center;
+  }
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+}
+.TweetsPage.green {
+  color: blueviolet;
+}
