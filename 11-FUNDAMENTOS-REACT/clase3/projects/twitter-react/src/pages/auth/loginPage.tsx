@@ -3,6 +3,15 @@ import Button from "../../components/Button"
 import { login } from "./service"
 import { useAuth } from "./context"
 
+// Esta funcion accesoria me sirve en caso de no usar inputs controlados
+// const getFormData = (formData: FormData, name: string) => {
+//   const data = formData.get(name)
+//   if (typeof data === 'string') {
+//     return data
+//   }
+//   return ''
+// }
+
 function LoginPage () {
   const { onLogin } = useAuth()
 
