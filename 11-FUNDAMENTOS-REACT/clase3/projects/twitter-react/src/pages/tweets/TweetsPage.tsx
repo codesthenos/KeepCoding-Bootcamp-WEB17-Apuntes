@@ -3,7 +3,7 @@ import './TweetsPage.css'
 import Button from '../../components/Button'
 import { useEffect, useState } from 'react'
 import { getLatestTweets } from './service'
-import type { tweet, variant } from './types'
+import type { Tweet, variant } from './types'
 import { logout } from '../auth/service'
 import Layout from '../../components/layaout/Layout'
 import { useAuth } from '../auth/context'
@@ -15,7 +15,7 @@ function TweetsPage() {
   const [variant1, setVariant1] = useState<variant>('primary')
   const [variant2, setVariant2] = useState<variant>('secondary')
 
-  const [tweets, setTweets] = useState<tweet[]>([])
+  const [tweets, setTweets] = useState<Tweet[]>([])
 
   useEffect(() => {
     getLatestTweets().then(res => {

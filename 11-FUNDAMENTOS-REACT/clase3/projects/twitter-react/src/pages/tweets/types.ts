@@ -1,5 +1,5 @@
 export type variant = 'primary' | 'secondary'
-export interface tweet {
+export interface Tweet {
   id: string
   userId: number
   updatedAt: string

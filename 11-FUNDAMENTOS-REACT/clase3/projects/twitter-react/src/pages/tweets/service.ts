@@ -1,10 +1,15 @@
 import { client } from '../../api/client'
-import type { tweet } from './types'
+import type { Tweet } from './types'
 
 const tweetsPathname = 'api/tweets'
 
 export const getLatestTweets = async () => {
-  const tweets: tweet[] = await client.get(tweetsPathname)
+  const tweets = await client.get<Tweet[]>(tweetsPathname)
 
-  return tweets
+  return tweets.data
+}
+
+export const createTweet = async (tweet: { content: string }) => {
+  const response = await client.post<Tweet>(tweetsPathname, tweet)
+  return response.data
 }
