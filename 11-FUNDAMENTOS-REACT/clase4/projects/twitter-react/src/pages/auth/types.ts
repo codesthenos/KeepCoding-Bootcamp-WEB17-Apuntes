@@ -5,3 +5,7 @@ export interface Credentials {
 export interface Login {
   accessToken: string
 }
+export interface LoginForm {
+  username: string
+  password: string
+}
