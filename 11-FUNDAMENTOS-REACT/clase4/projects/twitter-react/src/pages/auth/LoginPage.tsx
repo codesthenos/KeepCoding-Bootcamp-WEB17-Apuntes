@@ -54,11 +54,11 @@ function LoginPage () {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username: </label>
-          <input onChange={handleFormChange} value={formData.username} type="text" id="username" name="username" className="border border-zinc-900 rounded-xl mb-2" />
+          <input onChange={handleFormChange} value={formData.username} type="text" id="username" name="username" className="border border-zinc-900 rounded-xl px-2 mb-2" />
         </div>
         <div>
           <label htmlFor="password">Password: </label>
-          <input onChange={handleFormChange} value={formData.password} type="password" id="password" name="password" className="border border-zinc-900 rounded-xl" />
+          <input onChange={handleFormChange} value={formData.password} type="password" id="password" name="password" className="border border-zinc-900 rounded-xl px-2 ml-1" />
         </div>
         <Button $variant="primary" type="submit" disabled={isDisabled}>Login</Button>
       </form>
