@@ -1,8 +1,9 @@
-import { useState } from "react"
-import Button from "../../components/Button"
-import { login } from "./service"
-import { useAuth } from "./context"
-import type { LoginForm } from "./types"
+import { useState } from 'react'
+import Button from '../../components/Button'
+import { login } from './service'
+import { useAuth } from './context'
+import type { LoginForm } from './types'
+import { Link } from 'react-router-dom'
 
 // Esta funcion accesoria me sirve en caso de no usar inputs controlados
 // const getFormData = (formData: FormData, name: string) => {
@@ -13,7 +14,7 @@ import type { LoginForm } from "./types"
 //   return ''
 // }
 
-function LoginPage () {
+function LoginPage() {
   const { onLogin } = useAuth()
 
   const initialState: LoginForm = {
@@ -29,7 +30,7 @@ function LoginPage () {
     event.preventDefault()
     // en caso de inputs no controlados
     // const formData = new FormData(event.currentTarget)
-    
+
     // const username = getFormData(formData, 'username')
     // const password = getFormData(formData, 'password')
 
@@ -43,24 +44,46 @@ function LoginPage () {
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
 
-    setFormData(state => {
+    setFormData((state) => {
       return { ...state, [event.target.id]: event.target.value }
     })
   }
 
   return (
-    <div className="max-w-3xl mx-auto text-center">
-      <h1 className="uppercase font-bold text-2xl mb-6">Log in to Twitter</h1>
+    <div className='mx-auto max-w-3xl text-center'>
+      <h1 className='mb-6 text-2xl font-bold uppercase'>Log in to Twitter</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username: </label>
-          <input onChange={handleFormChange} value={formData.username} type="text" id="username" name="username" className="border border-zinc-900 rounded-xl px-2 mb-2" />
+          <label htmlFor='username'>Username: </label>
+          <input
+            onChange={handleFormChange}
+            value={formData.username}
+            type='text'
+            id='username'
+            name='username'
+            className='mb-2 rounded-xl border border-zinc-900 px-2'
+          />
         </div>
         <div>
-          <label htmlFor="password">Password: </label>
-          <input onChange={handleFormChange} value={formData.password} type="password" id="password" name="password" className="border border-zinc-900 rounded-xl px-2 ml-1" />
+          <label htmlFor='password'>Password: </label>
+          <input
+            onChange={handleFormChange}
+            value={formData.password}
+            type='password'
+            id='password'
+            name='password'
+            className='ml-1 rounded-xl border border-zinc-900 px-2'
+          />
         </div>
-        <Button $variant="primary" type="submit" disabled={isDisabled}>Login</Button>
+        <Button
+          as={Link}
+          to='/'
+          $variant='primary'
+          type='submit'
+          disabled={isDisabled}
+        >
+          Login
+        </Button>
       </form>
     </div>
   )
