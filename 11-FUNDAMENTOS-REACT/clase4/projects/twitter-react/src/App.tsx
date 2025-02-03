@@ -3,6 +3,7 @@ import LoginPage from './pages/auth/LoginPage'
 import TweetsPage from './pages/tweets/TweetsPage'
 import TweetPage from './pages/tweets/TweetPage'
 // import NewTweetPage from './pages/tweets/NewTweetPage'
+// import RequireAuth from './pages/auth/RequireAuth'
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       >
         <Route index element={<TweetsPage />} />
         <Route path=':tweetId' element={<TweetPage />} />
-        {/* <Route path='new' element={<NewTweetPage />} /> */}
+        {/* <Route path='new' element={<RequireAuth><NewTweetPage /></RequireAuth>} /> */}
       </Route>
 
       <Route path='/' element={<Navigate to='/tweets' />} />

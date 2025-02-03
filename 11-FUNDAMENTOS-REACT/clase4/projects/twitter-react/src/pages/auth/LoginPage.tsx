@@ -3,7 +3,8 @@ import Button from '../../components/Button'
 import { login } from './service'
 import { useAuth } from './context'
 import type { LoginForm } from './types'
-import { Link } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { AxiosError } from 'axios'
 
 // Esta funcion accesoria me sirve en caso de no usar inputs controlados
 // const getFormData = (formData: FormData, name: string) => {
@@ -15,7 +16,12 @@ import { Link } from 'react-router-dom'
 // }
 
 function LoginPage() {
-  const { onLogin } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { onLogin, isLogged } = useAuth()
+
+  const [error, setError] = useState<{ message: string } | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const initialState: LoginForm = {
     username: '',
@@ -24,7 +30,7 @@ function LoginPage() {
 
   const [formData, setFormData] = useState<LoginForm>(initialState)
 
-  const isDisabled = !formData.username || !formData.password
+  const isDisabled = !formData.username || !formData.password || loading
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -35,10 +41,18 @@ function LoginPage() {
     // const password = getFormData(formData, 'password')
 
     try {
+      setLoading(true)
       await login({ username: formData.username, password: formData.password })
       onLogin()
+      navigate(location.state?.from ?? '/', { replace: true })
     } catch (error) {
-      console.error(error)
+      if (error instanceof AxiosError) {
+        setError({ message: error.response?.data?.message ?? '' })
+      } else {
+        console.error(error)
+      }
+    } finally {
+      setLoading(false)
     }
   }
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +61,9 @@ function LoginPage() {
     setFormData((state) => {
       return { ...state, [event.target.id]: event.target.value }
     })
+  }
+  if (isLogged) {
+    return <Navigate to='/' />
   }
 
   return (
@@ -75,15 +92,19 @@ function LoginPage() {
             className='ml-1 rounded-xl border border-zinc-900 px-2'
           />
         </div>
-        <Button
-          as={Link}
-          to='/'
-          $variant='primary'
-          type='submit'
-          disabled={isDisabled}
-        >
+        <Button $variant='primary' type='submit' disabled={isDisabled}>
           Login
         </Button>
+        {error && (
+          <h3
+            onClick={() => {
+              setError(null)
+            }}
+            style={{ color: 'red', cursor: 'pointer' }}
+          >
+            {error.message}
+          </h3>
+        )}
       </form>
     </div>
   )

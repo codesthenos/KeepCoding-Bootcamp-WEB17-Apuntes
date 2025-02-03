@@ -14,8 +14,10 @@ export const AuthProvider = ({ defaultIsLogged, children }: Props) => {
   const handleLogout = () => {
     setIslogged(false)
   }
-  
+
   const authValue = { isLogged, onLogin: handleLogin, onLogout: handleLogout }
 
-  return <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
+  )
 }
