@@ -42,13 +42,10 @@ function LoginPage () {
   }
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
-    if (event.target.id === 'username') {
-      setFormData(prev => ({ username: event.target.value, password: prev.password }))
-      return
-    }
-    if (event.target.id === 'password') {
-      setFormData(prev => ({ username: prev.username, password: event.target.value }))
-    }
+
+    setFormData(state => {
+      return { ...state, [event.target.id]: event.target.value }
+    })
   }
 
   return (
