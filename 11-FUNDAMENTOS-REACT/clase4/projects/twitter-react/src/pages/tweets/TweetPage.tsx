@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
-import Header from '../../components/layaout/Header'
 import { useEffect, useState } from 'react'
 import type { Tweet } from './types'
 import { getTweet } from './service'
+import Page from '../../components/layaout/Page'
 
 function TweetPage() {
   const { tweetId } = useParams()
@@ -19,10 +19,9 @@ function TweetPage() {
     }
   }, [tweetId])
   return (
-    <>
-      <Header />
+    <Page title={`DETAIL tweet id: ${tweetId}`}>
       {tweet ? <p>{tweet.content}</p> : <h2>Loading tweet</h2>}
-    </>
+    </Page>
   )
 }
 export default TweetPage

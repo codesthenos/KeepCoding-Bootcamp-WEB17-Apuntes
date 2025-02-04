@@ -2,6 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/auth/LoginPage'
 import TweetsPage from './pages/tweets/TweetsPage'
 import TweetPage from './pages/tweets/TweetPage'
+import Layout from './components/layaout/Layout'
 // import NewTweetPage from './pages/tweets/NewTweetPage'
 // import RequireAuth from './pages/auth/RequireAuth'
 
@@ -15,7 +16,9 @@ function App() {
         element={
           <div className='container'>
             <h2>Parent Route</h2>
-            <Outlet />
+            <Layout>
+              <Outlet />
+            </Layout>
           </div>
         }
       >

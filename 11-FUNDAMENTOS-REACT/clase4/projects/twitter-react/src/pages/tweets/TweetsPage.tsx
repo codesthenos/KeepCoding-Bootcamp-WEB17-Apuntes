@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react'
 import { getLatestTweets } from './service'
 import type { Tweet, variant } from './types'
 import { logout } from '../auth/service'
-import Layout from '../../components/layaout/Layout'
 import { useAuth } from '../auth/context'
 import { Link } from 'react-router-dom'
+import Page from '../../components/layaout/Page'
 
 const condition = true
 
@@ -19,9 +19,16 @@ function TweetsPage() {
   const [tweets, setTweets] = useState<Tweet[]>([])
 
   useEffect(() => {
-    getLatestTweets().then((res) => {
-      setTweets(res)
-    })
+    const fetchTweets = async () => {
+      const tweets = await getLatestTweets()
+      setTweets(tweets)
+    }
+    fetchTweets()
+
+    // promise mode
+    // getLatestTweets().then((res) => {
+    //   setTweets(res)
+    // })
   }, [])
 
   const handleLogoutButton = async () => {
@@ -30,7 +37,7 @@ function TweetsPage() {
   }
 
   return (
-    <Layout title='What are you thinking?'>
+    <Page title='What are you thinking?'>
       <div className='TweetsPage'>
         <h1 className='p-4 font-sans text-3xl font-bold'>Tweets Page</h1>
         <ul className={clsx('TweetsPage', { green: condition })}>
@@ -69,7 +76,7 @@ function TweetsPage() {
           Logout
         </Button>
       </div>
-    </Layout>
+    </Page>
   )
 }
 
