@@ -1,0 +1,30 @@
+.loginPage {
+  margin: 40px auto 0;
+  max-width: 600px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.loginPage-title {
+  height: 64px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.loginPage-error {
+  background-color: rgba(var(--color-danger), 0.1);
+  border: 1px solid rgba(var(--color-danger), 0.2);
+  border-radius: 5px;
+  color: rgb(var(--color-danger));
+  margin-top: 20px;
+  padding: 10px 15px;
+}
+
+.loginForm-field {
+  padding: 10px 0;
+}
+
+.loginForm-submit {
+  margin-top: 10px;
+  width: 100%;
+}
