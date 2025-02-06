@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../../components/shared/Button";
 import { login } from "./service";
 import { useAuth } from "./context";
@@ -7,6 +7,8 @@ import "./LoginPage.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ApiClientError } from "../../api/error";
 import { isApiClientError } from "../../api/client";
+import { createPortal } from "react-dom";
+import copyStyles from "../../utils/copyStyles";
 
 function LoginPage() {
   const location = useLocation();
@@ -43,9 +45,23 @@ function LoginPage() {
   };
 
   const isDisabled = !formData.username || !formData.password || isLoading;
+  const portalContainer = useRef(document.createElement("div"));
+  useEffect(() => {
+    portalContainer.current.className = "container";
+    const externalWindow = window.open("", "", "width=600, height=400");
+    externalWindow?.document.body.appendChild(portalContainer.current);
+    copyStyles(window.document, externalWindow!.document);
 
+    return () => {
+      externalWindow?.close();
+    };
+  }, []);
   return (
     <div className="loginPage">
+      {/* PORTAL TO DOM NODE */}
+      {createPortal(<h1>PORTAL</h1>, document.getElementById("portal"))}
+      {/* PORTAL NEW WINDOW */}
+      {createPortal(<h1>PORTAL NEW WINDOW</h1>, portalContainer.current)}
       <h1 className="loginPage-title">Log in to Twitter</h1>
       <form onSubmit={handleSubmit}>
         <FormField
