@@ -1,15 +1,24 @@
-import LoginPage from "./pages/auth/LoginPage";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
-import TweetsPage from "./pages/tweets/TweetsPage";
-import NewTweetPage from "./pages/tweets/NewTweetPage";
-import TweetPage from "./pages/tweets/TweetPage";
+import { lazy, Suspense } from "react";
 import RequireAuth from "./pages/auth/RequireAuth";
 import Layout from "./components/layout/Layout";
+
+const LoginPage = lazy(() => import("./pages/auth/LoginPage"));
+const NewTweetPage = lazy(() => import("./pages/tweets/NewTweetPage"));
+const TweetsPage = lazy(() => import("./pages/tweets/TweetsPage"));
+const TweetPage = lazy(() => import("./pages/tweets/TweetPage"));
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<h2>LOADING...</h2>}>
+            <LoginPage />
+          </Suspense>
+        }
+      />
       <Route
         path="/tweets"
         element={
@@ -18,13 +27,29 @@ function App() {
           </Layout>
         }
       >
-        <Route index element={<TweetsPage />} />
-        <Route path=":tweetId" element={<TweetPage />} />
+        <Route
+          index
+          element={
+            <Suspense fallback={<h2>LOADING...</h2>}>
+              <TweetsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path=":tweetId"
+          element={
+            <Suspense fallback={<h2>LOADING...</h2>}>
+              <TweetPage />
+            </Suspense>
+          }
+        />
         <Route
           path="new"
           element={
             <RequireAuth>
-              <NewTweetPage />
+              <Suspense fallback={<h2>LOADING...</h2>}>
+                <NewTweetPage />
+              </Suspense>
             </RequireAuth>
           }
         />

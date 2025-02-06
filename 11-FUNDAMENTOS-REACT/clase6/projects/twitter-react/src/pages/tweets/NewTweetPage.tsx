@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, memo, useMemo, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import Page from "../../components/layout/Page";
 import Button from "../../components/shared/Button";
 import Photo from "../../components/shared/Photo";
@@ -12,7 +12,7 @@ import { isApiClientError } from "../../api/client";
 const MAX_CHARACTERS = 140;
 const MIN_CHARACTERS = 5;
 
-const MemoizedFibonacci = memo(Fibonacci);
+// const MemoizedFibonacci = memo(Fibonacci);
 
 function NewTweetPageForm() {
   const [content, setContent] = useState("");
