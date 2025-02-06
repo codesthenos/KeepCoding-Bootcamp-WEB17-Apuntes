@@ -8,19 +8,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ApiClientError } from "../../api/error";
 import { isApiClientError } from "../../api/client";
 
-// function getFormDataValue(formData: FormData, name: string) {
-//   const value = formData.get(name);
-//   if (typeof value === "string") {
-//     return value;
-//   }
-//   return "";
-// }
-
 function LoginPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState<ApiClientError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { onLogin } = useAuth();
@@ -30,13 +21,7 @@ function LoginPage() {
 
     try {
       setIsLoading(true);
-      // const formData = new FormData(event.currentTarget);
-      const response = await login({
-        // username: getFormDataValue(formData, "username"),
-        // password: getFormDataValue(formData, "password"),
-        username,
-        password,
-      });
+      const response = await login(formData);
       console.log(response);
       onLogin();
       const to = location.state?.from ?? "/";
@@ -50,15 +35,14 @@ function LoginPage() {
     }
   };
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((state) => ({
+      ...state,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const isDisabled = !username || !password || isLoading;
+  const isDisabled = !formData.username || !formData.password || isLoading;
 
   return (
     <div className="loginPage">
@@ -68,15 +52,15 @@ function LoginPage() {
           type="text"
           name="username"
           label="phone, email or username"
-          value={username}
-          onChange={handleUsernameChange}
+          value={formData.username}
+          onChange={handleInputChange}
         />
         <FormField
           type="password"
           name="password"
           label="password"
-          value={password}
-          onChange={handlePasswordChange}
+          value={formData.password}
+          onChange={handleInputChange}
         />
         <Button
           type="submit"
