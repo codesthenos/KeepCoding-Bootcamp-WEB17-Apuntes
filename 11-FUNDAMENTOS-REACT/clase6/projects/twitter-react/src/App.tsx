@@ -2,6 +2,7 @@ import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import RequireAuth from "./pages/auth/RequireAuth";
 import Layout from "./components/layout/Layout";
+import ErrorBoundary from "./components/errors/ErrorBoundary";
 
 const LoginPage = lazy(() => import("./pages/auth/LoginPage"));
 const NewTweetPage = lazy(() => import("./pages/tweets/NewTweetPage"));
@@ -30,9 +31,11 @@ function App() {
         <Route
           index
           element={
-            <Suspense fallback={<h2>LOADING...</h2>}>
-              <TweetsPage />
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<h2>LOADING...</h2>}>
+                <TweetsPage />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route

@@ -22,7 +22,7 @@ function TweetsPage() {
   useEffect(() => {
     async function getTweets() {
       const tweets = await getLatestTweets();
-      setTweets(tweets);
+      setTweets(null);
     }
     getTweets();
   }, []);
