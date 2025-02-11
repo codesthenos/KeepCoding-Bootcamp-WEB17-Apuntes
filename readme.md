@@ -169,6 +169,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **06/02/2025**
 
 - Fecha entrega de practica: **16/02/2025**
+- [Repo de la practica](https://github.com/codesthenos/KC-WEB17-Fundamentos-REACT-codesthenos)
 
 ## 12-REACT-AVANZADO
 
@@ -185,6 +186,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **27/02/2025**
 
 - Fecha entrega de practica: **09/03/2025**
+- [Repo de la practica]()
 
 ## 13-CONFIGURACION-SERVIDORES-DESPLIEGUE-APLICACIONES
 
@@ -201,3 +203,4 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **20/03/2025**
 
 - Fecha entrega de practica: **30/03/2025**
+- [Repo de la practica]()

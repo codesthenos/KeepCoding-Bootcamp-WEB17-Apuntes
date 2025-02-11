@@ -59,7 +59,10 @@ function LoginPage() {
   return (
     <div className="loginPage">
       {/* PORTAL TO DOM NODE */}
-      {createPortal(<h1>PORTAL</h1>, document.getElementById("portal"))}
+      {createPortal(
+        <h1>PORTAL</h1>,
+        document.getElementById("portal") as Element,
+      )}
       {/* PORTAL NEW WINDOW */}
       {createPortal(<h1>PORTAL NEW WINDOW</h1>, portalContainer.current)}
       <h1 className="loginPage-title">Log in to Twitter</h1>
