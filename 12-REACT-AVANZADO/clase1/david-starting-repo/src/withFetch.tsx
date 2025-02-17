@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 
+interface withFetchProps<T> {
+  data: T[]
+  loading: boolean
+  color?: string
+}
+
 export function withFetch<T>(
-  Component: React.ComponentType<{
-    data: T[]
-    loading: boolean
-    color?: string
-  }>,
+  Component: React.ComponentType<withFetchProps<T>>,
   { url, intialValue }: { url: string; intialValue: T[] }
 ) {
   return function (props: { color?: string }) {
