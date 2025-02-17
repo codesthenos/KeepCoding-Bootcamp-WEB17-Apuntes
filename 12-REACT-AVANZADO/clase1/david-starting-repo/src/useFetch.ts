@@ -1,22 +1,12 @@
 import { useState, useEffect } from 'react'
 
-interface FetchProps<Data> {
+export function useFetch<Data>({
+  url,
+  initialValue
+}: {
   url: string
   initialValue: Data
-  children: ({
-    data,
-    loading
-  }: {
-    data: Data
-    loading: boolean
-  }) => React.ReactNode
-}
-
-export default function Fetch<Data>({
-  url,
-  initialValue,
-  children
-}: FetchProps<Data>) {
+}) {
   const [loading, setLoading] = useState(false)
 
   const [data, setData] = useState(initialValue)
@@ -34,5 +24,5 @@ export default function Fetch<Data>({
       .finally(() => setLoading(false))
   }, [url])
 
-  return children({ data, loading })
+  return { data, loading }
 }

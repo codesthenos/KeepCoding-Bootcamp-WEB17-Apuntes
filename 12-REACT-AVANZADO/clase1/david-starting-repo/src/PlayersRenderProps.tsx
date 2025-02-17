@@ -8,10 +8,10 @@ interface Player {
 
 export function Players({ color }: { color: string }) {
   return (
-    <Fetch
+    <Fetch<Player[]>
       url="https://api.balldontlie.io/v1/players"
       initialValue={[]}
-      children={({ data, loading }: { data: Player[]; loading: boolean }) => {
+      children={({ data, loading }) => {
         if (loading) {
           return 'Loading...'
         }

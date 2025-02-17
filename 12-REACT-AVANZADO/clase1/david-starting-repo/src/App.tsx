@@ -1,7 +1,9 @@
 import { PlayerswithFetch } from './Players'
 import { Players } from './PlayersRenderProps'
+import { PlayersWithHook } from './PlayersWithHook'
 import { TeamswithFetch } from './Teams'
 import { Teams } from './TeamsRenderProps'
+import { TeamsWithHook } from './TeamsWithHook'
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
       <Teams />
       <h2>PLAYERS RENDER PROPS</h2>
       <Players color="red" />
+      <h2>PLAYERS WITH HOOK</h2>
+      <PlayersWithHook color="green" />
+      <h2>TEAMS WITH HOOK</h2>
+      <TeamsWithHook />
     </>
   )
 }
