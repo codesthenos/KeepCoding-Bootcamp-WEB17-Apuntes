@@ -8,7 +8,7 @@ interface Player {
 
 export function PlayersWithHook({ color }: { color: string }) {
   const { data, loading } = useFetch<Player[]>({
-    url: 'https://api.balldontlie.io/v1/players',
+    url: 'api/players',
     initialValue: []
   })
   if (loading) {

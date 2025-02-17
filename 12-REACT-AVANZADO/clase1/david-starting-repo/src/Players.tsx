@@ -30,6 +30,6 @@ function Players({
 }
 
 export const PlayerswithFetch = withFetch<Player>(Players, {
-  url: 'https://api.balldontlie.io/v1/players',
+  url: 'api/players',
   intialValue: []
 })

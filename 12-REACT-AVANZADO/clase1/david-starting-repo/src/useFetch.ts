@@ -13,11 +13,7 @@ export function useFetch<Data>({
 
   useEffect(() => {
     setLoading(true)
-    fetch(url, {
-      headers: {
-        Authorization: import.meta.env.VITE_API_KEY
-      }
-    })
+    fetch(url)
       .then((response) => response.json())
       .then((result) => result.data)
       .then((data) => setData(data))

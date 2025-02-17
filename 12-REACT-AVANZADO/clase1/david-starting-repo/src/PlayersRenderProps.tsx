@@ -9,7 +9,7 @@ interface Player {
 export function Players({ color }: { color: string }) {
   return (
     <Fetch<Player[]>
-      url="https://api.balldontlie.io/v1/players"
+      url="api/players"
       initialValue={[]}
       children={({ data, loading }) => {
         if (loading) {

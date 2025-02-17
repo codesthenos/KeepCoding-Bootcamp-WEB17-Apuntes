@@ -7,7 +7,7 @@ interface Team {
 
 export function TeamsWithHook() {
   const { data, loading } = useFetch<Team[]>({
-    url: 'https://api.balldontlie.io/v1/teams',
+    url: 'api/teams',
     initialValue: []
   })
 

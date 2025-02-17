@@ -7,7 +7,7 @@ interface Team {
 
 export function Teams() {
   return (
-    <Fetch<Team[]> url="https://api.balldontlie.io/v1/teams" initialValue={[]}>
+    <Fetch<Team[]> url="api/teams" initialValue={[]}>
       {({ data, loading }) => {
         if (loading) {
           return 'Loading...'

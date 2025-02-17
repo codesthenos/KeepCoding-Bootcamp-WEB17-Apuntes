@@ -19,6 +19,6 @@ function Teams({ data: teams, loading }: { data: Team[]; loading: boolean }) {
 }
 
 export const TeamswithFetch = withFetch<Team>(Teams, {
-  url: 'https://api.balldontlie.io/v1/teams',
+  url: 'api/teams',
   intialValue: []
 })
