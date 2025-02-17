@@ -6,15 +6,13 @@ interface Player {
   last_name: string
 }
 
-function Players({
-  data: players,
-  loading,
-  color
-}: {
+interface PlayerProps {
   data: Player[]
   loading: boolean
-  color?: string
-}) {
+  color: string
+}
+
+function Players({ data: players, loading, color }: PlayerProps) {
   if (loading) {
     return 'Loading...'
   }
@@ -29,7 +27,7 @@ function Players({
   )
 }
 
-export const PlayerswithFetch = withFetch<Player>(Players, {
+export const PlayerswithFetch = withFetch<Player[], PlayerProps>(Players, {
   url: 'api/players',
   intialValue: []
 })

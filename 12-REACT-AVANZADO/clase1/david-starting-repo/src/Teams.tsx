@@ -5,7 +5,12 @@ interface Team {
   full_name: string
 }
 
-function Teams({ data: teams, loading }: { data: Team[]; loading: boolean }) {
+interface TeamProps {
+  data: Team[]
+  loading: boolean
+}
+
+function Teams({ data: teams, loading }: TeamProps) {
   if (loading) {
     return 'Loading...'
   }
@@ -18,7 +23,7 @@ function Teams({ data: teams, loading }: { data: Team[]; loading: boolean }) {
   )
 }
 
-export const TeamswithFetch = withFetch<Team>(Teams, {
+export const TeamswithFetch = withFetch<Team[], TeamProps>(Teams, {
   url: 'api/teams',
   intialValue: []
 })
