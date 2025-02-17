@@ -1,14 +1,14 @@
-import Players from './Players'
-import Teams from './Teams'
+import { PlayerswithFetch } from './Players'
+import { TeamswithFetch } from './Teams'
 
 function App() {
   return (
     <>
       <h1>React patterns</h1>
       <h2>Players</h2>
-      <Players />
+      <PlayerswithFetch />
       <h2>Teams</h2>
-      <Teams />
+      <TeamswithFetch />
     </>
   )
 }

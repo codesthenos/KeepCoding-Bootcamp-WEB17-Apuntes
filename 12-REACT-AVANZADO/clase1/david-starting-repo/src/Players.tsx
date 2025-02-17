@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { withFetch } from './withFetch'
 
 interface Player {
   id: number
@@ -6,23 +6,10 @@ interface Player {
   last_name: string
 }
 
-export default function Players() {
-  const [player, setPlayers] = useState<Player[]>([])
-
-  useEffect(() => {
-    fetch('https://api.balldontlie.io/v1/players', {
-      headers: {
-        Authorization: import.meta.env.VITE_API_KEY
-      }
-    })
-      .then((response) => response.json())
-      .then((result) => result.data as Player[])
-      .then((player) => setPlayers(player))
-  })
-
+function Players({ data: players }: { data: Player[] }) {
   return (
     <ul>
-      {player.map((player) => (
+      {players.map((player) => (
         <li key={player.id}>
           {player.first_name} - {player.last_name}
         </li>
@@ -30,3 +17,8 @@ export default function Players() {
     </ul>
   )
 }
+
+export const PlayerswithFetch = withFetch<Player>(Players, {
+  url: 'https://api.balldontlie.io/v1/players',
+  intialValue: []
+})

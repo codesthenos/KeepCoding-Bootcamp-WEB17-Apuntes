@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react'
+import { withFetch } from './withFetch'
 
 interface Team {
   id: number
   full_name: string
 }
 
-export default function Teams() {
-  const [teams, setTeams] = useState<Team[]>([])
-
-  useEffect(() => {
-    fetch('https://api.balldontlie.io/v1/teams', {
-      headers: {
-        Authorization: import.meta.env.VITE_API_KEY
-      }
-    })
-      .then((response) => response.json())
-      .then((result) => result.data as Team[])
-      .then((teams) => setTeams(teams))
-  })
-
+function Teams({ data: teams }: { data: Team[] }) {
   return (
     <ul>
       {teams.map((team) => (
@@ -27,3 +14,8 @@ export default function Teams() {
     </ul>
   )
 }
+
+export const TeamswithFetch = withFetch<Team>(Teams, {
+  url: 'https://api.balldontlie.io/v1/teams',
+  intialValue: []
+})
