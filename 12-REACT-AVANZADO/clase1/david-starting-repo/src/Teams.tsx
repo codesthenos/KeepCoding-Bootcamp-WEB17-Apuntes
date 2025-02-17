@@ -5,7 +5,10 @@ interface Team {
   full_name: string
 }
 
-function Teams({ data: teams }: { data: Team[] }) {
+function Teams({ data: teams, loading }: { data: Team[]; loading: boolean }) {
+  if (loading) {
+    return 'Loading...'
+  }
   return (
     <ul>
       {teams.map((team) => (

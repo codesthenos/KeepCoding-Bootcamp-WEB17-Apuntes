@@ -6,7 +6,7 @@ function App() {
     <>
       <h1>React patterns</h1>
       <h2>Players</h2>
-      <PlayerswithFetch />
+      <PlayerswithFetch color="blue" />
       <h2>Teams</h2>
       <TeamswithFetch />
     </>
