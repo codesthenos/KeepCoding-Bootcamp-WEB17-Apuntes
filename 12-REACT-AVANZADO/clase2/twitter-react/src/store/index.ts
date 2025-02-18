@@ -23,6 +23,29 @@ const reducer = (state = initalState, action: Actions) => {
   }
 };
 
+// function createStore(reducer) {
+//   let state;
+//   let listeners = [];
+
+//   function getState() {
+//     return state;
+//   }
+//   function dispatch(action) {
+//     state = reducer(state, action);
+//     listeners.forEach((l) => l());
+//   }
+//   function subscribe(listener) {
+//     listeners.push(listener);
+//     return function unsubscribe() {
+//       listeners = listeners.filter((l) => l !== listener);
+//     };
+//   }
+
+//   dispatch({ type: "INIT" });
+
+//   return { getState, dispatch, subscribe };
+// }
+
 export const store = createStore(reducer);
 
 const render = () => console.log(store.getState());
