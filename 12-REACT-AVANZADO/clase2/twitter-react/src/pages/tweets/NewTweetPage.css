@@ -1,0 +1,27 @@
+.newTweetPage {
+  display: flex;
+  gap: 10px;
+  padding: 10px 15px 10px 15px;
+}
+
+.newTweetPage-form {
+  flex: 1;
+}
+
+.newTweetPage-textarea {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+
+.newTweetPage-footer {
+  align-items: center;
+  display: flex;
+}
+
+.newTweetPage-characters {
+  color: rgb(var(--color-twitter));
+}
+
+.newTweetPage-submit {
+  margin-left: auto;
+}
