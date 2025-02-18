@@ -9,6 +9,8 @@ import { AuthProvider } from "./pages/auth/AuthProvider";
 import { BrowserRouter } from "react-router-dom";
 import ErrorBoundary from "./components/errors/ErrorBoundary";
 
+import "./store";
+
 const accessToken = storage.get("auth");
 if (accessToken) {
   setAuthorizationHeader(accessToken);
