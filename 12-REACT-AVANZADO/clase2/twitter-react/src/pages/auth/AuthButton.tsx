@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/shared/Button";
-import { useAuth } from "../../pages/auth/context";
 import { logout } from "../../pages/auth/service";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { authLogout } from "../../store/actions";
+import { getIsLogged } from "../../store/selectors";
 
 export default function AuthButton() {
-  const { isLogged, onLogout } = useAuth();
+  const isLogged = useAppSelector(getIsLogged);
+  const dispatch = useAppDispatch();
 
   const handleLogoutClick = async () => {
     await logout();
-    onLogout();
+    dispatch(authLogout());
   };
 
   return isLogged ? (

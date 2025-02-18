@@ -1,39 +1,23 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
+import * as reducers from "./reducers";
+import { useDispatch, useSelector } from "react-redux";
+import type { State } from "./reducers";
 
-type Increment = {
-  type: "increment";
-  payload: number;
-};
+export default function configureStore(preloadedState: Partial<State>) {
+  const rootReducer = combineReducers(reducers);
+  const store = createStore(
+    rootReducer,
+    preloadedState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+  );
+  return store;
+}
 
-type Decrement = {
-  type: "decrement";
-};
+type AppStore = ReturnType<typeof configureStore>;
+type AppGetState = AppStore["getState"];
+export type RootState = ReturnType<AppGetState>;
+type AppDispatch = AppStore["dispatch"];
 
-type Actions = Increment | Decrement;
-
-const initalState = 0;
-
-const reducer = (state = initalState, action: Actions) => {
-  switch (action.type) {
-    case "increment":
-      return state + action.payload;
-    case "decrement":
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-export const store = createStore(reducer);
-
-const render = () => console.log(store.getState());
-
-const unsubscribe = store.subscribe(render);
-
-render();
-
-store.dispatch({ type: "increment", payload: 2 });
-store.dispatch({ type: "increment", payload: 3 });
-store.dispatch({ type: "decrement" });
-unsubscribe();
-store.dispatch({ type: "decrement" });
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();

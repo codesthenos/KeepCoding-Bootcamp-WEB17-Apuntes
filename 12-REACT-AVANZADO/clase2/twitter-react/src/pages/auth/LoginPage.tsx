@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../../components/shared/Button";
 import { login } from "./service";
-import { useAuth } from "./context";
 import FormField from "../../components/shared/FormField";
 import "./LoginPage.css";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -9,14 +8,8 @@ import { ApiClientError } from "../../api/error";
 import { isApiClientError } from "../../api/client";
 import { createPortal } from "react-dom";
 import copyStyles from "../../utils/copyStyles";
-
-// function getFormDataValue(formData: FormData, name: string) {
-//   const value = formData.get(name);
-//   if (typeof value === "string") {
-//     return value;
-//   }
-//   return "";
-// }
+import { useAppDispatch } from "../../store";
+import { authLogin } from "../../store/actions";
 
 function LoginPage() {
   const location = useLocation();
@@ -27,23 +20,17 @@ function LoginPage() {
   });
   const [error, setError] = useState<ApiClientError | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { onLogin } = useAuth();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       setIsLoading(true);
-      // const formData = new FormData(event.currentTarget);
-      // const response = await login({
-      //   // username: getFormDataValue(formData, "username"),
-      //   // password: getFormDataValue(formData, "password"),
-      //   username: credentials.username,
-      //   password: credentials.password,
-      // });
+
       const response = await login(credentials);
       console.log(response);
-      onLogin();
+      dispatch(authLogin());
       const to = location.state?.from ?? "/";
       navigate(to, { replace: true });
     } catch (error) {
@@ -98,14 +85,6 @@ function LoginPage() {
     </div>
   );
 }
-
-// export default function LoginPagePortal() {
-//   const portal = document.getElementById("portal");
-//   if (!portal) {
-//     return <LoginPage />;
-//   }
-//   return createPortal(<LoginPage />, portal);
-// }
 
 export default function LoginPagePortal() {
   const portalContainer = useRef<HTMLDivElement>(document.createElement("div"));
