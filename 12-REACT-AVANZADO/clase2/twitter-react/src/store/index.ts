@@ -8,7 +8,9 @@ export default function configureStore(preloadedState: Partial<State>) {
   const store = createStore(
     rootReducer,
     preloadedState,
+    // @ts-expect-error: import devtools extension
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      // @ts-expect-error: import devtools extension
       window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
   return store;
