@@ -1,0 +1,39 @@
+.tweet {
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  padding: 10px 15px 10px 15px;
+  transition: background-color 0.2s;
+  border-style: solid;
+  border-color: rgb(var(--color-border));
+  border-bottom-width: 1px;
+}
+
+.tweet:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.tweet-header {
+  color: rgb(var(--color-secondary-text));
+  margin-bottom: 2px;
+}
+
+.tweet-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  max-width: 425px;
+}
+
+.tweet-name {
+  color: rgb(20, 23, 26);
+  font-weight: bold;
+}
+
+.tweet-username {
+  margin-left: 5px;
+}
+
+.tweet-separator {
+  padding: 0 5px;
+}
