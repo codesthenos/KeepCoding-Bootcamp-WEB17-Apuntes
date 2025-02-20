@@ -11,10 +11,7 @@ const defaultState: State = {
   tweets: null,
 };
 
-export function auth(
-  state = defaultState.auth,
-  action: Actions,
-): State["auth"] {
+function auth(state = defaultState.auth, action: Actions): State["auth"] {
   switch (action.type) {
     case "auth/login":
       return true;
@@ -25,10 +22,7 @@ export function auth(
   }
 }
 
-export function tweets(
-  state = defaultState.tweets,
-  action: Actions,
-): State["tweets"] {
+function tweets(state = defaultState.tweets, action: Actions): State["tweets"] {
   switch (action.type) {
     case "tweets/loaded":
       return action.payload;
@@ -42,6 +36,8 @@ export function tweets(
       return state;
   }
 }
+
+export default { auth, tweets };
 
 // export const reducer = combineReducers({ auth, tweets });
 // Lo de arriba hace esto de abajo

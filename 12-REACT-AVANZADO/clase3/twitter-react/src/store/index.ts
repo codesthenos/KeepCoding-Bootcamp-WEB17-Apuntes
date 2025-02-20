@@ -1,17 +1,24 @@
 import { combineReducers, createStore } from "redux";
 import * as reducers from "./reducers";
 import { useDispatch, useSelector } from "react-redux";
-import type { State } from "./reducers";
+import { devToolsEnhancer } from "@redux-devtools/extension";
 
-export default function configureStore(preloadedState: Partial<State>) {
+export default function configureStore(
+  preloadedState: Partial<reducers.State>,
+) {
   const rootReducer = combineReducers(reducers);
   const store = createStore(
     rootReducer,
     preloadedState,
-    // @ts-expect-error: import devtools extension
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      // @ts-expect-error: import devtools extension
-      window.__REDUX_DEVTOOLS_EXTENSION__(),
+    devToolsEnhancer({
+      actionsAllowlist: [
+        "auth/login",
+        "auth/logout",
+        "tweets/loaded",
+        "tweets/created",
+        "tweets/loaded/id",
+      ],
+    }),
   );
   return store;
 }
