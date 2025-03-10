@@ -186,7 +186,7 @@ Subcarpetas con los apuntes y los ejercicios de clase, la clase 1 contiene la cl
   6. **27/02/2025**
 
 - Fecha entrega de practica: **09/03/2025**
-- [Repo de la practica]()
+- **Practica no entregada**
 
 ## 13-CONFIGURACION-SERVIDORES-DESPLIEGUE-APLICACIONES
 
