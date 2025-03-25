@@ -1,0 +1,26 @@
+FROM node:16-slim
+
+RUN mkdir /parse
+
+ADD . /parse
+WORKDIR /parse
+RUN npm install
+
+EXPOSE 1337
+
+CMD [ "npm", "start" ]
+
+services:
+  parsito:
+    container_name: parse_container
+    restart: always
+    image: parsito
+    ports:
+      - 1337:1337
+    environment:
+      DATABASE_URI: mongodb://root:example@mongo:27017/parsedb
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    restart: always
